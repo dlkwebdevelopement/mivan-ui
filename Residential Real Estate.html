@@ -1,0 +1,2357 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Residential Real Estate | Luxury Villas & Apartments | Mivan Bahrain</title>
+  <meta name="description"
+    content="Explore premium residential real estate across the Kingdom of Bahrain. Discover luxury villas, modern apartments, family townhouses, and waterfront estates with Mivan Real Estate." />
+
+  <link rel="icon" type="image/png" href="images/assets/Mivan Logo-01.png" />
+
+  <!-- Google Fonts: Inter & Cinzel -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600;700;800&family=Inter:wght@300;400;500;600;700;800;900&display=swap"
+    rel="stylesheet" />
+
+  <!-- Google Material Symbols & Material Icons -->
+  <link rel="stylesheet"
+    href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons" />
+
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            brand: {
+              gold: '#F5C542',
+              'gold-dark': '#D4A017',
+              'gold-light': '#FFF099',
+              dark: '#030d20',
+              midnight: '#061838',
+              navy: '#1b3453',
+              accent: '#0a1e3f'
+            }
+          },
+          fontFamily: {
+            sans: ['Inter', 'Montserrat', 'system-ui', 'sans-serif'],
+            serif: ['Inter', 'sans-serif'],
+            inter: ['Inter', 'sans-serif'],
+            cinzel: ['Inter', 'sans-serif']
+          }
+        }
+      }
+    }
+  </script>
+
+  <!-- Lucide Icons -->
+  <script src="https://unpkg.com/lucide@latest"></script>
+
+  <style>
+    * {
+      box-sizing: border-box;
+      -ms-overflow-style: none;
+      scrollbar-width: none;
+    }
+
+    *::-webkit-scrollbar {
+      display: none;
+      width: 0;
+      height: 0;
+    }
+
+    h1,
+    h2,
+    h3,
+    h4,
+    h5,
+    h6,
+    .font-cinzel {
+      font-family: 'Inter', sans-serif !important;
+    }
+
+    /* Global Viewport & Responsive Constraints */
+    html {
+      font-size: 17px;
+      overflow-x: hidden !important;
+      max-width: 100% !important;
+      width: 100% !important;
+    }
+
+    body {
+      overflow-x: hidden !important;
+      max-width: 100% !important;
+      width: 100% !important;
+      position: relative !important;
+    }
+
+    img,
+    video,
+    iframe {
+      max-width: 100%;
+    }
+
+    /* Google Material Symbols styling helper */
+    .material-symbols-outlined {
+      font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      vertical-align: middle;
+      line-height: 1;
+      user-select: none;
+    }
+
+    .material-symbols-outlined.fill-1 {
+      font-variation-settings: 'FILL' 1, 'wght: 500, 'GRAD' 0, 'opsz' 24;
+    }
+
+    /* ── Subtle Lite 3D Gold Button ── */
+    .btn-3d-gold {
+      background: linear-gradient(180deg, #FDD663 0%, #F5C542 55%, #EAA822 100%) !important;
+      box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.45), 0 3px 8px rgba(212, 160, 23, 0.22), 0 1px 2px rgba(0, 0, 0, 0.05) !important;
+      border: 1px solid rgba(220, 160, 20, 0.3) !important;
+      transition: all 0.2s ease !important;
+      position: relative;
+    }
+
+    .btn-3d-gold:hover {
+      background: linear-gradient(180deg, #FEDE7C 0%, #F8CD56 55%, #EDB131 100%) !important;
+      box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.55), 0 4px 12px rgba(212, 160, 23, 0.3) !important;
+      transform: translateY(-1px);
+    }
+
+    .btn-3d-gold:active {
+      transform: translateY(1px) !important;
+      box-shadow: inset 0 1.5px 3px rgba(0, 0, 0, 0.15), 0 1px 2px rgba(0, 0, 0, 0.05) !important;
+    }
+
+    /* ── Advanced Scroll Transformation Animations ── */
+    .reveal-on-scroll {
+      opacity: 0;
+      transform: translateY(35px);
+      transition: opacity 0.7s cubic-bezier(0.16, 1, 0.3, 1), transform 0.7s cubic-bezier(0.16, 1, 0.3, 1);
+      will-change: opacity, transform;
+    }
+
+    .reveal-on-scroll.revealed {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .reveal-scale {
+      opacity: 0;
+      transform: scale(0.92) translateY(20px);
+      transition: opacity 0.7s cubic-bezier(0.16, 1, 0.3, 1), transform 0.7s cubic-bezier(0.16, 1, 0.3, 1);
+      will-change: opacity, transform;
+    }
+
+    .reveal-scale.revealed {
+      opacity: 1;
+      transform: scale(1) translateY(0);
+    }
+
+    .reveal-left {
+      opacity: 0;
+      transform: translateX(-45px);
+      transition: opacity 0.7s cubic-bezier(0.16, 1, 0.3, 1), transform 0.7s cubic-bezier(0.16, 1, 0.3, 1);
+      will-change: opacity, transform;
+    }
+
+    .reveal-left.revealed {
+      opacity: 1;
+      transform: translateX(0);
+    }
+
+    .reveal-right {
+      opacity: 0;
+      transform: translateX(45px);
+      transition: opacity 0.7s cubic-bezier(0.16, 1, 0.3, 1), transform 0.7s cubic-bezier(0.16, 1, 0.3, 1);
+      will-change: opacity, transform;
+    }
+
+    .reveal-right.revealed {
+      opacity: 1;
+      transform: translateX(0);
+    }
+
+    .delay-75 {
+      transition-delay: 75ms;
+    }
+
+    .delay-100 {
+      transition-delay: 100ms;
+    }
+
+    .delay-150 {
+      transition-delay: 150ms;
+    }
+
+    .delay-200 {
+      transition-delay: 200ms;
+    }
+
+    .delay-250 {
+      transition-delay: 250ms;
+    }
+
+    .delay-300 {
+      transition-delay: 300ms;
+    }
+
+    .delay-400 {
+      transition-delay: 400ms;
+    }
+
+    .delay-500 {
+      transition-delay: 500ms;
+    }
+
+    /* Glass Card */
+    .glass-card {
+      background: linear-gradient(135deg, rgba(6, 24, 56, 0.85) 0%, rgba(4, 15, 38, 0.9) 100%);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+    }
+
+    .text-gold-gradient {
+      background: linear-gradient(135deg, #FFF099 0%, #F5C542 50%, #D4A017 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    /* Navy Blue Navbar */
+    #navbar {
+      background-color: #061838;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+      box-shadow: 0 4px 20px -5px rgba(0, 0, 0, 0.35);
+      transition: background-color 0.35s ease, border-color 0.35s ease, padding 0.35s ease, box-shadow 0.35s ease;
+    }
+
+    #navbar .nav-link {
+      color: #ffffff;
+      transition: color 0.25s ease;
+    }
+
+    #navbar .nav-link:hover {
+      color: #F5C542;
+    }
+
+    #navbar .nav-separator {
+      background-color: rgba(255, 255, 255, 0.2);
+    }
+
+    #navbar #mobileMenuBtn {
+      color: #ffffff;
+      transition: color 0.25s ease;
+    }
+
+    #navbar .brand-logo {
+      filter: none;
+    }
+
+    #navbar.scrolled {
+      background-color: rgba(6, 24, 56, 0.98) !important;
+      backdrop-filter: blur(14px);
+      -webkit-backdrop-filter: blur(14px);
+      border-bottom: 1px solid rgba(255, 255, 255, 0.12) !important;
+      box-shadow: 0 4px 25px -2px rgba(0, 0, 0, 0.45);
+      padding-top: 0.65rem !important;
+      padding-bottom: 0.65rem !important;
+    }
+
+    #navbar.scrolled .nav-link {
+      color: #ffffff !important;
+    }
+
+    #navbar.scrolled .nav-link:hover {
+      color: #F5C542 !important;
+    }
+
+    #navbar .nav-link.nav-active,
+    #navbar.scrolled .nav-link.nav-active {
+      color: #F5C542 !important;
+    }
+
+    #navbar.menu-open {
+      background-color: #061838 !important;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.1) !important;
+    }
+
+    /* =================================================================== */
+    /* HERO — Signature Navy Edition matching other pages                 */
+    /* =================================================================== */
+    .hero-navy {
+      position: relative;
+      background:
+        radial-gradient(1400px 700px at 50% -15%, rgba(245, 197, 66, 0.08), transparent 60%),
+        radial-gradient(900px 500px at 12% 110%, rgba(245, 197, 66, 0.04), transparent 65%),
+        linear-gradient(180deg, #061838 0%, #05132c 60%, #030d20 100%);
+      overflow: hidden;
+      isolation: isolate;
+      min-height: 420px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .hero-grid-overlay {
+      position: absolute;
+      inset: 0;
+      background-image:
+        linear-gradient(rgba(245, 197, 66, 0.035) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(245, 197, 66, 0.035) 1px, transparent 1px);
+      background-size: 60px 60px;
+      z-index: 1;
+      pointer-events: none;
+      animation: gridShift 40s linear infinite;
+    }
+
+    @keyframes gridShift {
+      0% {
+        background-position: 0 0, 0 0;
+      }
+
+      100% {
+        background-position: 60px 60px, 60px 60px;
+      }
+    }
+
+    .hero-dots {
+      position: absolute;
+      inset: 0;
+      background-image: radial-gradient(rgba(255, 255, 255, 0.05) 1px, transparent 1px);
+      background-size: 28px 28px;
+      opacity: 0.5;
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    .hero-particles {
+      position: absolute;
+      inset: 0;
+      pointer-events: none;
+      z-index: 2;
+      overflow: hidden;
+    }
+
+    .particle {
+      position: absolute;
+      border-radius: 50%;
+      background: #F5C542;
+      opacity: 0;
+      animation: floatParticle linear infinite;
+      box-shadow: 0 0 6px rgba(245, 197, 66, 0.5);
+    }
+
+    @keyframes floatParticle {
+      0% {
+        opacity: 0;
+        transform: translateY(0) scale(0.5);
+      }
+
+      10% {
+        opacity: 0.7;
+      }
+
+      90% {
+        opacity: 0.5;
+      }
+
+      100% {
+        opacity: 0;
+        transform: translateY(-220px) scale(1);
+      }
+    }
+
+    .p1 {
+      width: 3px;
+      height: 3px;
+      left: 8%;
+      top: 75%;
+      animation-duration: 14s;
+      animation-delay: 0s;
+    }
+
+    .p2 {
+      width: 2px;
+      height: 2px;
+      left: 18%;
+      top: 85%;
+      animation-duration: 18s;
+      animation-delay: 2s;
+    }
+
+    .p3 {
+      width: 4px;
+      height: 4px;
+      left: 28%;
+      top: 70%;
+      animation-duration: 12s;
+      animation-delay: 1s;
+    }
+
+    .p4 {
+      width: 2px;
+      height: 2px;
+      left: 38%;
+      top: 90%;
+      animation-duration: 16s;
+      animation-delay: 4s;
+    }
+
+    .p5 {
+      width: 3px;
+      height: 3px;
+      left: 48%;
+      top: 78%;
+      animation-duration: 15s;
+      animation-delay: 0.5s;
+    }
+
+    .p6 {
+      width: 5px;
+      height: 5px;
+      left: 58%;
+      top: 88%;
+      animation-duration: 11s;
+      animation-delay: 3s;
+    }
+
+    .p7 {
+      width: 2px;
+      height: 2px;
+      left: 68%;
+      top: 72%;
+      animation-duration: 17s;
+      animation-delay: 1.5s;
+    }
+
+    .p8 {
+      width: 3px;
+      height: 3px;
+      left: 78%;
+      top: 82%;
+      animation-duration: 13s;
+      animation-delay: 5s;
+    }
+
+    .p9 {
+      width: 4px;
+      height: 4px;
+      left: 88%;
+      top: 76%;
+      animation-duration: 19s;
+      animation-delay: 2.5s;
+    }
+
+    .p10 {
+      width: 2px;
+      height: 2px;
+      left: 95%;
+      top: 86%;
+      animation-duration: 14s;
+      animation-delay: 3.5s;
+    }
+
+    .p11 {
+      width: 6px;
+      height: 6px;
+      left: 13%;
+      top: 92%;
+      animation-duration: 22s;
+      animation-delay: 1s;
+      box-shadow: 0 0 10px rgba(245, 197, 66, 0.7);
+    }
+
+    .p12 {
+      width: 5px;
+      height: 5px;
+      left: 53%;
+      top: 95%;
+      animation-duration: 20s;
+      animation-delay: 6s;
+      box-shadow: 0 0 10px rgba(245, 197, 66, 0.7);
+    }
+
+    .p13 {
+      width: 7px;
+      height: 7px;
+      left: 83%;
+      top: 93%;
+      animation-duration: 24s;
+      animation-delay: 2s;
+      box-shadow: 0 0 12px rgba(245, 197, 66, 0.6);
+    }
+
+    .hero-navy::after {
+      content: '';
+      position: absolute;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      height: 1px;
+      background: linear-gradient(90deg, transparent, rgba(212, 160, 23, 0.55), transparent);
+      pointer-events: none;
+      z-index: 5;
+    }
+
+    .hero-vignette {
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(ellipse at center, transparent 45%, rgba(3, 13, 32, 0.55) 100%);
+      pointer-events: none;
+      z-index: 3;
+    }
+
+    .hero-content {
+      position: relative;
+      z-index: 4;
+      width: 100%;
+    }
+
+    .hero-title {
+      opacity: 0;
+      transform: translateY(24px);
+      animation: titleFadeUp 1.2s cubic-bezier(0.16, 1, 0.3, 1) 0.8s forwards;
+    }
+
+    @keyframes titleFadeUp {
+      0% {
+        opacity: 0;
+        transform: translateY(24px);
+      }
+
+      100% {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .hero-title .gold-accent {
+      color: #D4A017;
+    }
+
+    .hero-eyebrow {
+      opacity: 0;
+      animation: fadeInUp 1s cubic-bezier(0.16, 1, 0.3, 1) 0.6s forwards;
+    }
+
+    @keyframes fadeInUp {
+      0% {
+        opacity: 0;
+        transform: translateY(8px);
+      }
+
+      100% {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .hero-underline {
+      display: block;
+      height: 1px;
+      margin: 20px auto 0;
+      width: 0;
+      background: linear-gradient(90deg, transparent, #D4A017 50%, transparent);
+      animation: underlineDraw 1.4s cubic-bezier(0.65, 0, 0.35, 1) 1.8s forwards;
+      opacity: 0;
+    }
+
+    @keyframes underlineDraw {
+      0% {
+        width: 0;
+        opacity: 0;
+      }
+
+      40% {
+        opacity: 1;
+      }
+
+      100% {
+        width: 180px;
+        opacity: 1;
+      }
+    }
+
+    .hero-subtitle {
+      opacity: 0;
+      animation: fadeInUp 1s cubic-bezier(0.16, 1, 0.3, 1) 2.2s forwards;
+    }
+
+    .hero-crosshair {
+      position: absolute;
+      width: 16px;
+      height: 16px;
+      border-color: rgba(245, 197, 66, 0.25);
+      z-index: 4;
+      opacity: 0;
+      animation: nodeFade 0.7s ease 0.3s forwards;
+    }
+
+    @keyframes nodeFade {
+      to {
+        opacity: 1;
+      }
+    }
+
+    .hero-crosshair.tl {
+      top: 16px;
+      left: 16px;
+      border-top: 1px solid;
+      border-left: 1px solid;
+    }
+
+    .hero-crosshair.tr {
+      top: 16px;
+      right: 16px;
+      border-top: 1px solid;
+      border-right: 1px solid;
+    }
+
+    .hero-crosshair.bl {
+      bottom: 16px;
+      left: 16px;
+      border-bottom: 1px solid;
+      border-left: 1px solid;
+    }
+
+    .hero-crosshair.br {
+      bottom: 16px;
+      right: 16px;
+      border-bottom: 1px solid;
+      border-right: 1px solid;
+    }
+
+    /* Filter Active Tab */
+    .filter-btn.active {
+      background-color: #061838 !important;
+      color: #F5C542 !important;
+      border-color: #061838 !important;
+      box-shadow: 0 4px 14px rgba(6, 24, 56, 0.25) !important;
+    }
+
+    /* Modal Backdrop */
+    .modal-backdrop {
+      background-color: rgba(6, 24, 56, 0.82);
+      backdrop-filter: blur(8px);
+      -webkit-backdrop-filter: blur(8px);
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+
+      .hero-grid-overlay,
+      .particle,
+      .hero-title,
+      .hero-eyebrow,
+      .hero-underline,
+      .hero-subtitle,
+      .hero-crosshair {
+        animation: none !important;
+        opacity: 1 !important;
+        transform: none !important;
+        filter: none !important;
+      }
+
+      .hero-underline {
+        width: 180px;
+      }
+    }
+
+    /* ── Mobile Responsive Optimizations ── */
+    @media (max-width: 639px) {
+      input,
+      select,
+      textarea {
+        font-size: 16px !important;
+      }
+
+      .max-w-\[1400px\] {
+        padding-left: 1rem !important;
+        padding-right: 1rem !important;
+      }
+
+      a,
+      button {
+        -webkit-tap-highlight-color: transparent;
+      }
+
+      .hero-navy {
+        min-height: 320px !important;
+        padding-top: 3.5rem !important;
+        padding-bottom: 3.5rem !important;
+      }
+
+      .hero-title {
+        font-size: clamp(28px, 8vw, 42px) !important;
+        line-height: 1.15 !important;
+      }
+
+      .hero-eyebrow {
+        font-size: 10px !important;
+        letter-spacing: 0.26em !important;
+      }
+
+      .hero-subtitle {
+        font-size: 13px !important;
+        line-height: 1.65 !important;
+      }
+    }
+  </style>
+</head>
+
+<body
+  class="bg-white text-slate-800 font-inter antialiased overflow-x-hidden selection:bg-brand-gold selection:text-brand-dark flex flex-col min-h-screen">
+
+  <!-- ========================================================================= -->
+  <!-- 1. NAVBAR (Exact match with site navbar + Residential marked active)       -->
+  <!-- ========================================================================= -->
+  <nav id="navbar" class="sticky top-0 z-50 py-3.5 sm:py-5 transition-all duration-300 bg-[#061838] border-b border-white/10">
+    <div class="max-w-[1400px] w-full mx-auto px-3.5 sm:px-10 lg:px-12 flex items-center justify-between">
+
+      <!-- Brand Logo -->
+      <a href="index.html" class="w-[130px] xs:w-[165px] sm:w-[240px] lg:w-[290px] shrink-0 block group">
+        <img src="images/assets/Mivan Logo-01.png" alt="Mivan Real Estate"
+          class="brand-logo w-full h-auto object-contain transition-transform duration-300 group-hover:scale-[1.02]" />
+      </a>
+
+      <!-- Desktop Nav Links -->
+      <div class="hidden lg:flex items-center gap-6 xl:gap-8">
+        <a href="index.html"
+          class="nav-link group relative flex items-center font-semibold text-[15px] tracking-[0.04em] py-1 text-white hover:text-[#F5C542] transition-colors">
+          <span>Home</span>
+          <span
+            class="absolute bottom-0 left-0 w-0 h-[2px] bg-[#F5C542] rounded-full transition-all duration-300 group-hover:w-full"></span>
+        </a>
+
+        <a href="about.html"
+          class="nav-link group relative flex items-center font-semibold text-[15px] tracking-[0.04em] py-1 text-white hover:text-[#F5C542] transition-colors">
+          <span>About Us</span>
+          <span
+            class="absolute bottom-0 left-0 w-0 h-[2px] bg-[#F5C542] rounded-full transition-all duration-300 group-hover:w-full"></span>
+        </a>
+
+        <!-- Properties Dropdown (ACTIVE - Residential page) -->
+        <div class="relative group" id="propertiesNavDropdown">
+          <a href="properties.html"
+            class="nav-link nav-active group relative flex items-center gap-1.5 font-semibold text-[15px] tracking-[0.04em] py-1 text-[#F5C542]">
+            <span>Properties</span>
+            <i data-lucide="chevron-down"
+              class="w-3.5 h-3.5 text-[#F5C542] transition-transform duration-300 group-hover:rotate-180"></i>
+          </a>
+
+          <!-- Dropdown Menu Box -->
+          <div
+            class="absolute top-full left-0 pt-3 opacity-0 invisible translate-y-2 group-hover:opacity-100 group-hover:visible group-hover:translate-y-0 transition-all duration-300 ease-out z-50 min-w-[320px] pointer-events-none group-hover:pointer-events-auto">
+            <div
+              class="bg-[#061838]/98 backdrop-blur-2xl border border-white/10 border-t-2 border-t-[#F5C542] rounded-2xl shadow-[0_20px_50px_rgba(0,0,0,0.65)] p-2.5 flex flex-col gap-1">
+              
+              <!-- Commercial -->
+              <a href="Commercial.html"
+                class="dropdown-item flex items-center gap-3 px-3 py-2.5 rounded-xl text-white/90 hover:text-white hover:bg-white/[0.08] transition-all duration-200 group/item">
+                <span class="w-8 h-8 rounded-lg bg-white/5 border border-white/10 flex items-center justify-center text-[#F5C542] group-hover/item:bg-[#F5C542] group-hover/item:text-[#061838] transition-all duration-200 shrink-0">
+                  <i data-lucide="building-2" class="w-4 h-4"></i>
+                </span>
+                <div class="flex flex-col">
+                  <span class="font-semibold text-[13.5px] group-hover/item:text-[#F5C542] transition-colors">Commercial</span>
+                  <span class="text-[11px] text-white/50 leading-tight">Offices, Retail, Warehouses & Land</span>
+                </div>
+              </a>
+
+              <!-- Residential (ACTIVE ITEM) -->
+              <a href="Residential Real Estate.html"
+                class="dropdown-item flex items-center gap-3 px-3 py-2.5 rounded-xl text-white bg-white/[0.08] border border-[#F5C542]/30 transition-all duration-200 group/item">
+                <span class="w-8 h-8 rounded-lg bg-[#F5C542] text-[#061838] flex items-center justify-center font-bold shrink-0">
+                  <i data-lucide="home" class="w-4 h-4"></i>
+                </span>
+                <div class="flex flex-col">
+                  <span class="font-bold text-[13.5px] text-[#F5C542]">Residential</span>
+                  <span class="text-[11px] text-white/70 leading-tight">Luxury Villas, Apartments & Compounds</span>
+                </div>
+              </a>
+
+              <!-- Workspaces & Retail -->
+              <a href="WORKSPACES & RETAIL DESTINATIONS.html"
+                class="dropdown-item flex items-center gap-3 px-3 py-2.5 rounded-xl text-white/90 hover:text-white hover:bg-white/[0.08] transition-all duration-200 group/item">
+                <span class="w-8 h-8 rounded-lg bg-white/5 border border-white/10 flex items-center justify-center text-[#F5C542] group-hover/item:bg-[#F5C542] group-hover/item:text-[#061838] transition-all duration-200 shrink-0">
+                  <i data-lucide="briefcase" class="w-4 h-4"></i>
+                </span>
+                <div class="flex flex-col">
+                  <span class="font-semibold text-[13.5px] group-hover/item:text-[#F5C542] transition-colors">Workspaces & Retail</span>
+                  <span class="text-[11px] text-white/50 leading-tight">Corporate Plazas & Retail Hubs</span>
+                </div>
+              </a>
+
+              <!-- Hospitality -->
+              <a href="LUXURY HOSPITALITY PROPERTIES.html"
+                class="dropdown-item flex items-center gap-3 px-3 py-2.5 rounded-xl text-white/90 hover:text-white hover:bg-white/[0.08] transition-all duration-200 group/item">
+                <span class="w-8 h-8 rounded-lg bg-white/5 border border-white/10 flex items-center justify-center text-[#F5C542] group-hover/item:bg-[#F5C542] group-hover/item:text-[#061838] transition-all duration-200 shrink-0">
+                  <i data-lucide="hotel" class="w-4 h-4"></i>
+                </span>
+                <div class="flex flex-col">
+                  <span class="font-semibold text-[13.5px] group-hover/item:text-[#F5C542] transition-colors">Hospitality</span>
+                  <span class="text-[11px] text-white/50 leading-tight">Hotels, Resorts & Tourism Assets</span>
+                </div>
+              </a>
+
+              <!-- Beach -->
+              <a href="BEACH PROPERTIES.html"
+                class="dropdown-item flex items-center gap-3 px-3 py-2.5 rounded-xl text-white/90 hover:text-white hover:bg-white/[0.08] transition-all duration-200 group/item">
+                <span class="w-8 h-8 rounded-lg bg-white/5 border border-white/10 flex items-center justify-center text-[#F5C542] group-hover/item:bg-[#F5C542] group-hover/item:text-[#061838] transition-all duration-200 shrink-0">
+                  <i data-lucide="palmtree" class="w-4 h-4"></i>
+                </span>
+                <div class="flex flex-col">
+                  <span class="font-semibold text-[13.5px] group-hover/item:text-[#F5C542] transition-colors">Beach</span>
+                  <span class="text-[11px] text-white/50 leading-tight">Beachfront Villas & Island Resorts</span>
+                </div>
+              </a>
+
+              <!-- Serviced Living -->
+              <a href="SERVICED LIVING Hotel Apartments.html"
+                class="dropdown-item flex items-center gap-3 px-3 py-2.5 rounded-xl text-white/90 hover:text-white hover:bg-white/[0.08] transition-all duration-200 group/item">
+                <span class="w-8 h-8 rounded-lg bg-white/5 border border-white/10 flex items-center justify-center text-[#F5C542] group-hover/item:bg-[#F5C542] group-hover/item:text-[#061838] transition-all duration-200 shrink-0">
+                  <i data-lucide="sparkles" class="w-4 h-4"></i>
+                </span>
+                <div class="flex flex-col">
+                  <span class="font-semibold text-[13.5px] group-hover/item:text-[#F5C542] transition-colors">Serviced Living</span>
+                  <span class="text-[11px] text-white/50 leading-tight">Hotel Apartments & Branded Suites</span>
+                </div>
+              </a>
+
+              <!-- Divider & View All -->
+              <div class="border-t border-white/10 mt-1 pt-1.5 px-1">
+                <a href="properties.html"
+                  class="flex items-center justify-between px-3 py-2 rounded-lg text-[#F5C542] hover:bg-[#F5C542]/10 transition-colors text-[12.5px] font-bold tracking-wide group/all">
+                  <span>Explore All Properties</span>
+                  <i data-lucide="arrow-right" class="w-3.5 h-3.5 transition-transform duration-200 group-hover/all:translate-x-1"></i>
+                </a>
+              </div>
+
+            </div>
+          </div>
+        </div>
+
+        <a href="contact.html"
+          class="nav-link group relative flex items-center font-semibold text-[15px] tracking-[0.04em] py-1 text-white hover:text-[#F5C542] transition-colors">
+          <span>Contact</span>
+          <span
+            class="absolute bottom-0 left-0 w-0 h-[2px] bg-[#F5C542] rounded-full transition-all duration-300 group-hover:w-full"></span>
+        </a>
+
+        <!-- Action Button -->
+        <a href="#residential-enquiry"
+          class="inline-flex items-center gap-1.5 px-4 py-2 rounded-full bg-gradient-to-b from-[#FFF099] via-[#F5C542] to-[#D4A017] shadow-[0_0_20px_rgba(245,197,66,0.4)] hover:shadow-[0_0_30px_rgba(245,197,66,0.6)] text-[#050810] font-bold text-[13px] tracking-wider hover:-translate-y-0.5 active:translate-y-0 transition-all duration-200 ml-1">
+          <i data-lucide="phone" class="w-3.5 h-3.5 fill-[#030d20]"></i>
+          <span>Enquire</span>
+        </a>
+      </div>
+
+      <!-- Mobile Menu Hamburger Button -->
+      <button id="mobileMenuBtn" aria-label="Toggle navigation menu"
+        class="lg:hidden p-2 text-white transition-colors focus:outline-none">
+        <i id="menuIcon" data-lucide="menu" class="w-7 h-7"></i>
+      </button>
+    </div>
+
+    <!-- Mobile Navigation Drawer -->
+    <div id="mobileMenu"
+      class="lg:hidden absolute top-full left-0 w-full bg-[#061838] shadow-2xl border-t border-white/10 transition-all duration-300 opacity-0 invisible h-0 py-0 overflow-hidden">
+      <div class="flex flex-col px-6 sm:px-12 py-6 gap-3.5 max-h-[80vh] overflow-y-auto">
+        <a href="index.html"
+          class="mobile-nav-link flex items-center text-white font-semibold text-[15px] hover:text-[#F5C542] transition-colors tracking-wider">
+          <span>Home</span>
+        </a>
+        <a href="about.html"
+          class="mobile-nav-link flex items-center text-white font-semibold text-[15px] hover:text-[#F5C542] transition-colors tracking-wider">
+          <span>About Us</span>
+        </a>
+
+        <!-- Mobile Properties Accordion -->
+        <div class="mobile-nav-accordion">
+          <button type="button" id="mobilePropToggle"
+            class="w-full flex items-center justify-between text-[#F5C542] font-semibold text-[15px] transition-colors tracking-wider py-1">
+            <span>Properties</span>
+            <i id="mobilePropChevron" data-lucide="chevron-down" class="w-4 h-4 transition-transform duration-200 rotate-180"></i>
+          </button>
+          <div id="mobilePropSubmenu" class="pl-3 pt-2 flex flex-col gap-2 border-l-2 border-[#F5C542]/40 ml-2 mt-1">
+            <a href="properties.html"
+              class="mobile-nav-link flex items-center gap-2 text-white/80 hover:text-[#F5C542] text-[13.5px] py-1 transition-colors">
+              <span>All Properties Overview</span>
+            </a>
+            <a href="Commercial.html"
+              class="mobile-nav-link flex items-center gap-2 text-white/80 hover:text-[#F5C542] text-[13.5px] py-1 transition-colors">
+              <span>Commercial</span>
+            </a>
+            <a href="Residential Real Estate.html"
+              class="mobile-nav-link flex items-center gap-2 text-[#F5C542] font-semibold text-[13.5px] py-1">
+              <span>Residential</span>
+            </a>
+            <a href="WORKSPACES & RETAIL DESTINATIONS.html"
+              class="mobile-nav-link flex items-center gap-2 text-white/80 hover:text-[#F5C542] text-[13.5px] py-1 transition-colors">
+              <span>Workspaces & Retail</span>
+            </a>
+            <a href="LUXURY HOSPITALITY PROPERTIES.html"
+              class="mobile-nav-link flex items-center gap-2 text-white/80 hover:text-[#F5C542] text-[13.5px] py-1 transition-colors">
+              <span>Luxury Hospitality</span>
+            </a>
+            <a href="BEACH PROPERTIES.html"
+              class="mobile-nav-link flex items-center gap-2 text-white/80 hover:text-[#F5C542] text-[13.5px] py-1 transition-colors">
+              <span>Beach Properties</span>
+            </a>
+            <a href="SERVICED LIVING Hotel Apartments.html"
+              class="mobile-nav-link flex items-center gap-2 text-white/80 hover:text-[#F5C542] text-[13.5px] py-1 transition-colors">
+              <span>Serviced Living</span>
+            </a>
+          </div>
+        </div>
+
+        <a href="contact.html"
+          class="mobile-nav-link flex items-center text-white font-semibold text-[15px] hover:text-[#F5C542] transition-colors tracking-wider">
+          <span>Contact</span>
+        </a>
+        <div class="pt-3 border-t border-white/10">
+          <a href="#residential-enquiry"
+            class="mobile-nav-link flex items-center justify-center gap-2 w-full py-3.5 rounded-xl bg-gradient-to-r from-[#F5C542] to-[#D4A017] text-[#050810] font-bold text-[14px] tracking-wider shadow-md">
+            <i data-lucide="phone" class="w-4 h-4 fill-[#030d20]"></i>
+            <span>Enquire Now</span>
+          </a>
+        </div>
+      </div>
+    </div>
+  </nav>
+
+  <!-- MAIN CONTENT -->
+  <main class="flex-grow">
+
+    <!-- ========================================================================= -->
+    <!-- 2. SIGNATURE NAVY HERO SECTION                                            -->
+    <!-- ========================================================================= -->
+    <section id="hero" class="hero-navy relative w-full py-16 sm:py-20 lg:py-24 font-inter select-none">
+
+      <span class="hero-crosshair tl"></span>
+      <span class="hero-crosshair tr"></span>
+      <span class="hero-crosshair bl"></span>
+      <span class="hero-crosshair br"></span>
+
+      <div class="hero-vignette"></div>
+
+      <!-- Animated grid overlay -->
+      <div class="hero-grid-overlay"></div>
+
+      <!-- Dot texture -->
+      <div class="hero-dots"></div>
+
+      <!-- Floating particles -->
+      <div class="hero-particles" aria-hidden="true">
+        <span class="particle p1"></span>
+        <span class="particle p2"></span>
+        <span class="particle p3"></span>
+        <span class="particle p4"></span>
+        <span class="particle p5"></span>
+        <span class="particle p6"></span>
+        <span class="particle p7"></span>
+        <span class="particle p8"></span>
+        <span class="particle p9"></span>
+        <span class="particle p10"></span>
+        <span class="particle p11"></span>
+        <span class="particle p12"></span>
+        <span class="particle p13"></span>
+      </div>
+
+      <!-- Hero Content -->
+      <div class="hero-content max-w-[1400px] mx-auto px-4 sm:px-10 lg:px-12">
+        <div class="max-w-4xl mx-auto text-center">
+
+          <p
+            class="hero-eyebrow text-[10px] sm:text-[11px] font-bold tracking-[0.25em] sm:tracking-[0.42em] text-[#D4A017] uppercase mb-2 sm:mb-4 font-inter">
+            Mivan Real Estate &nbsp;•&nbsp; Bahrain
+          </p>
+
+          <h1
+            class="hero-title text-[28px] xs:text-[34px] sm:text-[48px] lg:text-[60px] font-extrabold leading-[1.12] lg:leading-[1.08] tracking-tight text-white !font-inter"
+            style="font-family: 'Inter', sans-serif !important;">
+            Residential <span class="gold-accent">Real Estate</span>
+          </h1>
+
+          <span class="hero-underline"></span>
+
+          <p
+            class="hero-subtitle mt-4 sm:mt-6 text-white/70 text-[12.5px] sm:text-[14.5px] leading-[1.65] sm:leading-[1.8] font-light max-w-2xl mx-auto px-2 sm:px-0 font-inter">
+            Discover exquisite private villas, waterfront luxury apartments, and prestigious gated communities tailored
+            to your aspirational lifestyle in Bahrain.
+          </p>
+
+          <div class="mt-8 flex flex-wrap items-center justify-center gap-3.5">
+            <a href="#residential-showcase"
+              class="inline-flex items-center gap-2 px-6 py-3 rounded-full bg-gradient-to-r from-[#F5C542] to-[#D4A017] text-[#050810] font-bold text-[13px] tracking-wide shadow-[0_0_20px_rgba(245,197,66,0.35)] hover:shadow-[0_0_30px_rgba(245,197,66,0.55)] hover:-translate-y-0.5 transition-all duration-300">
+              <span class="material-symbols-outlined text-lg">holiday_village</span>
+              <span>Explore Residences</span>
+            </a>
+            <a href="#residential-enquiry"
+              class="inline-flex items-center gap-2 px-6 py-3 rounded-full bg-white/10 hover:bg-white/15 text-white border border-white/20 font-semibold text-[13px] tracking-wide transition-all duration-300 hover:-translate-y-0.5 backdrop-blur-sm">
+              <span class="material-symbols-outlined text-lg">calendar_month</span>
+              <span>Book Private Viewing</span>
+            </a>
+          </div>
+
+        </div>
+      </div>
+
+    </section>
+
+    <!-- ========================================================================= -->
+    <!-- 3. RESIDENTIAL REAL ESTATE SOLUTIONS & 6-CARD GRID (Signature Showcase)   -->
+    <!-- ========================================================================= -->
+    <section id="residential-showcase" class="bg-[#FAF9F5] relative overflow-hidden py-14 sm:py-20 lg:py-24">
+      <!-- Subtle Background Ambient Blobs -->
+      <div
+        class="absolute top-0 right-0 w-[550px] h-[550px] bg-[#F5C542]/10 rounded-full blur-[110px] translate-x-1/3 -translate-y-1/3 pointer-events-none">
+      </div>
+      <div
+        class="absolute bottom-0 left-0 w-[600px] h-[600px] bg-[#D4A017]/5 rounded-full blur-[130px] -translate-x-1/3 translate-y-1/3 pointer-events-none">
+      </div>
+
+      <div class="max-w-[1400px] mx-auto px-4 sm:px-10 lg:px-12 w-full relative z-10 h-full">
+
+        <!-- Main Grid: Left Info & Right 6-Card Portfolio -->
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 xl:gap-10 items-start">
+
+          <!-- Left Column: Title, Subtitle, Explore Button -->
+          <div class="lg:col-span-4 flex flex-col items-start pt-1 reveal-on-scroll">
+            <div class="w-full">
+              <!-- Eyebrow Tag -->
+              <div class="flex items-center gap-3 sm:gap-4 mb-3 sm:mb-3.5">
+                <div class="w-8 sm:w-12 h-[2px] bg-[#D4A017]"></div>
+                <span class="text-[#D4A017] font-bold text-[11px] sm:text-[13px] tracking-[0.2em] font-inter uppercase">Residential
+                  Real Estate</span>
+              </div>
+
+              <!-- Main Heading -->
+              <h2
+                class="font-extrabold leading-[1.08] tracking-tight mb-4 sm:mb-5 text-[26px] xs:text-[32px] sm:text-[38px] lg:text-[42px] uppercase font-inter text-[#061838]">
+                RESIDENTIAL <br />
+                <span class="text-[#D4A017]">REAL ESTATE</span><br />
+                <span class="text-[#D4A017]">SOLUTIONS</span>
+              </h2>
+
+              <!-- Paragraph -->
+              <p class="text-slate-500 leading-relaxed text-[13px] sm:text-[14.5px] font-inter mb-6 sm:mb-8">
+                Find the perfect home that fits your lifestyle. From modern apartments to luxury villas — we help you
+                discover exceptional residential properties in Bahrain.
+              </p>
+
+              <!-- Explore Properties Button -->
+              <div>
+                <a href="#residential-portfolio"
+                  class="inline-flex items-center gap-3 px-6 py-3.5 sm:px-7 sm:py-4 bg-[#061838] text-white rounded-full font-bold text-[13px] sm:text-[13.5px] font-inter hover:bg-[#D4A017] hover:text-[#061838] transition-all duration-300 shadow-md group">
+                  <span>Explore Properties</span>
+                  <i data-lucide="arrow-right"
+                    class="w-4 h-4 text-[#D4A017] group-hover:text-[#061838] group-hover:translate-x-1.5 transition-all"></i>
+                </a>
+              </div>
+
+              <!-- Quick Highlights list with Material Symbols -->
+              <div class="mt-8 pt-6 border-t border-slate-200/80 w-full flex flex-col gap-3">
+                <div class="flex items-center gap-2.5 text-slate-600 text-xs sm:text-[13px]">
+                  <span class="material-symbols-outlined text-[#D4A017] text-lg">water_lux</span>
+                  <span>Waterfront & Prime Gated Communities</span>
+                </div>
+                <div class="flex items-center gap-2.5 text-slate-600 text-xs sm:text-[13px]">
+                  <span class="material-symbols-outlined text-[#D4A017] text-lg">shield_with_heart</span>
+                  <span>Freehold & Title Deed Registration Support</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Right Column: 6 Cards in 3x2 Grid (Exact Residential Cards) -->
+          <div class="lg:col-span-8 reveal-on-scroll delay-100">
+            <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4 sm:gap-4.5">
+
+              <!-- Card 1: Villas -->
+              <div onclick="openResidentialModal('Private Luxury Villas', 'Villas', 'images/assets/villa.png', 'Saar, Janabiyah & Riffa', 'Starting from 185,000 BHD', 'Standalone luxury villas featuring private landscaped gardens, private swimming pools, maid rooms, and double garages.')"
+                class="bg-white rounded-2xl overflow-hidden shadow-sm border border-slate-100 hover:shadow-xl hover:-translate-y-1.5 transition-all duration-300 flex flex-col relative group cursor-pointer">
+                <div class="h-36 sm:h-40 w-full overflow-hidden relative">
+                  <img src="images/assets/villa.png" alt="Villas"
+                    class="w-full h-full object-cover group-hover:scale-108 transition-transform duration-700"
+                    loading="lazy" />
+                  <!-- Bottom-left circular icon badge (Material Symbol: villa) -->
+                  <div
+                    class="absolute left-3 bottom-2.5 w-10 h-10 rounded-full bg-white shadow-md flex items-center justify-center p-1">
+                    <div
+                      class="w-full h-full rounded-full bg-[#F5C542]/20 group-hover:bg-[#D4A017] flex items-center justify-center text-[#D4A017] group-hover:text-[#061838] transition-colors">
+                      <span class="material-symbols-outlined text-[19px]">villa</span>
+                    </div>
+                  </div>
+                </div>
+                <div class="p-4 flex items-center justify-between bg-white">
+                  <div>
+                    <h3
+                      class="text-[#061838] font-bold text-[13.5px] sm:text-[14px] font-inter group-hover:text-[#D4A017] transition-colors leading-snug">
+                      Villas</h3>
+                    <p class="text-slate-400 text-[11.5px] font-inter mt-0.5">Private Luxury Homes</p>
+                  </div>
+                  <i data-lucide="arrow-right"
+                    class="w-4 h-4 text-[#D4A017] group-hover:translate-x-1.5 transition-transform shrink-0 ml-1.5"></i>
+                </div>
+              </div>
+
+              <!-- Card 2: Apartments -->
+              <div onclick="openResidentialModal('Modern Urban Apartments', 'Apartments', 'images/assets/Apartments.png', 'Juffair, Seef & Reef Island', 'Starting from 55,000 BHD', 'Contemporary 1, 2, and 3-bedroom residences with floor-to-ceiling windows, sea views, rooftop pools, and fitness clubs.')"
+                class="bg-white rounded-2xl overflow-hidden shadow-sm border border-slate-100 hover:shadow-xl hover:-translate-y-1.5 transition-all duration-300 flex flex-col relative group cursor-pointer">
+                <div class="h-36 sm:h-40 w-full overflow-hidden relative">
+                  <img src="images/assets/Apartments.png" alt="Apartments"
+                    class="w-full h-full object-cover group-hover:scale-108 transition-transform duration-700"
+                    loading="lazy" />
+                  <!-- Bottom-left circular icon badge (Material Symbol: apartment) -->
+                  <div
+                    class="absolute left-3 bottom-2.5 w-10 h-10 rounded-full bg-white shadow-md flex items-center justify-center p-1">
+                    <div
+                      class="w-full h-full rounded-full bg-[#F5C542]/20 group-hover:bg-[#D4A017] flex items-center justify-center text-[#D4A017] group-hover:text-[#061838] transition-colors">
+                      <span class="material-symbols-outlined text-[19px]">apartment</span>
+                    </div>
+                  </div>
+                </div>
+                <div class="p-4 flex items-center justify-between bg-white">
+                  <div>
+                    <h3
+                      class="text-[#061838] font-bold text-[13.5px] sm:text-[14px] font-inter group-hover:text-[#D4A017] transition-colors leading-snug">
+                      Apartments</h3>
+                    <p class="text-slate-400 text-[11.5px] font-inter mt-0.5">Modern Urban Living</p>
+                  </div>
+                  <i data-lucide="arrow-right"
+                    class="w-4 h-4 text-[#D4A017] group-hover:translate-x-1.5 transition-transform shrink-0 ml-1.5"></i>
+                </div>
+              </div>
+
+              <!-- Card 3: Townhouses -->
+              <div onclick="openResidentialModal('Family Townhouses', 'Townhouses', 'images/assets/Townhouses.png', 'Diyar Al Muharraq & Dilmunia', 'Starting from 135,000 BHD', 'Modern multi-story family homes featuring open layouts, rooftop terraces, green courtyards, and communal parks.')"
+                class="bg-white rounded-2xl overflow-hidden shadow-sm border border-slate-100 hover:shadow-xl hover:-translate-y-1.5 transition-all duration-300 flex flex-col relative group cursor-pointer">
+                <div class="h-36 sm:h-40 w-full overflow-hidden relative">
+                  <img src="images/assets/Townhouses.png" alt="Townhouses"
+                    class="w-full h-full object-cover group-hover:scale-108 transition-transform duration-700"
+                    loading="lazy" />
+                  <!-- Bottom-left circular icon badge (Material Symbol: cottage) -->
+                  <div
+                    class="absolute left-3 bottom-2.5 w-10 h-10 rounded-full bg-white shadow-md flex items-center justify-center p-1">
+                    <div
+                      class="w-full h-full rounded-full bg-[#F5C542]/20 group-hover:bg-[#D4A017] flex items-center justify-center text-[#D4A017] group-hover:text-[#061838] transition-colors">
+                      <span class="material-symbols-outlined text-[19px]">cottage</span>
+                    </div>
+                  </div>
+                </div>
+                <div class="p-4 flex items-center justify-between bg-white">
+                  <div>
+                    <h3
+                      class="text-[#061838] font-bold text-[13.5px] sm:text-[14px] font-inter group-hover:text-[#D4A017] transition-colors leading-snug">
+                      Townhouses</h3>
+                    <p class="text-slate-400 text-[11.5px] font-inter mt-0.5">Spacious Family Living</p>
+                  </div>
+                  <i data-lucide="arrow-right"
+                    class="w-4 h-4 text-[#D4A017] group-hover:translate-x-1.5 transition-transform shrink-0 ml-1.5"></i>
+                </div>
+              </div>
+
+              <!-- Card 4: Luxury Villas -->
+              <div onclick="openResidentialModal('Exclusive Waterfront Luxury Villas', 'Luxury Villas', 'images/assets/Luxury Villas home.png', 'Amwaj Islands & Durrat Al Bahrain', 'Starting from 320,000 BHD', 'Bespoke architectural estates with direct private beach access, infinity pools, private boat jetties, and smart home automation.')"
+                class="bg-white rounded-2xl overflow-hidden shadow-sm border border-slate-100 hover:shadow-xl hover:-translate-y-1.5 transition-all duration-300 flex flex-col relative group cursor-pointer">
+                <div class="h-36 sm:h-40 w-full overflow-hidden relative">
+                  <img src="images/assets/Luxury Villas home.png" alt="Luxury Villas"
+                    class="w-full h-full object-cover group-hover:scale-108 transition-transform duration-700"
+                    loading="lazy" />
+                  <!-- Bottom-left circular icon badge (Material Symbol: star) -->
+                  <div
+                    class="absolute left-3 bottom-2.5 w-10 h-10 rounded-full bg-white shadow-md flex items-center justify-center p-1">
+                    <div
+                      class="w-full h-full rounded-full bg-[#F5C542]/20 group-hover:bg-[#D4A017] flex items-center justify-center text-[#D4A017] group-hover:text-[#061838] transition-colors">
+                      <span class="material-symbols-outlined text-[19px]">hotel_class</span>
+                    </div>
+                  </div>
+                </div>
+                <div class="p-4 flex items-center justify-between bg-white">
+                  <div>
+                    <h3
+                      class="text-[#061838] font-bold text-[13.5px] sm:text-[14px] font-inter group-hover:text-[#D4A017] transition-colors leading-snug">
+                      Luxury Villas</h3>
+                    <p class="text-slate-400 text-[11.5px] font-inter mt-0.5">Exclusive Estates</p>
+                  </div>
+                  <i data-lucide="arrow-right"
+                    class="w-4 h-4 text-[#D4A017] group-hover:translate-x-1.5 transition-transform shrink-0 ml-1.5"></i>
+                </div>
+              </div>
+
+              <!-- Card 5: Gated Communities -->
+              <div onclick="openResidentialModal('Gated Lifestyle Communities', 'Gated Communities', 'images/assets/gated communities.png', 'Riffa Views & Hamala', 'Starting from 210,000 BHD', 'Secure 24/7 guarded residential communities with championship golf courses, international schools, and sports clubs.')"
+                class="bg-white rounded-2xl overflow-hidden shadow-sm border border-slate-100 hover:shadow-xl hover:-translate-y-1.5 transition-all duration-300 flex flex-col relative group cursor-pointer">
+                <div class="h-36 sm:h-40 w-full overflow-hidden relative">
+                  <img src="images/assets/gated communities.png" alt="Gated Communities"
+                    class="w-full h-full object-cover group-hover:scale-108 transition-transform duration-700"
+                    loading="lazy" />
+                  <!-- Bottom-left circular icon badge (Material Symbol: security) -->
+                  <div
+                    class="absolute left-3 bottom-2.5 w-10 h-10 rounded-full bg-white shadow-md flex items-center justify-center p-1">
+                    <div
+                      class="w-full h-full rounded-full bg-[#F5C542]/20 group-hover:bg-[#D4A017] flex items-center justify-center text-[#D4A017] group-hover:text-[#061838] transition-colors">
+                      <span class="material-symbols-outlined text-[19px]">shield</span>
+                    </div>
+                  </div>
+                </div>
+                <div class="p-4 flex items-center justify-between bg-white">
+                  <div>
+                    <h3
+                      class="text-[#061838] font-bold text-[13.5px] sm:text-[14px] font-inter group-hover:text-[#D4A017] transition-colors leading-snug">
+                      Gated Communities</h3>
+                    <p class="text-slate-400 text-[11.5px] font-inter mt-0.5">Secure Lifestyle Living</p>
+                  </div>
+                  <i data-lucide="arrow-right"
+                    class="w-4 h-4 text-[#D4A017] group-hover:translate-x-1.5 transition-transform shrink-0 ml-1.5"></i>
+                </div>
+              </div>
+
+              <!-- Card 6: Studio Apartments -->
+              <div onclick="openResidentialModal('Designer Studio Apartments', 'Studio Apartments', 'images/assets/Studio Apartments.png', 'Juffair & Seef District', 'Starting from 38,000 BHD', 'Smartly furnished compact apartments with modern kitchenettes, high rental yield potential, and full amenity access.')"
+                class="bg-white rounded-2xl overflow-hidden shadow-sm border border-slate-100 hover:shadow-xl hover:-translate-y-1.5 transition-all duration-300 flex flex-col relative group cursor-pointer">
+                <div class="h-36 sm:h-40 w-full overflow-hidden relative">
+                  <img src="images/assets/Studio Apartments.png" alt="Studio Apartments"
+                    class="w-full h-full object-cover group-hover:scale-108 transition-transform duration-700"
+                    loading="lazy" />
+                  <!-- Bottom-left circular icon badge (Material Symbol: key) -->
+                  <div
+                    class="absolute left-3 bottom-2.5 w-10 h-10 rounded-full bg-white shadow-md flex items-center justify-center p-1">
+                    <div
+                      class="w-full h-full rounded-full bg-[#F5C542]/20 group-hover:bg-[#D4A017] flex items-center justify-center text-[#D4A017] group-hover:text-[#061838] transition-colors">
+                      <span class="material-symbols-outlined text-[19px]">vpn_key</span>
+                    </div>
+                  </div>
+                </div>
+                <div class="p-4 flex items-center justify-between bg-white">
+                  <div>
+                    <h3
+                      class="text-[#061838] font-bold text-[13.5px] sm:text-[14px] font-inter group-hover:text-[#D4A017] transition-colors leading-snug">
+                      Studio Apartments</h3>
+                    <p class="text-slate-400 text-[11.5px] font-inter mt-0.5">Smart & Modern Spaces</p>
+                  </div>
+                  <i data-lucide="arrow-right"
+                    class="w-4 h-4 text-[#D4A017] group-hover:translate-x-1.5 transition-transform shrink-0 ml-1.5"></i>
+                </div>
+              </div>
+
+            </div>
+          </div>
+
+        </div>
+
+        <!-- ===================================================================== -->
+        <!-- 4. OUR SERVICES SECTION (Residential Tailored Edition)                -->
+        <!-- ===================================================================== -->
+        <div class="w-full mt-14 sm:mt-20 pt-10 sm:pt-14 border-t border-slate-200/80 reveal-on-scroll delay-200">
+
+          <!-- Header Row -->
+          <div
+            class="flex flex-col sm:flex-row sm:items-center justify-between gap-3.5 pb-6 sm:pb-8 border-b border-slate-200/80">
+            <div>
+              <h3 class="text-[#061838] font-bold text-[24px] sm:text-[30px] font-inter leading-tight">
+                <span class="relative inline-block pb-1">
+                  Our
+                  <span class="absolute bottom-0 left-0 w-full h-[3px] bg-[#D4A017] rounded-full"></span>
+                </span>
+                <span class="text-[#D4A017] ml-1">Services</span>
+              </h3>
+            </div>
+            <p class="text-slate-500 text-[13px] sm:text-[14.5px] font-inter max-w-xl leading-relaxed">
+              We help clients find their ideal home with personalized end-to-end real estate support.
+            </p>
+          </div>
+
+          <!-- 6 Circular Icon Services Grid with Material Symbols -->
+          <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-6 pt-8 sm:pt-10">
+
+            <!-- Service 1: Property Buying -->
+            <div class="flex flex-col items-center text-center group cursor-pointer transition-transform hover:-translate-y-1">
+              <div
+                class="w-14 h-14 sm:w-16 sm:h-16 rounded-full bg-white border border-slate-200/90 flex items-center justify-center text-[#061838] group-hover:bg-[#F5C542] group-hover:border-[#F5C542] group-hover:text-[#061838] group-hover:scale-110 shadow-sm transition-all duration-300 mb-3">
+                <span class="material-symbols-outlined text-2xl sm:text-[26px]">home</span>
+              </div>
+              <h4 class="text-[#061838] font-bold text-[13px] sm:text-[14px] font-inter mb-1 leading-snug">
+                Property Buying
+              </h4>
+              <p class="text-slate-400 text-[11px] sm:text-[12px] font-inter leading-normal">
+                Find Dream Homes
+              </p>
+            </div>
+
+            <!-- Service 2: Property Selling -->
+            <div class="flex flex-col items-center text-center group cursor-pointer transition-transform hover:-translate-y-1">
+              <div
+                class="w-14 h-14 sm:w-16 sm:h-16 rounded-full bg-white border border-slate-200/90 flex items-center justify-center text-[#061838] group-hover:bg-[#F5C542] group-hover:border-[#F5C542] group-hover:text-[#061838] group-hover:scale-110 shadow-sm transition-all duration-300 mb-3">
+                <span class="material-symbols-outlined text-2xl sm:text-[26px]">sell</span>
+              </div>
+              <h4 class="text-[#061838] font-bold text-[13px] sm:text-[14px] font-inter mb-1 leading-snug">
+                Property Selling
+              </h4>
+              <p class="text-slate-400 text-[11px] sm:text-[12px] font-inter leading-normal">
+                Optimal Market Value
+              </p>
+            </div>
+
+            <!-- Service 3: Property Rental -->
+            <div class="flex flex-col items-center text-center group cursor-pointer transition-transform hover:-translate-y-1">
+              <div
+                class="w-14 h-14 sm:w-16 sm:h-16 rounded-full bg-white border border-slate-200/90 flex items-center justify-center text-[#061838] group-hover:bg-[#F5C542] group-hover:border-[#F5C542] group-hover:text-[#061838] group-hover:scale-110 shadow-sm transition-all duration-300 mb-3">
+                <span class="material-symbols-outlined text-2xl sm:text-[26px]">key</span>
+              </div>
+              <h4 class="text-[#061838] font-bold text-[13px] sm:text-[14px] font-inter mb-1 leading-snug">
+                Property Rental
+              </h4>
+              <p class="text-slate-400 text-[11px] sm:text-[12px] font-inter leading-normal">
+                Villas & Apartments
+              </p>
+            </div>
+
+            <!-- Service 4: Property Management -->
+            <div class="flex flex-col items-center text-center group cursor-pointer transition-transform hover:-translate-y-1">
+              <div
+                class="w-14 h-14 sm:w-16 sm:h-16 rounded-full bg-white border border-slate-200/90 flex items-center justify-center text-[#061838] group-hover:bg-[#F5C542] group-hover:border-[#F5C542] group-hover:text-[#061838] group-hover:scale-110 shadow-sm transition-all duration-300 mb-3">
+                <span class="material-symbols-outlined text-2xl sm:text-[26px]">home_repair_service</span>
+              </div>
+              <h4 class="text-[#061838] font-bold text-[13px] sm:text-[14px] font-inter mb-1 leading-snug">
+                Property Management
+              </h4>
+              <p class="text-slate-400 text-[11px] sm:text-[12px] font-inter leading-normal">
+                Complete Home Care
+              </p>
+            </div>
+
+            <!-- Service 5: Investment Advisory -->
+            <div class="flex flex-col items-center text-center group cursor-pointer transition-transform hover:-translate-y-1">
+              <div
+                class="w-14 h-14 sm:w-16 sm:h-16 rounded-full bg-white border border-slate-200/90 flex items-center justify-center text-[#061838] group-hover:bg-[#F5C542] group-hover:border-[#F5C542] group-hover:text-[#061838] group-hover:scale-110 shadow-sm transition-all duration-300 mb-3">
+                <span class="material-symbols-outlined text-2xl sm:text-[26px]">trending_up</span>
+              </div>
+              <h4 class="text-[#061838] font-bold text-[13px] sm:text-[14px] font-inter mb-1 leading-snug">
+                Investment Advisory
+              </h4>
+              <p class="text-slate-400 text-[11px] sm:text-[12px] font-inter leading-normal">
+                High-Yield Portfolios
+              </p>
+            </div>
+
+            <!-- Service 6: Property Valuation -->
+            <div class="flex flex-col items-center text-center group cursor-pointer transition-transform hover:-translate-y-1">
+              <div
+                class="w-14 h-14 sm:w-16 sm:h-16 rounded-full bg-white border border-slate-200/90 flex items-center justify-center text-[#061838] group-hover:bg-[#F5C542] group-hover:border-[#F5C542] group-hover:text-[#061838] group-hover:scale-110 shadow-sm transition-all duration-300 mb-3">
+                <span class="material-symbols-outlined text-2xl sm:text-[26px]">balance</span>
+              </div>
+              <h4 class="text-[#061838] font-bold text-[13px] sm:text-[14px] font-inter mb-1 leading-snug">
+                Property Valuation
+              </h4>
+              <p class="text-slate-400 text-[11px] sm:text-[12px] font-inter leading-normal">
+                Certified Appraisals
+              </p>
+            </div>
+
+          </div>
+
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ========================================================================= -->
+    <!-- 5. FEATURED RESIDENTIAL LISTINGS & INTERACTIVE FILTER                     -->
+    <!-- ========================================================================= -->
+    <section id="residential-portfolio" class="py-16 sm:py-20 lg:py-24 bg-white relative">
+      <div class="max-w-[1400px] mx-auto px-4 sm:px-10 lg:px-12 w-full">
+
+        <!-- Title & Filter Header -->
+        <div class="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-10 reveal-on-scroll">
+          <div>
+            <div class="flex items-center gap-3 mb-2">
+              <div class="w-8 h-[2px] bg-[#D4A017]"></div>
+              <span class="text-[#D4A017] font-bold text-[12px] tracking-[0.2em] uppercase font-inter">Featured
+                Homes</span>
+            </div>
+            <h2 class="text-[26px] xs:text-[30px] sm:text-[36px] font-bold text-[#061838] font-inter leading-tight">
+              Curated <span class="text-[#D4A017]">Residential Listings</span>
+            </h2>
+            <p class="text-slate-500 text-[13.5px] sm:text-[14.5px] mt-2 max-w-xl">
+              Explore premium homes with direct beach access, private pools, and high-yield buy-to-let apartments.
+            </p>
+          </div>
+
+          <!-- Filter Pills with Material Symbols -->
+          <div class="flex flex-wrap items-center gap-2">
+            <button onclick="filterResidential('all')"
+              class="filter-btn active px-4 py-2 rounded-full border border-slate-200 text-xs sm:text-[13px] font-semibold transition-all duration-300 flex items-center gap-1.5"
+              data-cat="all">
+              <span class="material-symbols-outlined text-[17px]">grid_view</span>
+              <span>All Homes</span>
+            </button>
+            <button onclick="filterResidential('villas')"
+              class="filter-btn px-4 py-2 rounded-full border border-slate-200 text-slate-600 hover:text-[#061838] text-xs sm:text-[13px] font-semibold transition-all duration-300 flex items-center gap-1.5"
+              data-cat="villas">
+              <span class="material-symbols-outlined text-[17px]">villa</span>
+              <span>Villas</span>
+            </button>
+            <button onclick="filterResidential('apartments')"
+              class="filter-btn px-4 py-2 rounded-full border border-slate-200 text-slate-600 hover:text-[#061838] text-xs sm:text-[13px] font-semibold transition-all duration-300 flex items-center gap-1.5"
+              data-cat="apartments">
+              <span class="material-symbols-outlined text-[17px]">apartment</span>
+              <span>Apartments</span>
+            </button>
+            <button onclick="filterResidential('townhouses')"
+              class="filter-btn px-4 py-2 rounded-full border border-slate-200 text-slate-600 hover:text-[#061838] text-xs sm:text-[13px] font-semibold transition-all duration-300 flex items-center gap-1.5"
+              data-cat="townhouses">
+              <span class="material-symbols-outlined text-[17px]">cottage</span>
+              <span>Townhouses</span>
+            </button>
+          </div>
+        </div>
+
+        <!-- Residential Cards Grid -->
+        <div id="residentialGrid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
+
+          <!-- Home 1: Luxury Amwaj Waterfront Villa -->
+          <div
+            class="residential-card bg-white rounded-2xl overflow-hidden border border-slate-200/80 shadow-sm hover:shadow-xl transition-all duration-300 flex flex-col group"
+            data-category="villas">
+            <div class="h-60 relative overflow-hidden">
+              <img src="images/assets/Luxury Villas home.png" alt="Amwaj Island Beach Villa"
+                class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" />
+              <div class="absolute top-3 left-3 flex items-center gap-2">
+                <span
+                  class="px-3 py-1 rounded-full bg-[#061838]/90 text-[#F5C542] text-[11px] font-bold tracking-wider uppercase backdrop-blur-sm shadow">
+                  For Sale
+                </span>
+                <span
+                  class="px-2.5 py-1 rounded-full bg-blue-600 text-white text-[11px] font-medium flex items-center gap-1 shadow">
+                  <span class="material-symbols-outlined text-[14px]">pool</span> Private Beach
+                </span>
+              </div>
+              <div
+                class="absolute bottom-3 right-3 px-3 py-1.5 rounded-lg bg-[#061838]/90 text-white font-bold text-sm backdrop-blur-sm">
+                365,000 <span class="text-[#F5C542] font-semibold text-xs">BHD</span>
+              </div>
+            </div>
+            <div class="p-5 flex flex-col flex-grow">
+              <div class="flex items-center gap-1.5 text-slate-400 text-xs mb-2">
+                <span class="material-symbols-outlined text-[16px] text-[#D4A017]">location_on</span>
+                <span>Amwaj Islands Waterfront</span>
+              </div>
+              <h3 class="text-[#061838] font-bold text-base sm:text-lg mb-2 group-hover:text-[#D4A017] transition-colors">
+                Amwaj Azure Beachfront Estate
+              </h3>
+              <p class="text-slate-500 text-xs sm:text-[13px] leading-relaxed mb-4 flex-grow">
+                Magnificent 5-bedroom signature villa with direct lagoon beach access, infinity pool, modern German kitchen,
+                and elevator.
+              </p>
+              <div class="pt-3 border-t border-slate-100 grid grid-cols-3 gap-2 text-center text-xs text-slate-600 mb-4">
+                <div class="flex flex-col items-center">
+                  <span class="material-symbols-outlined text-slate-400 text-[18px]">bed</span>
+                  <span class="font-bold text-[#061838] mt-0.5">5 Beds</span>
+                  <span class="text-[10px] text-slate-400">En-suite</span>
+                </div>
+                <div class="flex flex-col items-center">
+                  <span class="material-symbols-outlined text-slate-400 text-[18px]">bathtub</span>
+                  <span class="font-bold text-[#061838] mt-0.5">6 Baths</span>
+                  <span class="text-[10px] text-slate-400">Designer</span>
+                </div>
+                <div class="flex flex-col items-center">
+                  <span class="material-symbols-outlined text-slate-400 text-[18px]">square_foot</span>
+                  <span class="font-bold text-[#061838] mt-0.5">620 m²</span>
+                  <span class="text-[10px] text-slate-400">Built Area</span>
+                </div>
+              </div>
+              <button
+                onclick="openResidentialModal('Amwaj Azure Beachfront Estate', 'Luxury Villa', 'images/assets/Luxury Villas home.png', 'Amwaj Islands', '365,000 BHD', 'Freehold title deed available for foreign and GCC buyers. Includes private mooring jetty, driver room, and smart lighting.')"
+                class="w-full py-2.5 rounded-xl bg-slate-100 hover:bg-[#061838] hover:text-white text-[#061838] font-bold text-xs transition-all duration-300 flex items-center justify-center gap-2">
+                <span>View Home & Schedule Tour</span>
+                <i data-lucide="arrow-right" class="w-3.5 h-3.5"></i>
+              </button>
+            </div>
+          </div>
+
+          <!-- Home 2: Reef Island Sea View Apartment -->
+          <div
+            class="residential-card bg-white rounded-2xl overflow-hidden border border-slate-200/80 shadow-sm hover:shadow-xl transition-all duration-300 flex flex-col group"
+            data-category="apartments">
+            <div class="h-60 relative overflow-hidden">
+              <img src="images/assets/Apartments.png" alt="Reef Island Apartment"
+                class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" />
+              <div class="absolute top-3 left-3 flex items-center gap-2">
+                <span
+                  class="px-3 py-1 rounded-full bg-[#061838]/90 text-[#F5C542] text-[11px] font-bold tracking-wider uppercase backdrop-blur-sm shadow">
+                  For Lease
+                </span>
+                <span
+                  class="px-2.5 py-1 rounded-full bg-emerald-600 text-white text-[11px] font-medium flex items-center gap-1 shadow">
+                  <span class="material-symbols-outlined text-[14px]">water</span> Full Sea View
+                </span>
+              </div>
+              <div
+                class="absolute bottom-3 right-3 px-3 py-1.5 rounded-lg bg-[#061838]/90 text-white font-bold text-sm backdrop-blur-sm">
+                850 <span class="text-[#F5C542] font-semibold text-xs">BHD/mo</span>
+              </div>
+            </div>
+            <div class="p-5 flex flex-col flex-grow">
+              <div class="flex items-center gap-1.5 text-slate-400 text-xs mb-2">
+                <span class="material-symbols-outlined text-[16px] text-[#D4A017]">location_on</span>
+                <span>Reef Island, Manama</span>
+              </div>
+              <h3 class="text-[#061838] font-bold text-base sm:text-lg mb-2 group-hover:text-[#D4A017] transition-colors">
+                Reef Island Panorama 2-Bed Luxury Suite
+              </h3>
+              <p class="text-slate-500 text-xs sm:text-[13px] leading-relaxed mb-4 flex-grow">
+                Designer furnished apartment with wide wrap-around balcony overlooking the open Arabian Gulf, infinity pool,
+                and private gym.
+              </p>
+              <div class="pt-3 border-t border-slate-100 grid grid-cols-3 gap-2 text-center text-xs text-slate-600 mb-4">
+                <div class="flex flex-col items-center">
+                  <span class="material-symbols-outlined text-slate-400 text-[18px]">bed</span>
+                  <span class="font-bold text-[#061838] mt-0.5">2 Beds</span>
+                  <span class="text-[10px] text-slate-400">Master Suites</span>
+                </div>
+                <div class="flex flex-col items-center">
+                  <span class="material-symbols-outlined text-slate-400 text-[18px]">bathtub</span>
+                  <span class="font-bold text-[#061838] mt-0.5">3 Baths</span>
+                  <span class="text-[10px] text-slate-400">Marble Finish</span>
+                </div>
+                <div class="flex flex-col items-center">
+                  <span class="material-symbols-outlined text-slate-400 text-[18px]">square_foot</span>
+                  <span class="font-bold text-[#061838] mt-0.5">165 m²</span>
+                  <span class="text-[10px] text-slate-400">Total Area</span>
+                </div>
+              </div>
+              <button
+                onclick="openResidentialModal('Reef Island Panorama 2-Bed Luxury Suite', 'Apartment', 'images/assets/Apartments.png', 'Reef Island', '850 BHD / month (Inclusive)', 'Inclusive of EWA, high-speed internet, dedicated basement parking, and clubhouse privileges.')"
+                class="w-full py-2.5 rounded-xl bg-slate-100 hover:bg-[#061838] hover:text-white text-[#061838] font-bold text-xs transition-all duration-300 flex items-center justify-center gap-2">
+                <span>View Home & Schedule Tour</span>
+                <i data-lucide="arrow-right" class="w-3.5 h-3.5"></i>
+              </button>
+            </div>
+          </div>
+
+          <!-- Home 3: Diyar Al Muharraq Family Townhouse -->
+          <div
+            class="residential-card bg-white rounded-2xl overflow-hidden border border-slate-200/80 shadow-sm hover:shadow-xl transition-all duration-300 flex flex-col group"
+            data-category="townhouses">
+            <div class="h-60 relative overflow-hidden">
+              <img src="images/assets/Townhouses.png" alt="Diyar Al Muharraq Townhouse"
+                class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" />
+              <div class="absolute top-3 left-3 flex items-center gap-2">
+                <span
+                  class="px-3 py-1 rounded-full bg-[#061838]/90 text-[#F5C542] text-[11px] font-bold tracking-wider uppercase backdrop-blur-sm shadow">
+                  For Sale
+                </span>
+                <span
+                  class="px-2.5 py-1 rounded-full bg-purple-600 text-white text-[11px] font-medium flex items-center gap-1 shadow">
+                  <span class="material-symbols-outlined text-[14px]">family_restroom</span> Community Living
+                </span>
+              </div>
+              <div
+                class="absolute bottom-3 right-3 px-3 py-1.5 rounded-lg bg-[#061838]/90 text-white font-bold text-sm backdrop-blur-sm">
+                142,000 <span class="text-[#F5C542] font-semibold text-xs">BHD</span>
+              </div>
+            </div>
+            <div class="p-5 flex flex-col flex-grow">
+              <div class="flex items-center gap-1.5 text-slate-400 text-xs mb-2">
+                <span class="material-symbols-outlined text-[16px] text-[#D4A017]">location_on</span>
+                <span>Diyar Al Muharraq</span>
+              </div>
+              <h3 class="text-[#061838] font-bold text-base sm:text-lg mb-2 group-hover:text-[#D4A017] transition-colors">
+                Al Naseem Modern Canal Townhouse
+              </h3>
+              <p class="text-slate-500 text-xs sm:text-[13px] leading-relaxed mb-4 flex-grow">
+                Stunning 3-bedroom canal-facing townhouse within a gated community, featuring modern open living, private patio,
+                and direct promenade access.
+              </p>
+              <div class="pt-3 border-t border-slate-100 grid grid-cols-3 gap-2 text-center text-xs text-slate-600 mb-4">
+                <div class="flex flex-col items-center">
+                  <span class="material-symbols-outlined text-slate-400 text-[18px]">bed</span>
+                  <span class="font-bold text-[#061838] mt-0.5">3 Beds</span>
+                  <span class="text-[10px] text-slate-400">+ Maid Room</span>
+                </div>
+                <div class="flex flex-col items-center">
+                  <span class="material-symbols-outlined text-slate-400 text-[18px]">bathtub</span>
+                  <span class="font-bold text-[#061838] mt-0.5">4 Baths</span>
+                  <span class="text-[10px] text-slate-400">En-suite</span>
+                </div>
+                <div class="flex flex-col items-center">
+                  <span class="material-symbols-outlined text-slate-400 text-[18px]">square_foot</span>
+                  <span class="font-bold text-[#061838] mt-0.5">275 m²</span>
+                  <span class="text-[10px] text-slate-400">Total Built</span>
+                </div>
+              </div>
+              <button
+                onclick="openResidentialModal('Al Naseem Modern Canal Townhouse', 'Townhouse', 'images/assets/Townhouses.png', 'Diyar Al Muharraq', '142,000 BHD', 'Family-friendly master development minutes away from Marassi Galleria Mall, international schools, and sandy beaches.')"
+                class="w-full py-2.5 rounded-xl bg-slate-100 hover:bg-[#061838] hover:text-white text-[#061838] font-bold text-xs transition-all duration-300 flex items-center justify-center gap-2">
+                <span>View Home & Schedule Tour</span>
+                <i data-lucide="arrow-right" class="w-3.5 h-3.5"></i>
+              </button>
+            </div>
+          </div>
+
+          <!-- Home 4: Riffa Views Golf Villa -->
+          <div
+            class="residential-card bg-white rounded-2xl overflow-hidden border border-slate-200/80 shadow-sm hover:shadow-xl transition-all duration-300 flex flex-col group"
+            data-category="villas">
+            <div class="h-60 relative overflow-hidden">
+              <img src="images/assets/villa.png" alt="Riffa Views Golf Villa"
+                class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" />
+              <div class="absolute top-3 left-3 flex items-center gap-2">
+                <span
+                  class="px-3 py-1 rounded-full bg-[#061838]/90 text-[#F5C542] text-[11px] font-bold tracking-wider uppercase backdrop-blur-sm shadow">
+                  For Sale
+                </span>
+                <span
+                  class="px-2.5 py-1 rounded-full bg-emerald-700 text-white text-[11px] font-medium flex items-center gap-1 shadow">
+                  <span class="material-symbols-outlined text-[14px]">sports_golf</span> Golf Course View
+                </span>
+              </div>
+              <div
+                class="absolute bottom-3 right-3 px-3 py-1.5 rounded-lg bg-[#061838]/90 text-white font-bold text-sm backdrop-blur-sm">
+                245,000 <span class="text-[#F5C542] font-semibold text-xs">BHD</span>
+              </div>
+            </div>
+            <div class="p-5 flex flex-col flex-grow">
+              <div class="flex items-center gap-1.5 text-slate-400 text-xs mb-2">
+                <span class="material-symbols-outlined text-[16px] text-[#D4A017]">location_on</span>
+                <span>Riffa Views, The Lagoon Estate</span>
+              </div>
+              <h3 class="text-[#061838] font-bold text-base sm:text-lg mb-2 group-hover:text-[#D4A017] transition-colors">
+                Riffa Views 4-Bedroom Garden Villa
+              </h3>
+              <p class="text-slate-500 text-xs sm:text-[13px] leading-relaxed mb-4 flex-grow">
+                Spacious signature villa overlooking the lush fairways of the international golf course with expansive
+                private lawns, patio, and chef kitchen.
+              </p>
+              <div class="pt-3 border-t border-slate-100 grid grid-cols-3 gap-2 text-center text-xs text-slate-600 mb-4">
+                <div class="flex flex-col items-center">
+                  <span class="material-symbols-outlined text-slate-400 text-[18px]">bed</span>
+                  <span class="font-bold text-[#061838] mt-0.5">4 Beds</span>
+                  <span class="text-[10px] text-slate-400">+ Maid & Driver</span>
+                </div>
+                <div class="flex flex-col items-center">
+                  <span class="material-symbols-outlined text-slate-400 text-[18px]">local_parking</span>
+                  <span class="font-bold text-[#061838] mt-0.5">2 Cars</span>
+                  <span class="text-[10px] text-slate-400">Covered Garage</span>
+                </div>
+                <div class="flex flex-col items-center">
+                  <span class="material-symbols-outlined text-slate-400 text-[18px]">square_foot</span>
+                  <span class="font-bold text-[#061838] mt-0.5">480 m²</span>
+                  <span class="text-[10px] text-slate-400">Plot Size</span>
+                </div>
+              </div>
+              <button
+                onclick="openResidentialModal('Riffa Views 4-Bedroom Garden Villa', 'Villa', 'images/assets/villa.png', 'Riffa Views', '245,000 BHD', 'Located within one of Bahrain most exclusive private gated residential communities with clubhouse, tennis courts, and 24h security.')"
+                class="w-full py-2.5 rounded-xl bg-slate-100 hover:bg-[#061838] hover:text-white text-[#061838] font-bold text-xs transition-all duration-300 flex items-center justify-center gap-2">
+                <span>View Home & Schedule Tour</span>
+                <i data-lucide="arrow-right" class="w-3.5 h-3.5"></i>
+              </button>
+            </div>
+          </div>
+
+          <!-- Home 5: Seef Luxury High-Rise Penthouse -->
+          <div
+            class="residential-card bg-white rounded-2xl overflow-hidden border border-slate-200/80 shadow-sm hover:shadow-xl transition-all duration-300 flex flex-col group"
+            data-category="apartments">
+            <div class="h-60 relative overflow-hidden">
+              <img src="images/assets/Residential Buildings.png" alt="Seef Luxury Penthouse"
+                class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" />
+              <div class="absolute top-3 left-3 flex items-center gap-2">
+                <span
+                  class="px-3 py-1 rounded-full bg-[#061838]/90 text-[#F5C542] text-[11px] font-bold tracking-wider uppercase backdrop-blur-sm shadow">
+                  For Sale
+                </span>
+                <span
+                  class="px-2.5 py-1 rounded-full bg-amber-600 text-white text-[11px] font-medium flex items-center gap-1 shadow">
+                  <span class="material-symbols-outlined text-[14px]">star</span> Penthouse
+                </span>
+              </div>
+              <div
+                class="absolute bottom-3 right-3 px-3 py-1.5 rounded-lg bg-[#061838]/90 text-white font-bold text-sm backdrop-blur-sm">
+                210,000 <span class="text-[#F5C542] font-semibold text-xs">BHD</span>
+              </div>
+            </div>
+            <div class="p-5 flex flex-col flex-grow">
+              <div class="flex items-center gap-1.5 text-slate-400 text-xs mb-2">
+                <span class="material-symbols-outlined text-[16px] text-[#D4A017]">location_on</span>
+                <span>Seef District Skyline</span>
+              </div>
+              <h3 class="text-[#061838] font-bold text-base sm:text-lg mb-2 group-hover:text-[#D4A017] transition-colors">
+                Seef Crown 3-Bed Duplex Sky Penthouse
+              </h3>
+              <p class="text-slate-500 text-xs sm:text-[13px] leading-relaxed mb-4 flex-grow">
+                Ultra-luxury duplex penthouse with double-height salon, private plunge pool on open terrace, smart home
+                automation, and 360° city & sea views.
+              </p>
+              <div class="pt-3 border-t border-slate-100 grid grid-cols-3 gap-2 text-center text-xs text-slate-600 mb-4">
+                <div class="flex flex-col items-center">
+                  <span class="material-symbols-outlined text-slate-400 text-[18px]">bed</span>
+                  <span class="font-bold text-[#061838] mt-0.5">3 Beds</span>
+                  <span class="text-[10px] text-slate-400">Duplex Level</span>
+                </div>
+                <div class="flex flex-col items-center">
+                  <span class="material-symbols-outlined text-slate-400 text-[18px]">hot_tub</span>
+                  <span class="font-bold text-[#061838] mt-0.5">Plunge Pool</span>
+                  <span class="text-[10px] text-slate-400">On Sky Terrace</span>
+                </div>
+                <div class="flex flex-col items-center">
+                  <span class="material-symbols-outlined text-slate-400 text-[18px]">square_foot</span>
+                  <span class="font-bold text-[#061838] mt-0.5">340 m²</span>
+                  <span class="text-[10px] text-slate-400">Living Space</span>
+                </div>
+              </div>
+              <button
+                onclick="openResidentialModal('Seef Crown 3-Bed Duplex Sky Penthouse', 'Penthouse', 'images/assets/Residential Buildings.png', 'Seef District', '210,000 BHD', 'Exclusive private lift access, concierge, 3 valet parking slots, and state-of-the-art spa facilities.')"
+                class="w-full py-2.5 rounded-xl bg-slate-100 hover:bg-[#061838] hover:text-white text-[#061838] font-bold text-xs transition-all duration-300 flex items-center justify-center gap-2">
+                <span>View Home & Schedule Tour</span>
+                <i data-lucide="arrow-right" class="w-3.5 h-3.5"></i>
+              </button>
+            </div>
+          </div>
+
+          <!-- Home 6: Modern Juffair Smart Studio -->
+          <div
+            class="residential-card bg-white rounded-2xl overflow-hidden border border-slate-200/80 shadow-sm hover:shadow-xl transition-all duration-300 flex flex-col group"
+            data-category="apartments">
+            <div class="h-60 relative overflow-hidden">
+              <img src="images/assets/Studio Apartments.png" alt="Juffair Smart Studio"
+                class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" />
+              <div class="absolute top-3 left-3 flex items-center gap-2">
+                <span
+                  class="px-3 py-1 rounded-full bg-[#061838]/90 text-[#F5C542] text-[11px] font-bold tracking-wider uppercase backdrop-blur-sm shadow">
+                  High Yield
+                </span>
+                <span
+                  class="px-2.5 py-1 rounded-full bg-emerald-600 text-white text-[11px] font-medium flex items-center gap-1 shadow">
+                  <span class="material-symbols-outlined text-[14px]">percent</span> 9.2% ROI
+                </span>
+              </div>
+              <div
+                class="absolute bottom-3 right-3 px-3 py-1.5 rounded-lg bg-[#061838]/90 text-white font-bold text-sm backdrop-blur-sm">
+                39,500 <span class="text-[#F5C542] font-semibold text-xs">BHD</span>
+              </div>
+            </div>
+            <div class="p-5 flex flex-col flex-grow">
+              <div class="flex items-center gap-1.5 text-slate-400 text-xs mb-2">
+                <span class="material-symbols-outlined text-[16px] text-[#D4A017]">location_on</span>
+                <span>Juffair Urban Hub</span>
+              </div>
+              <h3 class="text-[#061838] font-bold text-base sm:text-lg mb-2 group-hover:text-[#D4A017] transition-colors">
+                Juffair Heights Designer Smart Studio
+              </h3>
+              <p class="text-slate-500 text-xs sm:text-[13px] leading-relaxed mb-4 flex-grow">
+                Turnkey furnished studio with custom Italian cabinetry, smart lock access, rooftop infinity pool, cinema,
+                and high rental occupancy.
+              </p>
+              <div class="pt-3 border-t border-slate-100 grid grid-cols-3 gap-2 text-center text-xs text-slate-600 mb-4">
+                <div class="flex flex-col items-center">
+                  <span class="material-symbols-outlined text-slate-400 text-[18px]">bed</span>
+                  <span class="font-bold text-[#061838] mt-0.5">Studio</span>
+                  <span class="text-[10px] text-slate-400">Furnished</span>
+                </div>
+                <div class="flex flex-col items-center">
+                  <span class="material-symbols-outlined text-slate-400 text-[18px]">analytics</span>
+                  <span class="font-bold text-[#061838] mt-0.5">380 BHD</span>
+                  <span class="text-[10px] text-slate-400">Rent Potential</span>
+                </div>
+                <div class="flex flex-col items-center">
+                  <span class="material-symbols-outlined text-slate-400 text-[18px]">square_foot</span>
+                  <span class="font-bold text-[#061838] mt-0.5">52 m²</span>
+                  <span class="text-[10px] text-slate-400">Smart Space</span>
+                </div>
+              </div>
+              <button
+                onclick="openResidentialModal('Juffair Heights Designer Smart Studio', 'Studio', 'images/assets/Studio Apartments.png', 'Juffair', '39,500 BHD', 'Turnkey investment property yielding robust rental return. Full building management and tenant matching included.')"
+                class="w-full py-2.5 rounded-xl bg-slate-100 hover:bg-[#061838] hover:text-white text-[#061838] font-bold text-xs transition-all duration-300 flex items-center justify-center gap-2">
+                <span>View Home & Schedule Tour</span>
+                <i data-lucide="arrow-right" class="w-3.5 h-3.5"></i>
+              </button>
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ========================================================================= -->
+    <!-- 6. WHY BUY RESIDENTIAL WITH MIVAN (Client Benefits)                       -->
+    <!-- ========================================================================= -->
+    <section class="py-16 sm:py-20 bg-[#061838] text-white relative overflow-hidden">
+      <!-- Background pattern -->
+      <div class="absolute inset-0 bg-[radial-gradient(#f5c542_1px,transparent_1px)] [background-size:32px_32px] opacity-10 pointer-events-none"></div>
+
+      <div class="max-w-[1400px] mx-auto px-4 sm:px-10 lg:px-12 relative z-10">
+        <div class="text-center max-w-2xl mx-auto mb-12 sm:mb-16 reveal-on-scroll">
+          <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-white/10 text-[#F5C542] text-xs font-semibold mb-3 border border-white/10">
+            <span class="material-symbols-outlined text-[16px]">verified</span>
+            <span>Why Buy With Mivan</span>
+          </div>
+          <h2 class="text-2xl sm:text-4xl font-bold tracking-tight text-white mb-3">
+            Your Trusted Partner For <span class="text-[#D4A017]">Home Ownership</span>
+          </h2>
+          <p class="text-white/70 text-xs sm:text-sm leading-relaxed">
+            Finding your dream sanctuary in Bahrain is effortless with our certified property advisors, transparent
+            agreements, and personalized consultation.
+          </p>
+        </div>
+
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+
+          <!-- Feature 1 -->
+          <div class="p-6 rounded-2xl bg-white/5 border border-white/10 hover:border-[#D4A017]/50 hover:bg-white/10 transition-all duration-300 reveal-scale delay-75">
+            <div class="w-12 h-12 rounded-xl bg-gradient-to-tr from-[#F5C542] to-[#D4A017] flex items-center justify-center text-[#061838] mb-4 shadow-md">
+              <span class="material-symbols-outlined text-2xl font-bold">verified_user</span>
+            </div>
+            <h3 class="text-base font-bold text-white mb-2">100% Freehold Verified</h3>
+            <p class="text-white/60 text-xs leading-relaxed">
+              Legally vetted title deeds with eligibility for foreign ownership and Bahrain Golden Residency residency programs.
+            </p>
+          </div>
+
+          <!-- Feature 2 -->
+          <div class="p-6 rounded-2xl bg-white/5 border border-white/10 hover:border-[#D4A017]/50 hover:bg-white/10 transition-all duration-300 reveal-scale delay-150">
+            <div class="w-12 h-12 rounded-xl bg-gradient-to-tr from-[#F5C542] to-[#D4A017] flex items-center justify-center text-[#061838] mb-4 shadow-md">
+              <span class="material-symbols-outlined text-2xl font-bold">account_balance</span>
+            </div>
+            <h3 class="text-base font-bold text-white mb-2">Bank Mortgage Advisory</h3>
+            <p class="text-white/60 text-xs leading-relaxed">
+              Exclusive relationships with premier Bahraini banks offering fast pre-approvals and competitive home financing rates.
+            </p>
+          </div>
+
+          <!-- Feature 3 -->
+          <div class="p-6 rounded-2xl bg-white/5 border border-white/10 hover:border-[#D4A017]/50 hover:bg-white/10 transition-all duration-300 reveal-scale delay-200">
+            <div class="w-12 h-12 rounded-xl bg-gradient-to-tr from-[#F5C542] to-[#D4A017] flex items-center justify-center text-[#061838] mb-4 shadow-md">
+              <span class="material-symbols-outlined text-2xl font-bold">handshake</span>
+            </div>
+            <h3 class="text-base font-bold text-white mb-2">Transparent Transactions</h3>
+            <p class="text-white/60 text-xs leading-relaxed">
+              Zero hidden fees, official RERA certified purchase contracts, and seamless title deed transfer handling.
+            </p>
+          </div>
+
+          <!-- Feature 4 -->
+          <div class="p-6 rounded-2xl bg-white/5 border border-white/10 hover:border-[#D4A017]/50 hover:bg-white/10 transition-all duration-300 reveal-scale delay-300">
+            <div class="w-12 h-12 rounded-xl bg-gradient-to-tr from-[#F5C542] to-[#D4A017] flex items-center justify-center text-[#061838] mb-4 shadow-md">
+              <span class="material-symbols-outlined text-2xl font-bold">key</span>
+            </div>
+            <h3 class="text-base font-bold text-white mb-2">Turnkey Home Handover</h3>
+            <p class="text-white/60 text-xs leading-relaxed">
+              Move-in support, utility connection (EWA), interior design coordination, and ongoing tenant property management.
+            </p>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ========================================================================= -->
+    <!-- 7. RESIDENTIAL ENQUIRY & VIEWING CONSULTATION FORM                        -->
+    <!-- ========================================================================= -->
+    <section id="residential-enquiry" class="py-16 sm:py-20 lg:py-24 bg-[#F8FAFC] relative">
+      <div class="max-w-[1400px] mx-auto px-4 sm:px-10 lg:px-12">
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
+
+          <!-- Left Info Column -->
+          <div class="lg:col-span-5 reveal-on-scroll">
+            <div class="flex items-center gap-3 mb-2.5">
+              <div class="w-8 h-[2px] bg-[#D4A017]"></div>
+              <span class="text-[#D4A017] font-bold tracking-[0.2em] text-[11px] uppercase">Home Advisory</span>
+            </div>
+            <h2 class="text-2xl sm:text-4xl font-extrabold text-[#061838] uppercase leading-tight mb-4">
+              Find Your Next Home <br /><span class="text-[#D4A017]">In Bahrain</span>
+            </h2>
+            <p class="text-slate-600 text-xs sm:text-sm leading-relaxed mb-6">
+              Share your preferences with our residential property experts. We will prepare a customized portfolio of
+              villas, townhouses, or apartments suited to your budget and desired location.
+            </p>
+
+            <div class="space-y-4 mb-8">
+              <div class="flex items-start gap-3.5">
+                <div class="w-9 h-9 rounded-xl bg-[#FFF9E6] border border-[#FFF099] flex items-center justify-center text-[#D4A017] shrink-0 mt-0.5">
+                  <span class="material-symbols-outlined text-lg">call</span>
+                </div>
+                <div>
+                  <h4 class="text-sm font-bold text-[#061838]">Direct Line</h4>
+                  <p class="text-xs text-slate-500">+973 7798 5252 &nbsp;|&nbsp; +973 3324 1314</p>
+                </div>
+              </div>
+
+              <div class="flex items-start gap-3.5">
+                <div class="w-9 h-9 rounded-xl bg-[#FFF9E6] border border-[#FFF099] flex items-center justify-center text-[#D4A017] shrink-0 mt-0.5">
+                  <span class="material-symbols-outlined text-lg">mail</span>
+                </div>
+                <div>
+                  <h4 class="text-sm font-bold text-[#061838]">Email Support</h4>
+                  <p class="text-xs text-slate-500">info@mivanrealestate.com</p>
+                </div>
+              </div>
+
+              <div class="flex items-start gap-3.5">
+                <div class="w-9 h-9 rounded-xl bg-[#FFF9E6] border border-[#FFF099] flex items-center justify-center text-[#D4A017] shrink-0 mt-0.5">
+                  <span class="material-symbols-outlined text-lg">home_pin</span>
+                </div>
+                <div>
+                  <h4 class="text-sm font-bold text-[#061838]">Head Office</h4>
+                  <p class="text-xs text-slate-500">Flat 21, Building 19, Road 1802, Block 318, Alhoora, Manama, Bahrain</p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Right Form Column -->
+          <div class="lg:col-span-7 reveal-scale">
+            <div class="bg-white rounded-3xl p-6 sm:p-10 border border-slate-200/90 shadow-xl">
+              <h3 class="text-lg sm:text-xl font-bold text-[#061838] mb-1">Residential Property Inquiry Form</h3>
+              <p class="text-xs text-slate-400 mb-6">Complete the details below to receive tailored home options.</p>
+
+              <form id="residentialForm" onsubmit="handleResidentialSubmit(event)" class="space-y-4">
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                  <div>
+                    <label class="block text-xs font-semibold text-slate-700 mb-1">Full Name</label>
+                    <input type="text" required placeholder="e.g. Mohammed Al Khalifa"
+                      class="w-full px-4 py-2.5 rounded-xl border border-slate-200 text-xs focus:outline-none focus:border-[#D4A017] focus:ring-1 focus:ring-[#D4A017]" />
+                  </div>
+                  <div>
+                    <label class="block text-xs font-semibold text-slate-700 mb-1">Contact Phone</label>
+                    <input type="tel" required placeholder="+973 3XXXXXXX"
+                      class="w-full px-4 py-2.5 rounded-xl border border-slate-200 text-xs focus:outline-none focus:border-[#D4A017] focus:ring-1 focus:ring-[#D4A017]" />
+                  </div>
+                </div>
+
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                  <div>
+                    <label class="block text-xs font-semibold text-slate-700 mb-1">Email Address</label>
+                    <input type="email" required placeholder="name@email.com"
+                      class="w-full px-4 py-2.5 rounded-xl border border-slate-200 text-xs focus:outline-none focus:border-[#D4A017] focus:ring-1 focus:ring-[#D4A017]" />
+                  </div>
+                  <div>
+                    <label class="block text-xs font-semibold text-slate-700 mb-1">Purpose</label>
+                    <select
+                      class="w-full px-4 py-2.5 rounded-xl border border-slate-200 text-xs focus:outline-none focus:border-[#D4A017] focus:ring-1 focus:ring-[#D4A017] bg-white">
+                      <option>Buying (Personal Residence)</option>
+                      <option>Buying (Investment / ROI)</option>
+                      <option>Renting (Long Term)</option>
+                      <option>Renting (Short Term)</option>
+                    </select>
+                  </div>
+                </div>
+
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                  <div>
+                    <label class="block text-xs font-semibold text-slate-700 mb-1">Property Type</label>
+                    <select
+                      class="w-full px-4 py-2.5 rounded-xl border border-slate-200 text-xs focus:outline-none focus:border-[#D4A017] focus:ring-1 focus:ring-[#D4A017] bg-white">
+                      <option>Luxury Villa</option>
+                      <option>Townhouse</option>
+                      <option>Apartment (1, 2, or 3 Bedrooms)</option>
+                      <option>Penthouse / Duplex</option>
+                      <option>Studio Apartment</option>
+                    </select>
+                  </div>
+                  <div>
+                    <label class="block text-xs font-semibold text-slate-700 mb-1">Preferred Location</label>
+                    <select
+                      class="w-full px-4 py-2.5 rounded-xl border border-slate-200 text-xs focus:outline-none focus:border-[#D4A017] focus:ring-1 focus:ring-[#D4A017] bg-white">
+                      <option>Amwaj Islands / Dilmunia</option>
+                      <option>Diyar Al Muharraq</option>
+                      <option>Saar / Janabiyah / Jasra</option>
+                      <option>Riffa Views / West Riffa</option>
+                      <option>Reef Island / Bahrain Bay</option>
+                      <option>Seef District</option>
+                      <option>Juffair</option>
+                      <option>Any Prime Location in Bahrain</option>
+                    </select>
+                  </div>
+                </div>
+
+                <div>
+                  <label class="block text-xs font-semibold text-slate-700 mb-1">Budget & Special Preferences</label>
+                  <textarea rows="3" placeholder="Specify budget range in BHD, number of bedrooms, private pool or garden requirement..."
+                    class="w-full px-4 py-2.5 rounded-xl border border-slate-200 text-xs focus:outline-none focus:border-[#D4A017] focus:ring-1 focus:ring-[#D4A017]"></textarea>
+                </div>
+
+                <button type="submit"
+                  class="btn-3d-gold w-full py-3.5 rounded-full text-[#061838] font-bold text-xs tracking-widest flex items-center justify-center gap-2 uppercase">
+                  <span class="material-symbols-outlined text-base">send</span>
+                  <span>Submit Home Request</span>
+                </button>
+
+                <p id="residentialFormFeedback" class="text-center text-xs font-medium text-emerald-600 hidden">
+                  Thank you! Your inquiry has been submitted. A residential advisor will reach out shortly.
+                </p>
+              </form>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ========================================================================= -->
+  <!-- 8. FOOTER (Exact matching footer from site)                               -->
+  <!-- ========================================================================= -->
+  <footer class="bg-[#061838] text-white pt-10 pb-6 px-4 sm:px-10 lg:px-12 border-t border-[#F5C542]/20">
+    <div class="max-w-[1400px] w-full mx-auto">
+
+      <div class="grid grid-cols-2 lg:grid-cols-4 gap-x-4 sm:gap-x-8 gap-y-6 sm:gap-y-8 lg:gap-4 mb-8">
+
+        <!-- Column 1: Logo & About -->
+        <div class="flex flex-col items-start col-span-2 sm:col-span-1">
+          <div class="mb-3 w-[150px] xs:w-[170px] sm:w-[220px]">
+            <img src="images/assets/Mivan Logo-01.png" alt="Mivan Real Estate" class="w-full h-auto object-contain" />
+          </div>
+          <p class="text-white/60 text-xs sm:text-[13px] leading-relaxed pr-2">
+            Premium real estate solutions for all your property needs in Bahrain. Professionalism, quality, and client
+            satisfaction are our core values.
+          </p>
+        </div>
+
+        <!-- Column 2: Explore -->
+        <div class="flex flex-col items-start lg:pl-4">
+          <h2 class="text-xs sm:text-sm font-bold mb-1.5 text-white uppercase tracking-widest font-inter">
+            Explore
+          </h2>
+          <div class="w-8 h-[2px] bg-[#D4A017] mb-2.5"></div>
+          <ul class="flex flex-col gap-1.5 w-full text-xs sm:text-[13.5px]">
+            <li><a href="index.html" class="text-white/60 hover:text-[#D4A017] hover:pl-2 transition-all duration-300 block font-medium">Home</a></li>
+            <li><a href="about.html" class="text-white/60 hover:text-[#D4A017] hover:pl-2 transition-all duration-300 block font-medium">About Us</a></li>
+            <li><a href="Commercial.html" class="text-white/60 hover:text-[#D4A017] hover:pl-2 transition-all duration-300 block font-medium">Commercial</a></li>
+            <li><a href="Residential Real Estate.html" class="text-[#F5C542] hover:pl-2 transition-all duration-300 block font-medium">Residential</a></li>
+            <li><a href="WORKSPACES & RETAIL DESTINATIONS.html" class="text-white/60 hover:text-[#D4A017] hover:pl-2 transition-all duration-300 block font-medium">Workspaces & Retail</a></li>
+            <li><a href="LUXURY HOSPITALITY PROPERTIES.html" class="text-white/60 hover:text-[#D4A017] hover:pl-2 transition-all duration-300 block font-medium">Luxury Hospitality</a></li>
+            <li><a href="BEACH PROPERTIES.html" class="text-white/60 hover:text-[#D4A017] hover:pl-2 transition-all duration-300 block font-medium">Beach Properties</a></li>
+            <li><a href="SERVICED LIVING Hotel Apartments.html" class="text-white/60 hover:text-[#D4A017] hover:pl-2 transition-all duration-300 block font-medium">Serviced Living & Hotel Apartments</a></li>
+            <li><a href="properties.html" class="text-white/60 hover:text-[#D4A017] hover:pl-2 transition-all duration-300 block font-medium">Properties</a></li>
+            <li><a href="contact.html" class="text-white/60 hover:text-[#D4A017] hover:pl-2 transition-all duration-300 block font-medium">Contact Us</a></li>
+          </ul>
+        </div>
+
+        <!-- Column 3: Services -->
+        <div class="flex flex-col items-start">
+          <h2 class="text-xs sm:text-sm font-bold mb-1.5 text-white uppercase tracking-widest font-inter">
+            Services
+          </h2>
+          <div class="w-8 h-[2px] bg-[#D4A017] mb-2.5"></div>
+          <ul class="flex flex-col gap-1.5 w-full text-xs sm:text-[13.5px]">
+            <li><a href="#residential-showcase" class="text-white/60 hover:text-[#D4A017] hover:pl-2 transition-all duration-300 block font-medium">Property Buying</a></li>
+            <li><a href="#residential-showcase" class="text-white/60 hover:text-[#D4A017] hover:pl-2 transition-all duration-300 block font-medium">Property Selling</a></li>
+            <li><a href="#residential-showcase" class="text-white/60 hover:text-[#D4A017] hover:pl-2 transition-all duration-300 block font-medium">Property Rental</a></li>
+            <li><a href="#residential-showcase" class="text-white/60 hover:text-[#D4A017] hover:pl-2 transition-all duration-300 block font-medium">Property Management</a></li>
+            <li><a href="#residential-showcase" class="text-white/60 hover:text-[#D4A017] hover:pl-2 transition-all duration-300 block font-medium">Investment Advisory</a></li>
+            <li><a href="#residential-showcase" class="text-white/60 hover:text-[#D4A017] hover:pl-2 transition-all duration-300 block font-medium">Property Valuation</a></li>
+          </ul>
+        </div>
+
+        <!-- Column 4: Contact Info -->
+        <div class="flex flex-col items-start col-span-2 sm:col-span-1">
+          <h2 class="text-xs sm:text-sm font-bold mb-1.5 text-white uppercase tracking-widest font-inter">
+            Contact Info
+          </h2>
+          <div class="w-8 h-[2px] bg-[#D4A017] mb-2.5"></div>
+
+          <div class="flex flex-col gap-2 w-full text-xs sm:text-[13px] text-white/60">
+            <div class="flex items-start gap-2.5">
+              <i data-lucide="map-pin" class="w-4 h-4 mt-0.5 shrink-0 text-[#D4A017]"></i>
+              <p class="leading-relaxed">
+                Flat 21, Building 19, Road 1802,<br /> Block 318, Alhoora, Manama, Bahrain
+              </p>
+            </div>
+
+            <div class="flex items-center gap-2.5">
+              <i data-lucide="phone" class="w-4 h-4 text-[#D4A017] shrink-0"></i>
+              <a href="tel:+97377985252" class="hover:text-white transition-colors">+973 7798 5252</a>
+            </div>
+
+            <div class="flex items-center gap-2.5">
+              <i data-lucide="phone" class="w-4 h-4 text-[#D4A017] shrink-0"></i>
+              <a href="tel:+97333241314" class="hover:text-white transition-colors">+973 3324 1314</a>
+            </div>
+
+            <div class="flex items-center gap-2.5">
+              <i data-lucide="file-text" class="w-4 h-4 text-[#D4A017] shrink-0"></i>
+              <span>CR: 194355- 1</span>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- Bottom Bar -->
+      <div
+        class="pt-4 border-t border-white/10 flex flex-col md:flex-row justify-between items-center gap-3 sm:gap-4 text-center md:text-left">
+        <div class="text-slate-400 text-xs sm:text-sm">
+          &copy; <span id="currentYear">2026</span> Mivan Real Estate. All rights reserved.
+        </div>
+
+        <div class="flex flex-wrap justify-center items-center gap-4 sm:gap-8 text-xs sm:text-sm text-slate-400">
+          <a href="about.html" class="hover:text-[#D4A017] transition-colors">Privacy Policy</a>
+          <a href="about.html" class="hover:text-[#D4A017] transition-colors">Terms of Service</a>
+
+          <div class="flex items-center gap-4 pl-4 sm:pl-6 border-l border-white/20">
+            <a href="#" aria-label="Facebook" class="hover:text-[#D4A017] transition-colors">
+              <svg class="w-4 h-4 fill-current" viewBox="0 0 24 24">
+                <path
+                  d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z" />
+              </svg>
+            </a>
+            <a href="#" aria-label="Instagram" class="hover:text-[#D4A017] transition-colors">
+              <svg class="w-4 h-4 fill-current" viewBox="0 0 24 24">
+                <path
+                  d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z" />
+              </svg>
+            </a>
+            <a href="#" aria-label="LinkedIn" class="hover:text-[#D4A017] transition-colors">
+              <svg class="w-4 h-4 fill-current" viewBox="0 0 24 24">
+                <path
+                  d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z" />
+              </svg>
+            </a>
+            <a href="#" aria-label="Twitter / X" class="hover:text-[#D4A017] transition-colors">
+              <svg class="w-4 h-4 fill-current" viewBox="0 0 24 24">
+                <path
+                  d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z" />
+              </svg>
+            </a>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </footer>
+
+  <!-- ========================================================================= -->
+  <!-- 9. MODAL FOR PROPERTY DETAILS & VIEWING (Interactive Material UI Modal)  -->
+  <!-- ========================================================================= -->
+  <div id="residentialModal"
+    class="fixed inset-0 z-50 modal-backdrop hidden flex items-center justify-center p-4 transition-all duration-300 opacity-0 pointer-events-none">
+    <div
+      class="bg-white rounded-3xl max-w-lg w-full overflow-hidden shadow-2xl border border-slate-100 transform transition-all duration-300 scale-95"
+      id="modalContainer">
+      <div class="relative h-48 overflow-hidden">
+        <img id="modalImg" src="" alt="" class="w-full h-full object-cover" />
+        <button onclick="closeResidentialModal()"
+          class="absolute top-3 right-3 w-8 h-8 rounded-full bg-black/60 hover:bg-black text-white flex items-center justify-center transition-colors">
+          <span class="material-symbols-outlined text-lg">close</span>
+        </button>
+        <div class="absolute bottom-3 left-3 px-3 py-1 rounded-full bg-[#061838]/90 text-[#F5C542] text-xs font-bold backdrop-blur-sm"
+          id="modalTag">
+        </div>
+      </div>
+      <div class="p-6">
+        <div class="flex items-center justify-between gap-2 mb-1.5">
+          <h3 id="modalTitle" class="text-xl font-bold text-[#061838]"></h3>
+          <span id="modalPrice" class="text-sm font-bold text-[#D4A017] shrink-0"></span>
+        </div>
+        <p id="modalLocation" class="text-xs text-slate-400 flex items-center gap-1 mb-3">
+          <span class="material-symbols-outlined text-[16px] text-[#D4A017]">location_on</span>
+          <span></span>
+        </p>
+        <p id="modalDesc" class="text-slate-600 text-xs sm:text-sm leading-relaxed mb-6"></p>
+
+        <div class="space-y-3">
+          <a href="tel:+97333241314"
+            class="btn-3d-gold w-full py-3 rounded-full text-[#061838] font-bold text-xs tracking-wider flex items-center justify-center gap-2 uppercase">
+            <span class="material-symbols-outlined text-base">call</span>
+            <span>Contact Home Advisor (+973 3324 1314)</span>
+          </a>
+          <button onclick="bookViewingFromModal()"
+            class="w-full py-2.5 rounded-full bg-[#061838] hover:bg-[#D4A017] hover:text-[#061838] text-white text-xs font-bold transition-all duration-300 flex items-center justify-center gap-2">
+            <span class="material-symbols-outlined text-base">calendar_month</span>
+            <span>Schedule Private Viewing Tour</span>
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- JAVASCRIPT LOGIC -->
+  <script>
+    // Initialize Lucide Icons
+    lucide.createIcons();
+
+    // Year update
+    document.getElementById('currentYear').textContent = new Date().getFullYear();
+
+    // Mobile Menu Toggle
+    const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+    const mobileMenu = document.getElementById('mobileMenu');
+    let isMenuOpen = false;
+
+    if (mobileMenuBtn && mobileMenu) {
+      mobileMenuBtn.addEventListener('click', () => {
+        isMenuOpen = !isMenuOpen;
+        if (isMenuOpen) {
+          mobileMenu.classList.remove('opacity-0', 'invisible', 'h-0', 'py-0');
+          mobileMenu.classList.add('opacity-100', 'visible', 'h-auto', 'py-4');
+          mobileMenuBtn.innerHTML = '<i data-lucide="x" class="w-7 h-7"></i>';
+        } else {
+          mobileMenu.classList.add('opacity-0', 'invisible', 'h-0', 'py-0');
+          mobileMenu.classList.remove('opacity-100', 'visible', 'h-auto', 'py-4');
+          mobileMenuBtn.innerHTML = '<i data-lucide="menu" class="w-7 h-7"></i>';
+        }
+        lucide.createIcons();
+      });
+
+      // Mobile Properties Accordion Toggle
+      const mobilePropToggle = document.getElementById('mobilePropToggle');
+      const mobilePropSubmenu = document.getElementById('mobilePropSubmenu');
+      const mobilePropChevron = document.getElementById('mobilePropChevron');
+      if (mobilePropToggle && mobilePropSubmenu) {
+        mobilePropToggle.addEventListener('click', (e) => {
+          e.preventDefault();
+          e.stopPropagation();
+          const isHidden = mobilePropSubmenu.classList.contains('hidden');
+          if (isHidden) {
+            mobilePropSubmenu.classList.remove('hidden');
+            if (mobilePropChevron) mobilePropChevron.classList.add('rotate-180');
+          } else {
+            mobilePropSubmenu.classList.add('hidden');
+            if (mobilePropChevron) mobilePropChevron.classList.remove('rotate-180');
+          }
+          lucide.createIcons();
+        });
+      }
+    }
+
+    // Dynamic Navbar Scroll Transformation
+    const navbar = document.getElementById('navbar');
+    if (navbar) {
+      window.addEventListener('scroll', () => {
+        if (window.scrollY > 30) {
+          navbar.classList.add('scrolled', 'shadow-md', 'bg-[#061838]/95', 'backdrop-blur-md');
+        } else {
+          navbar.classList.remove('scrolled', 'shadow-md');
+          if (!navbar.classList.contains('menu-open')) {
+            navbar.classList.remove('bg-[#061838]/95', 'backdrop-blur-md');
+          }
+        }
+      }, { passive: true });
+    }
+
+    // Scroll Transformation System
+    (function initScrollTransformation() {
+      const transformSelector = '.reveal-on-scroll, .reveal-scale, .reveal-left, .reveal-right';
+
+      function setupObserver() {
+        const observer = new IntersectionObserver((entries) => {
+          entries.forEach(entry => {
+            if (entry.isIntersecting) {
+              entry.target.classList.add('revealed');
+              observer.unobserve(entry.target);
+            }
+          });
+        }, {
+          threshold: 0.08,
+          rootMargin: '0px 0px -30px 0px'
+        });
+
+        document.querySelectorAll(transformSelector).forEach(el => {
+          const rect = el.getBoundingClientRect();
+          if (rect.top < window.innerHeight && rect.bottom > 0) {
+            el.classList.add('revealed');
+          } else {
+            observer.observe(el);
+          }
+        });
+      }
+
+      if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', setupObserver);
+      } else {
+        setupObserver();
+      }
+    })();
+
+    // Interactive Residential Filter
+    function filterResidential(category) {
+      document.querySelectorAll('.filter-btn').forEach(btn => {
+        if (btn.getAttribute('data-cat') === category) {
+          btn.classList.add('active');
+          btn.classList.remove('text-slate-600');
+        } else {
+          btn.classList.remove('active');
+          btn.classList.add('text-slate-600');
+        }
+      });
+
+      const cards = document.querySelectorAll('.residential-card');
+      cards.forEach(card => {
+        const cardCat = card.getAttribute('data-category');
+        if (category === 'all' || cardCat === category) {
+          card.style.display = 'flex';
+          card.classList.add('reveal-on-scroll', 'revealed');
+        } else {
+          card.style.display = 'none';
+        }
+      });
+    }
+
+    // Residential Modal Functionality
+    const residentialModal = document.getElementById('residentialModal');
+    const modalContainer = document.getElementById('modalContainer');
+
+    function openResidentialModal(title, tag, img, location, price, desc) {
+      document.getElementById('modalTitle').textContent = title;
+      document.getElementById('modalTag').textContent = tag;
+      document.getElementById('modalImg').src = img;
+      document.getElementById('modalImg').alt = title;
+      document.getElementById('modalLocation').querySelector('span:last-child').textContent = location;
+      document.getElementById('modalPrice').textContent = price;
+      document.getElementById('modalDesc').textContent = desc;
+
+      residentialModal.classList.remove('hidden', 'opacity-0', 'pointer-events-none');
+      residentialModal.classList.add('opacity-100');
+      modalContainer.classList.remove('scale-95');
+      modalContainer.classList.add('scale-100');
+    }
+
+    function closeResidentialModal() {
+      residentialModal.classList.add('opacity-0', 'pointer-events-none');
+      modalContainer.classList.add('scale-95');
+      modalContainer.classList.remove('scale-100');
+      setTimeout(() => {
+        residentialModal.classList.add('hidden');
+      }, 300);
+    }
+
+    residentialModal.addEventListener('click', (e) => {
+      if (e.target === residentialModal) {
+        closeResidentialModal();
+      }
+    });
+
+    function bookViewingFromModal() {
+      closeResidentialModal();
+      const enquirySection = document.getElementById('residential-enquiry');
+      if (enquirySection) {
+        enquirySection.scrollIntoView({ behavior: 'smooth' });
+      }
+    }
+
+    // Residential Form Submission Handler
+    function handleResidentialSubmit(e) {
+      e.preventDefault();
+      const feedback = document.getElementById('residentialFormFeedback');
+      feedback.classList.remove('hidden');
+      e.target.reset();
+      setTimeout(() => {
+        feedback.classList.add('hidden');
+      }, 5000);
+    }
+  </script>
+</body>
+
+</html>

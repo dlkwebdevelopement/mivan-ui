@@ -33,9 +33,10 @@
             }
           },
           fontFamily: {
-            sans: ['Montserrat', 'Inter', 'system-ui', 'sans-serif'],
-            serif: ['Cinzel', 'Georgia', 'serif'],
+            sans: ['Inter', 'Montserrat', 'system-ui', 'sans-serif'],
+            serif: ['Inter', 'sans-serif'],
             inter: ['Inter', 'sans-serif'],
+            cinzel: ['Inter', 'sans-serif'],
           }
         }
       }
@@ -45,7 +46,6 @@
   <script src="https://unpkg.com/lucide@latest"></script>
 
   <style>
-    /* Custom Scrollbar */
     * {
       box-sizing: border-box;
       -ms-overflow-style: none;
@@ -58,21 +58,35 @@
       height: 0;
     }
 
-    /* Typography Defaults */
     h1,
     h2,
     h3,
     h4,
+    h5,
+    h6,
     .font-cinzel {
-      font-family: 'Cinzel', serif;
+      font-family: 'Inter', sans-serif !important;
     }
 
-    /* Global Font Size Boost */
+    /* Global Viewport & Responsive Constraints */
     html {
       font-size: 17px;
+      overflow-x: hidden !important;
+      max-width: 100% !important;
+      width: 100% !important;
     }
 
-    /* â”€â”€ Advanced Scroll Transformation Animations â”€â”€ */
+    body {
+      overflow-x: hidden !important;
+      max-width: 100% !important;
+      width: 100% !important;
+      position: relative !important;
+    }
+
+    img, video, iframe {
+      max-width: 100%;
+    }
+
     .reveal-on-scroll {
       opacity: 0;
       transform: translateY(35px);
@@ -97,12 +111,10 @@
       transform: scale(1) translateY(0);
     }
 
-    /* Slide from left */
     .reveal-left {
       opacity: 0;
       transform: translateX(-45px);
       transition: opacity 0.7s cubic-bezier(0.16, 1, 0.3, 1), transform 0.7s cubic-bezier(0.16, 1, 0.3, 1);
-      will-change: opacity, transform;
     }
 
     .reveal-left.revealed {
@@ -110,12 +122,10 @@
       transform: translateX(0);
     }
 
-    /* Slide from right */
     .reveal-right {
       opacity: 0;
       transform: translateX(45px);
       transition: opacity 0.7s cubic-bezier(0.16, 1, 0.3, 1), transform 0.7s cubic-bezier(0.16, 1, 0.3, 1);
-      will-change: opacity, transform;
     }
 
     .reveal-right.revealed {
@@ -123,25 +133,10 @@
       transform: translateX(0);
     }
 
-    /* Staggered Card Drop (From Top) */
-    .reveal-drop {
-      opacity: 0;
-      transform: translateY(-35px);
-      transition: opacity 0.7s cubic-bezier(0.16, 1, 0.3, 1), transform 0.7s cubic-bezier(0.16, 1, 0.3, 1);
-      will-change: opacity, transform;
-    }
-
-    .reveal-drop.revealed {
-      opacity: 1;
-      transform: translateY(0);
-    }
-
-    /* Rotate Reveal (3D Card Lift) */
     .reveal-rotate {
       opacity: 0;
       transform: perspective(1000px) rotateX(10deg) translateY(35px);
       transition: opacity 0.7s cubic-bezier(0.16, 1, 0.3, 1), transform 0.7s cubic-bezier(0.16, 1, 0.3, 1);
-      will-change: opacity, transform;
       transform-origin: bottom center;
     }
 
@@ -150,25 +145,10 @@
       transform: perspective(1000px) rotateX(0deg) translateY(0);
     }
 
-    /* Text Skew Up (Typography) */
-    .reveal-skew {
-      opacity: 0;
-      transform: translateY(30px) skewY(2.5deg);
-      transition: opacity 0.7s cubic-bezier(0.16, 1, 0.3, 1), transform 0.7s cubic-bezier(0.16, 1, 0.3, 1);
-      will-change: opacity, transform;
-    }
-
-    .reveal-skew.revealed {
-      opacity: 1;
-      transform: translateY(0) skewY(0);
-    }
-
-    /* Zoom In Reveal */
     .reveal-zoom {
       opacity: 0;
       transform: scale(1.06);
       transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1), transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
-      will-change: opacity, transform;
     }
 
     .reveal-zoom.revealed {
@@ -176,32 +156,6 @@
       transform: scale(1);
     }
 
-    /* 3D Flip Reveal */
-    .reveal-flip {
-      opacity: 0;
-      transform: perspective(1000px) rotateY(-10deg) translateX(-20px);
-      transition: opacity 0.7s cubic-bezier(0.16, 1, 0.3, 1), transform 0.7s cubic-bezier(0.16, 1, 0.3, 1);
-      will-change: opacity, transform;
-    }
-
-    .reveal-flip.revealed {
-      opacity: 1;
-      transform: perspective(1000px) rotateY(0deg) translateX(0);
-    }
-
-    /* Section-level fade+rise */
-    .section-animate {
-      opacity: 0;
-      transform: translateY(20px);
-      transition: opacity 0.6s ease, transform 0.6s ease;
-    }
-
-    .section-animate.revealed {
-      opacity: 1;
-      transform: translateY(0);
-    }
-
-    /* Stagger Delays */
     .delay-75 {
       transition-delay: 75ms;
     }
@@ -238,9 +192,6 @@
       transition-delay: 500ms;
     }
 
-
-
-    /* -- Global Section Spacing Reduction -- */
     section {
       padding-top: 1rem !important;
       padding-bottom: 1rem !important;
@@ -253,7 +204,6 @@
       }
     }
 
-    /* Overrides for extremely tight layout requested by user */
     .gap-8,
     .gap-10,
     .gap-12,
@@ -304,21 +254,18 @@
       padding-bottom: 1rem !important;
     }
 
-    /* Custom Glassmorphism */
     .glass-card {
       background: linear-gradient(135deg, rgba(6, 24, 56, 0.85) 0%, rgba(4, 15, 38, 0.9) 100%);
       backdrop-filter: blur(12px);
       -webkit-backdrop-filter: blur(12px);
     }
 
-    /* Golden text gradient */
     .text-gold-gradient {
       background: linear-gradient(135deg, #FFF099 0%, #F5C542 50%, #D4A017 100%);
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
     }
 
-    /* Auto Image Crossfade */
     @keyframes autoCrossfade {
 
       0%,
@@ -343,29 +290,28 @@
       animation: autoCrossfade 10s infinite;
     }
 
-    /* White Navbar Default State */
     #navbar {
-      background-color: #ffffff;
-      border-bottom: 1px solid #f1f5f9;
-      box-shadow: 0 4px 20px -5px rgba(0, 0, 0, 0.05);
+      background-color: #061838;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+      box-shadow: 0 4px 20px -5px rgba(0, 0, 0, 0.35);
       transition: background-color 0.35s ease, border-color 0.35s ease, padding 0.35s ease, box-shadow 0.35s ease;
     }
 
     #navbar .nav-link {
-      color: #061838;
+      color: #ffffff;
       transition: color 0.25s ease;
     }
 
     #navbar .nav-link:hover {
-      color: #D4A017;
+      color: #F5C542;
     }
 
     #navbar .nav-separator {
-      background-color: #cbd5e1;
+      background-color: rgba(255, 255, 255, 0.2);
     }
 
     #navbar #mobileMenuBtn {
-      color: #061838;
+      color: #ffffff;
       transition: color 0.25s ease;
     }
 
@@ -373,61 +319,671 @@
       filter: none;
     }
 
-    /* Scrolled state: slightly condense padding */
     #navbar.scrolled {
-      background-color: rgba(255, 255, 255, 0.98) !important;
-      border-bottom: 1px solid #f1f5f9;
+      background-color: rgba(6, 24, 56, 0.98) !important;
       backdrop-filter: blur(14px);
       -webkit-backdrop-filter: blur(14px);
-      border-bottom: 1px solid rgba(226, 232, 240, 0.9) !important;
-      box-shadow: 0 4px 20px -2px rgba(6, 24, 56, 0.08);
+      border-bottom: 1px solid rgba(255, 255, 255, 0.12) !important;
+      box-shadow: 0 4px 25px -2px rgba(0, 0, 0, 0.45);
       padding-top: 0.65rem !important;
       padding-bottom: 0.65rem !important;
     }
 
     #navbar.scrolled .nav-link {
-      color: #061838 !important;
+      color: #ffffff !important;
     }
 
     #navbar.scrolled .nav-link:hover {
-      color: #D4A017 !important;
+      color: #F5C542 !important;
     }
 
     #navbar .nav-link.nav-active,
     #navbar.scrolled .nav-link.nav-active {
-      color: #D4A017 !important;
+      color: #F5C542 !important;
     }
 
-
-
     #navbar.scrolled .nav-separator {
-      background-color: #cbd5e1 !important;
+      background-color: rgba(255, 255, 255, 0.2) !important;
     }
 
     #navbar.scrolled #mobileMenuBtn {
-      color: #061838 !important;
+      color: #ffffff !important;
     }
 
-    #navbar.scrolled .brand-logo {
-      filter: none;
-    }
-
-    /* When mobile menu drawer is open, keep navbar white */
     #navbar.menu-open {
-      background-color: #ffffff !important;
-      border-bottom: 1px solid #f1f5f9 !important;
+      background-color: #061838 !important;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.1) !important;
     }
 
     #navbar.menu-open #mobileMenuBtn {
-      color: #061838 !important;
+      color: #ffffff !important;
     }
 
-    .beach-item-hidden {
-      display: none !important;
+    .hide-scrollbar::-webkit-scrollbar {
+      display: none;
     }
 
-    .managed-item-hidden {
-      display: none !important;
+    .hide-scrollbar {
+      -ms-overflow-style: none;
+      scrollbar-width: none;
+    }
+
+    .eyebrow-gold {
+      display: inline-flex;
+      align-items: center;
+      gap: 14px;
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.28em;
+      text-transform: uppercase;
+      color: #D4A017;
+    }
+
+    .eyebrow-gold::before {
+      content: '';
+      display: block;
+      width: 42px;
+      height: 1px;
+      background: #D4A017;
+    }
+
+    .num-display {
+      font-weight: 800;
+      line-height: 0.9;
+      letter-spacing: -0.03em;
+      background: linear-gradient(180deg, #061838 0%, #061838 60%, #D4A017 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    .panel-soft {
+      background: transparent;
+      border: none;
+      box-shadow: none;
+    }
+
+    .panel-soft:hover {
+      box-shadow: none;
+      border-color: transparent;
+      transform: none;
+    }
+
+    .val-tile {
+      background: #fff;
+      border: 1px solid #eef2f7;
+      border-radius: 18px;
+      padding: 24px 18px;
+      text-align: center;
+      transition: all 0.35s ease;
+    }
+
+    .val-tile:hover {
+      border-color: #f5c542;
+      background: #fffdf5;
+      transform: translateY(-2px);
+    }
+
+    .feature-card {
+      position: relative;
+      background: #ffffff;
+      border: 1px solid #eef2f7;
+      border-radius: 22px;
+      padding: 36px 32px 32px;
+      transition: all 0.45s cubic-bezier(0.16, 1, 0.3, 1);
+      overflow: hidden;
+    }
+
+    .feature-card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 3px;
+      background: linear-gradient(90deg, #D4A017, #F5C542, #D4A017);
+      transform: scaleX(0.18);
+      transform-origin: left center;
+      transition: transform 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    .feature-card:hover {
+      transform: translateY(-6px);
+      border-color: #e6d9a8;
+      box-shadow: 0 30px 60px -30px rgba(6, 24, 56, 0.22);
+    }
+
+    .feature-card:hover::before {
+      transform: scaleX(1);
+    }
+
+    .feature-ico {
+      width: 52px;
+      height: 52px;
+      border-radius: 14px;
+      background: #fff8e1;
+      border: 1px solid #ffe9a8;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 22px;
+      transition: all 0.4s ease;
+    }
+
+    .feature-card:hover .feature-ico {
+      background: linear-gradient(135deg, #FFF099, #F5C542, #D4A017);
+      border-color: #D4A017;
+    }
+
+    .feature-ico i {
+      color: #D4A017;
+      transition: color 0.3s ease;
+    }
+
+    .feature-card:hover .feature-ico i {
+      color: #061838;
+    }
+
+    .stat-strip {
+      background: #ffffff;
+      border: 1px solid #eef2f7;
+      border-radius: 22px;
+      overflow: hidden;
+    }
+
+    .stat-cell {
+      padding: 26px 24px;
+      text-align: center;
+      border-right: 1px solid #eef2f7;
+      transition: background 0.3s ease;
+    }
+
+    .stat-cell:last-child {
+      border-right: none;
+    }
+
+    .stat-cell:hover {
+      background: #fffdf5;
+    }
+
+    @media (max-width: 767px) {
+      .stat-cell {
+        padding: 18px 12px !important;
+        border-right: none;
+        border-bottom: 1px solid #eef2f7;
+      }
+
+      .stat-cell:nth-child(odd) {
+        border-right: 1px solid #eef2f7;
+      }
+
+      .stat-cell:nth-child(3),
+      .stat-cell:nth-child(4) {
+        border-bottom: none;
+      }
+    }
+
+    /* =================================================================== */
+    /* HERO — Compact Professional Edition with new background animation   */
+    /* Shorter height, floating particle system, subtle grid              */
+    /* =================================================================== */
+    .hero-navy {
+      position: relative;
+      background:
+        radial-gradient(1400px 700px at 50% -15%, rgba(245, 197, 66, 0.08), transparent 60%),
+        radial-gradient(900px 500px at 12% 110%, rgba(245, 197, 66, 0.04), transparent 65%),
+        linear-gradient(180deg, #061838 0%, #05132c 60%, #030d20 100%);
+      overflow: hidden;
+      isolation: isolate;
+      min-height: 420px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    /* Animated grid overlay */
+    .hero-grid-overlay {
+      position: absolute;
+      inset: 0;
+      background-image:
+        linear-gradient(rgba(245, 197, 66, 0.035) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(245, 197, 66, 0.035) 1px, transparent 1px);
+      background-size: 60px 60px;
+      z-index: 1;
+      pointer-events: none;
+      animation: gridShift 40s linear infinite;
+    }
+
+    @keyframes gridShift {
+      0% {
+        background-position: 0 0, 0 0;
+      }
+
+      100% {
+        background-position: 60px 60px, 60px 60px;
+      }
+    }
+
+    /* Fine dot texture */
+    .hero-dots {
+      position: absolute;
+      inset: 0;
+      background-image: radial-gradient(rgba(255, 255, 255, 0.05) 1px, transparent 1px);
+      background-size: 28px 28px;
+      opacity: 0.5;
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    /* Floating particles canvas-like effect using CSS */
+    .hero-particles {
+      position: absolute;
+      inset: 0;
+      pointer-events: none;
+      z-index: 2;
+      overflow: hidden;
+    }
+
+    .particle {
+      position: absolute;
+      border-radius: 50%;
+      background: #F5C542;
+      opacity: 0;
+      animation: floatParticle linear infinite;
+      box-shadow: 0 0 6px rgba(245, 197, 66, 0.5);
+    }
+
+    @keyframes floatParticle {
+      0% {
+        opacity: 0;
+        transform: translateY(0) scale(0.5);
+      }
+
+      10% {
+        opacity: 0.7;
+      }
+
+      90% {
+        opacity: 0.5;
+      }
+
+      100% {
+        opacity: 0;
+        transform: translateY(-220px) scale(1);
+      }
+    }
+
+    /* Particle size and position variations */
+    .p1 {
+      width: 3px;
+      height: 3px;
+      left: 8%;
+      top: 75%;
+      animation-duration: 14s;
+      animation-delay: 0s;
+    }
+
+    .p2 {
+      width: 2px;
+      height: 2px;
+      left: 18%;
+      top: 85%;
+      animation-duration: 18s;
+      animation-delay: 2s;
+    }
+
+    .p3 {
+      width: 4px;
+      height: 4px;
+      left: 28%;
+      top: 70%;
+      animation-duration: 12s;
+      animation-delay: 1s;
+    }
+
+    .p4 {
+      width: 2px;
+      height: 2px;
+      left: 38%;
+      top: 90%;
+      animation-duration: 16s;
+      animation-delay: 4s;
+    }
+
+    .p5 {
+      width: 3px;
+      height: 3px;
+      left: 48%;
+      top: 78%;
+      animation-duration: 15s;
+      animation-delay: 0.5s;
+    }
+
+    .p6 {
+      width: 5px;
+      height: 5px;
+      left: 58%;
+      top: 88%;
+      animation-duration: 11s;
+      animation-delay: 3s;
+    }
+
+    .p7 {
+      width: 2px;
+      height: 2px;
+      left: 68%;
+      top: 72%;
+      animation-duration: 17s;
+      animation-delay: 1.5s;
+    }
+
+    .p8 {
+      width: 3px;
+      height: 3px;
+      left: 78%;
+      top: 82%;
+      animation-duration: 13s;
+      animation-delay: 5s;
+    }
+
+    .p9 {
+      width: 4px;
+      height: 4px;
+      left: 88%;
+      top: 76%;
+      animation-duration: 19s;
+      animation-delay: 2.5s;
+    }
+
+    .p10 {
+      width: 2px;
+      height: 2px;
+      left: 95%;
+      top: 86%;
+      animation-duration: 14s;
+      animation-delay: 3.5s;
+    }
+
+    /* Bigger, brighter particles for depth */
+    .p11 {
+      width: 6px;
+      height: 6px;
+      left: 13%;
+      top: 92%;
+      animation-duration: 22s;
+      animation-delay: 1s;
+      opacity: 0;
+      box-shadow: 0 0 10px rgba(245, 197, 66, 0.7);
+    }
+
+    .p12 {
+      width: 5px;
+      height: 5px;
+      left: 53%;
+      top: 95%;
+      animation-duration: 20s;
+      animation-delay: 6s;
+      box-shadow: 0 0 10px rgba(245, 197, 66, 0.7);
+    }
+
+    .p13 {
+      width: 7px;
+      height: 7px;
+      left: 83%;
+      top: 93%;
+      animation-duration: 24s;
+      animation-delay: 2s;
+      box-shadow: 0 0 12px rgba(245, 197, 66, 0.6);
+    }
+
+    /* Gold hairline at bottom */
+    .hero-navy::after {
+      content: '';
+      position: absolute;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      height: 1px;
+      background: linear-gradient(90deg, transparent, rgba(212, 160, 23, 0.55), transparent);
+      pointer-events: none;
+      z-index: 5;
+    }
+
+    /* Subtle vignette */
+    .hero-vignette {
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(ellipse at center, transparent 45%, rgba(3, 13, 32, 0.55) 100%);
+      pointer-events: none;
+      z-index: 3;
+    }
+
+    /* Content */
+    .hero-content {
+      position: relative;
+      z-index: 4;
+      width: 100%;
+    }
+
+    /* Title reveal — clean fade up */
+    .hero-title {
+      opacity: 0;
+      transform: translateY(24px);
+      animation: titleFadeUp 1.2s cubic-bezier(0.16, 1, 0.3, 1) 0.8s forwards;
+    }
+
+    @keyframes titleFadeUp {
+      0% {
+        opacity: 0;
+        transform: translateY(24px);
+      }
+
+      100% {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .hero-title .gold-accent {
+      color: #D4A017;
+    }
+
+    /* Eyebrow */
+    .hero-eyebrow {
+      opacity: 0;
+      animation: fadeInUp 1s cubic-bezier(0.16, 1, 0.3, 1) 0.6s forwards;
+    }
+
+    @keyframes fadeInUp {
+      0% {
+        opacity: 0;
+        transform: translateY(8px);
+      }
+
+      100% {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    /* Gold divider */
+    .hero-underline {
+      display: block;
+      height: 1px;
+      margin: 20px auto 0;
+      width: 0;
+      background: linear-gradient(90deg, transparent, #D4A017 50%, transparent);
+      animation: underlineDraw 1.4s cubic-bezier(0.65, 0, 0.35, 1) 1.8s forwards;
+      opacity: 0;
+    }
+
+    @keyframes underlineDraw {
+      0% {
+        width: 0;
+        opacity: 0;
+      }
+
+      40% {
+        opacity: 1;
+      }
+
+      100% {
+        width: 180px;
+        opacity: 1;
+      }
+    }
+
+    /* Subtitle */
+    .hero-subtitle {
+      opacity: 0;
+      animation: fadeInUp 1s cubic-bezier(0.16, 1, 0.3, 1) 2.2s forwards;
+    }
+
+    /* Corner crosshairs */
+    .hero-crosshair {
+      position: absolute;
+      width: 16px;
+      height: 16px;
+      border-color: rgba(245, 197, 66, 0.25);
+      z-index: 4;
+      opacity: 0;
+      animation: nodeFade 0.7s ease 0.3s forwards;
+    }
+
+    @keyframes nodeFade {
+      to {
+        opacity: 1;
+      }
+    }
+
+    .hero-crosshair.tl {
+      top: 16px;
+      left: 16px;
+      border-top: 1px solid;
+      border-left: 1px solid;
+    }
+
+    .hero-crosshair.tr {
+      top: 16px;
+      right: 16px;
+      border-top: 1px solid;
+      border-right: 1px solid;
+    }
+
+    .hero-crosshair.bl {
+      bottom: 16px;
+      left: 16px;
+      border-bottom: 1px solid;
+      border-left: 1px solid;
+    }
+
+    .hero-crosshair.br {
+      bottom: 16px;
+      right: 16px;
+      border-bottom: 1px solid;
+      border-right: 1px solid;
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+
+      .hero-grid-overlay,
+      .particle,
+      .hero-title,
+      .hero-eyebrow,
+      .hero-underline,
+      .hero-subtitle,
+      .hero-crosshair {
+        animation: none !important;
+        opacity: 1 !important;
+        transform: none !important;
+        filter: none !important;
+      }
+
+      .hero-underline {
+        width: 180px;
+      }
+
+      .hero-grid-overlay {
+        opacity: 0.3;
+      }
+    }
+
+    /* ── Mobile & Small Mobile Responsive Optimizations ── */
+    @media (max-width: 639px) {
+      /* Prevent iOS Safari auto-zoom on input focus */
+      input, select, textarea {
+        font-size: 16px !important;
+      }
+
+      /* Container horizontal breathing room on mobile */
+      .max-w-\[1400px\] {
+        padding-left: 1rem !important;
+        padding-right: 1rem !important;
+      }
+
+      /* Touch targets & smooth tap handling */
+      a, button {
+        -webkit-tap-highlight-color: transparent;
+      }
+
+      /* Prevent horizontal scroll from lateral translations on mobile */
+      .reveal-left,
+      .reveal-right {
+        transform: translateY(20px) !important;
+      }
+
+      .reveal-left.revealed,
+      .reveal-right.revealed {
+        transform: translateY(0) !important;
+      }
+
+      /* Hero section mobile height and typography */
+      .hero-navy {
+        min-height: 320px !important;
+        padding-top: 3.5rem !important;
+        padding-bottom: 3.5rem !important;
+      }
+
+      .hero-title {
+        font-size: clamp(28px, 8vw, 42px) !important;
+        line-height: 1.15 !important;
+      }
+
+      .hero-eyebrow {
+        font-size: 10px !important;
+        letter-spacing: 0.26em !important;
+      }
+
+      .hero-subtitle {
+        font-size: 13px !important;
+        line-height: 1.65 !important;
+      }
+
+      /* Component padding adjustments for mobile */
+      .panel-soft {
+        border-radius: 0 !important;
+      }
+
+      .val-tile {
+        padding: 16px 10px !important;
+        border-radius: 14px !important;
+      }
+
+      .feature-card {
+        padding: 24px 20px !important;
+        border-radius: 18px !important;
+      }
+
+      .feature-ico {
+        margin-bottom: 16px !important;
+      }
+    }
+
+    @media (max-width: 375px) {
+      /* Small mobile (e.g. 320px - 360px screens) */
+      .max-w-\[1400px\] {
+        padding-left: 0.75rem !important;
+        padding-right: 0.75rem !important;
+      }
     }
   </style>
 </head>
@@ -436,480 +992,630 @@
   class="bg-white text-slate-800 font-inter antialiased overflow-x-hidden selection:bg-brand-gold selection:text-brand-dark">
 
   <!-- ========================================================================= -->
-  <!-- 1. NAVBAR (Transparent over Hero -> White on Scroll) -->
+  <!-- 1. NAVBAR -->
   <!-- ========================================================================= -->
-  <nav id="navbar" class="sticky top-0 z-50 py-5 transition-all duration-300">
-    <div class="max-w-[1400px] w-full mx-auto px-6 sm:px-10 lg:px-12 flex items-center justify-between">
+  <nav id="navbar" class="sticky top-0 z-50 py-3.5 sm:py-5 transition-all duration-300 bg-[#061838] border-b border-white/10">
+    <div class="max-w-[1400px] w-full mx-auto px-3.5 sm:px-10 lg:px-12 flex items-center justify-between">
 
-      <!-- Brand Logo -->
-      <a href="index.html" class="w-[200px] sm:w-[260px] lg:w-[300px] shrink-0 block group">
+      <a href="index.html" class="w-[130px] xs:w-[165px] sm:w-[240px] lg:w-[290px] shrink-0 block group">
         <img src="images/assets/Mivan Logo-01.png" alt="Mivan Real Estate"
           class="brand-logo w-full h-auto object-contain transition-transform duration-300 group-hover:scale-[1.02]" />
       </a>
 
       <!-- Desktop Nav Links -->
-      <div class="hidden lg:flex items-center gap-4 xl:gap-6">
+      <div class="hidden lg:flex items-center gap-6 xl:gap-8">
         <a href="index.html"
-          class="nav-link group relative flex items-center gap-1.5 font-semibold text-[15px] xl:text-[15px] tracking-[0.06em] py-1">
-          <i data-lucide="home" class="w-3.5 h-3.5 transition-colors group-hover:text-[#D4A017]"></i>
+          class="nav-link group relative flex items-center font-semibold text-[15px] tracking-[0.04em] py-1 text-white hover:text-[#F5C542] transition-colors">
           <span>Home</span>
           <span
             class="absolute bottom-0 left-0 w-0 h-[2px] bg-[#F5C542] rounded-full transition-all duration-300 group-hover:w-full"></span>
         </a>
+
+        <!-- About Us (ACTIVE) -->
         <a href="about.html"
-          class="nav-link nav-active group relative flex items-center gap-1.5 font-semibold text-[15px] xl:text-[15px] tracking-[0.06em] py-1">
-          <i data-lucide="info" class="w-3.5 h-3.5 transition-colors group-hover:text-[#D4A017]"></i>
+          class="nav-link nav-active group relative flex items-center font-semibold text-[15px] tracking-[0.04em] py-1 text-[#F5C542]">
           <span>About Us</span>
-          <span
-            class="absolute bottom-0 left-0 w-0 h-[2px] bg-[#F5C542] rounded-full transition-all duration-300 group-hover:w-full"></span>
         </a>
 
-        <a href="properties.html"
-          class="nav-link group relative flex items-center gap-1.5 font-semibold text-[15px] xl:text-[15px] tracking-[0.06em] py-1">
-          <i data-lucide="building-2" class="w-3.5 h-3.5 transition-colors group-hover:text-[#D4A017]"></i>
-          <span>Properties</span>
-          <span
-            class="absolute bottom-0 left-0 w-0 h-[2px] bg-[#F5C542] rounded-full transition-all duration-300 group-hover:w-full"></span>
-        </a>
+        <!-- Properties Dropdown -->
+        <div class="relative group" id="propertiesNavDropdown">
+          <a href="properties.html"
+            class="nav-link group relative flex items-center gap-1.5 font-semibold text-[15px] tracking-[0.04em] py-1 text-white hover:text-[#F5C542] transition-colors">
+            <span>Properties</span>
+            <i data-lucide="chevron-down"
+              class="w-3.5 h-3.5 text-white/70 group-hover:text-[#F5C542] transition-transform duration-300 group-hover:rotate-180"></i>
+            <span
+              class="absolute bottom-0 left-0 w-0 h-[2px] bg-[#F5C542] rounded-full transition-all duration-300 group-hover:w-full"></span>
+          </a>
 
+          <!-- Dropdown Menu Box -->
+          <div
+            class="absolute top-full left-0 pt-3 opacity-0 invisible translate-y-2 group-hover:opacity-100 group-hover:visible group-hover:translate-y-0 transition-all duration-300 ease-out z-50 min-w-[320px] pointer-events-none group-hover:pointer-events-auto">
+            <div
+              class="bg-[#061838]/98 backdrop-blur-2xl border border-white/10 border-t-2 border-t-[#F5C542] rounded-2xl shadow-[0_20px_50px_rgba(0,0,0,0.65)] p-2.5 flex flex-col gap-1">
+              
+              <!-- Commercial -->
+              <a href="Commercial.html"
+                class="dropdown-item flex items-center gap-3 px-3 py-2.5 rounded-xl text-white/90 hover:text-white hover:bg-white/[0.08] transition-all duration-200 group/item">
+                <span class="w-8 h-8 rounded-lg bg-white/5 border border-white/10 flex items-center justify-center text-[#F5C542] group-hover/item:bg-[#F5C542] group-hover/item:text-[#061838] transition-all duration-200 shrink-0">
+                  <i data-lucide="building-2" class="w-4 h-4"></i>
+                </span>
+                <div class="flex flex-col">
+                  <span class="font-semibold text-[13.5px] group-hover/item:text-[#F5C542] transition-colors">Commercial</span>
+                  <span class="text-[11px] text-white/50 leading-tight">Offices, Retail, Warehouses & Land</span>
+                </div>
+              </a>
+
+              <!-- Residential -->
+              <a href="Residential Real Estate.html"
+                class="dropdown-item flex items-center gap-3 px-3 py-2.5 rounded-xl text-white/90 hover:text-white hover:bg-white/[0.08] transition-all duration-200 group/item">
+                <span class="w-8 h-8 rounded-lg bg-white/5 border border-white/10 flex items-center justify-center text-[#F5C542] group-hover/item:bg-[#F5C542] group-hover/item:text-[#061838] transition-all duration-200 shrink-0">
+                  <i data-lucide="home" class="w-4 h-4"></i>
+                </span>
+                <div class="flex flex-col">
+                  <span class="font-semibold text-[13.5px] group-hover/item:text-[#F5C542] transition-colors">Residential</span>
+                  <span class="text-[11px] text-white/50 leading-tight">Luxury Villas, Apartments & Compounds</span>
+                </div>
+              </a>
+
+              <!-- Workspaces & Retail -->
+              <a href="WORKSPACES & RETAIL DESTINATIONS.html"
+                class="dropdown-item flex items-center gap-3 px-3 py-2.5 rounded-xl text-white/90 hover:text-white hover:bg-white/[0.08] transition-all duration-200 group/item">
+                <span class="w-8 h-8 rounded-lg bg-white/5 border border-white/10 flex items-center justify-center text-[#F5C542] group-hover/item:bg-[#F5C542] group-hover/item:text-[#061838] transition-all duration-200 shrink-0">
+                  <i data-lucide="briefcase" class="w-4 h-4"></i>
+                </span>
+                <div class="flex flex-col">
+                  <span class="font-semibold text-[13.5px] group-hover/item:text-[#F5C542] transition-colors">Workspaces & Retail</span>
+                  <span class="text-[11px] text-white/50 leading-tight">Corporate Plazas & Retail Hubs</span>
+                </div>
+              </a>
+
+              <!-- Hospitality -->
+              <a href="LUXURY HOSPITALITY PROPERTIES.html"
+                class="dropdown-item flex items-center gap-3 px-3 py-2.5 rounded-xl text-white/90 hover:text-white hover:bg-white/[0.08] transition-all duration-200 group/item">
+                <span class="w-8 h-8 rounded-lg bg-white/5 border border-white/10 flex items-center justify-center text-[#F5C542] group-hover/item:bg-[#F5C542] group-hover/item:text-[#061838] transition-all duration-200 shrink-0">
+                  <i data-lucide="hotel" class="w-4 h-4"></i>
+                </span>
+                <div class="flex flex-col">
+                  <span class="font-semibold text-[13.5px] group-hover/item:text-[#F5C542] transition-colors">Hospitality</span>
+                  <span class="text-[11px] text-white/50 leading-tight">Hotels, Resorts & Tourism Assets</span>
+                </div>
+              </a>
+
+              <!-- Beach -->
+              <a href="BEACH PROPERTIES.html"
+                class="dropdown-item flex items-center gap-3 px-3 py-2.5 rounded-xl text-white/90 hover:text-white hover:bg-white/[0.08] transition-all duration-200 group/item">
+                <span class="w-8 h-8 rounded-lg bg-white/5 border border-white/10 flex items-center justify-center text-[#F5C542] group-hover/item:bg-[#F5C542] group-hover/item:text-[#061838] transition-all duration-200 shrink-0">
+                  <i data-lucide="palmtree" class="w-4 h-4"></i>
+                </span>
+                <div class="flex flex-col">
+                  <span class="font-semibold text-[13.5px] group-hover/item:text-[#F5C542] transition-colors">Beach</span>
+                  <span class="text-[11px] text-white/50 leading-tight">Beachfront Villas & Island Resorts</span>
+                </div>
+              </a>
+
+              <!-- Serviced Living -->
+              <a href="SERVICED LIVING Hotel Apartments.html"
+                class="dropdown-item flex items-center gap-3 px-3 py-2.5 rounded-xl text-white/90 hover:text-white hover:bg-white/[0.08] transition-all duration-200 group/item">
+                <span class="w-8 h-8 rounded-lg bg-white/5 border border-white/10 flex items-center justify-center text-[#F5C542] group-hover/item:bg-[#F5C542] group-hover/item:text-[#061838] transition-all duration-200 shrink-0">
+                  <i data-lucide="sparkles" class="w-4 h-4"></i>
+                </span>
+                <div class="flex flex-col">
+                  <span class="font-semibold text-[13.5px] group-hover/item:text-[#F5C542] transition-colors">Serviced Living</span>
+                  <span class="text-[11px] text-white/50 leading-tight">Hotel Apartments & Branded Suites</span>
+                </div>
+              </a>
+
+              <!-- Divider & View All -->
+              <div class="border-t border-white/10 mt-1 pt-1.5 px-1">
+                <a href="properties.html"
+                  class="flex items-center justify-between px-3 py-2 rounded-lg text-[#F5C542] hover:bg-[#F5C542]/10 transition-colors text-[12.5px] font-bold tracking-wide group/all">
+                  <span>Explore All Properties</span>
+                  <i data-lucide="arrow-right" class="w-3.5 h-3.5 transition-transform duration-200 group-hover/all:translate-x-1"></i>
+                </a>
+              </div>
+
+            </div>
+          </div>
+        </div>
 
         <a href="contact.html"
-          class="nav-link group relative flex items-center gap-1.5 font-semibold text-[15px] xl:text-[15px] tracking-[0.06em] py-1">
-          <i data-lucide="phone-call" class="w-3.5 h-3.5 transition-colors group-hover:text-[#D4A017]"></i>
+          class="nav-link group relative flex items-center font-semibold text-[15px] tracking-[0.04em] py-1 text-white hover:text-[#F5C542] transition-colors">
           <span>Contact</span>
           <span
             class="absolute bottom-0 left-0 w-0 h-[2px] bg-[#F5C542] rounded-full transition-all duration-300 group-hover:w-full"></span>
         </a>
 
-        <!-- Subtle Separator -->
-        <div class="nav-separator h-3.5 w-[1px] hidden xl:block mx-0.5"></div>
-
-        <!-- Compact Right-Side Action Button -->
+        <!-- Action Button -->
         <a href="contact.html"
-          class="inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-full bg-gradient-to-b from-[#FFF099] via-[#F5C542] to-[#D4A017] shadow-[0_0_20px_rgba(245,197,66,0.4)] hover:shadow-[0_0_30px_rgba(245,197,66,0.6)] text-[#050810] font-bold text-[14px] tracking-wider shadow-sm hover:shadow-md hover:-translate-y-0.5 active:translate-y-0 transition-all duration-200 ml-1">
-          <i data-lucide="phone" class="w-3 h-3 fill-[#030d20]"></i>
+          class="inline-flex items-center gap-1.5 px-4 py-2 rounded-full bg-gradient-to-b from-[#FFF099] via-[#F5C542] to-[#D4A017] shadow-[0_0_20px_rgba(245,197,66,0.4)] hover:shadow-[0_0_30px_rgba(245,197,66,0.6)] text-[#050810] font-bold text-[13px] tracking-wider hover:-translate-y-0.5 active:translate-y-0 transition-all duration-200 ml-1">
+          <i data-lucide="phone" class="w-3.5 h-3.5 fill-[#030d20]"></i>
           <span>Enquire</span>
         </a>
       </div>
 
       <!-- Mobile Menu Hamburger Button -->
       <button id="mobileMenuBtn" aria-label="Toggle navigation menu"
-        class="lg:hidden p-2 transition-colors focus:outline-none">
+        class="lg:hidden p-2 text-white transition-colors focus:outline-none">
         <i id="menuIcon" data-lucide="menu" class="w-7 h-7"></i>
       </button>
     </div>
 
     <!-- Mobile Navigation Drawer -->
     <div id="mobileMenu"
-      class="lg:hidden absolute top-full left-0 w-full bg-white shadow-2xl border-t border-gray-100 transition-all duration-300 opacity-0 invisible h-0 py-0 overflow-hidden">
+      class="lg:hidden absolute top-full left-0 w-full bg-[#061838] shadow-2xl border-t border-white/10 transition-all duration-300 opacity-0 invisible h-0 py-0 overflow-hidden">
       <div class="flex flex-col px-6 sm:px-12 py-6 gap-3.5 max-h-[80vh] overflow-y-auto">
         <a href="index.html"
-          class="mobile-nav-link flex items-center gap-2.5 text-[#061838] font-semibold text-[15px] hover:text-[#D4A017] transition-colors tracking-wider">
-          <i data-lucide="home" class="w-4 h-4 text-[#D4A017]"></i>
+          class="mobile-nav-link flex items-center text-white font-semibold text-[15px] hover:text-[#F5C542] transition-colors tracking-wider">
           <span>Home</span>
         </a>
         <a href="about.html"
-          class="mobile-nav-link flex items-center gap-2.5 text-[#D4A017] font-semibold text-[15px] hover:text-[#D4A017] transition-colors tracking-wider">
-          <i data-lucide="info" class="w-4 h-4 text-[#D4A017]"></i>
+          class="mobile-nav-link flex items-center text-[#F5C542] font-semibold text-[15px] transition-colors tracking-wider">
           <span>About Us</span>
         </a>
-        <a href="properties.html"
-          class="mobile-nav-link flex items-center gap-2.5 text-[#061838] font-semibold text-[15px] hover:text-[#D4A017] transition-colors tracking-wider">
-          <i data-lucide="building-2" class="w-4 h-4 text-[#D4A017]"></i>
-          <span>Properties</span>
-        </a>
+
+        <!-- Mobile Properties Accordion -->
+        <div class="mobile-nav-accordion">
+          <button type="button" id="mobilePropToggle"
+            class="w-full flex items-center justify-between text-white font-semibold text-[15px] hover:text-[#F5C542] transition-colors tracking-wider py-1">
+            <span>Properties</span>
+            <i id="mobilePropChevron" data-lucide="chevron-down" class="w-4 h-4 transition-transform duration-200"></i>
+          </button>
+          <div id="mobilePropSubmenu" class="hidden pl-3 pt-2 flex flex-col gap-2 border-l-2 border-[#F5C542]/40 ml-2 mt-1">
+            <a href="properties.html"
+              class="mobile-nav-link flex items-center gap-2 text-[#F5C542] text-[13.5px] font-semibold py-1">
+              <span>All Properties Overview</span>
+            </a>
+            <a href="Commercial.html"
+              class="mobile-nav-link flex items-center gap-2 text-white/80 hover:text-[#F5C542] text-[13.5px] py-1 transition-colors">
+              <span>Commercial</span>
+            </a>
+            <a href="Residential Real Estate.html"
+              class="mobile-nav-link flex items-center gap-2 text-white/80 hover:text-[#F5C542] text-[13.5px] py-1 transition-colors">
+              <span>Residential</span>
+            </a>
+            <a href="WORKSPACES & RETAIL DESTINATIONS.html"
+              class="mobile-nav-link flex items-center gap-2 text-white/80 hover:text-[#F5C542] text-[13.5px] py-1 transition-colors">
+              <span>Workspaces & Retail</span>
+            </a>
+            <a href="LUXURY HOSPITALITY PROPERTIES.html"
+              class="mobile-nav-link flex items-center gap-2 text-white/80 hover:text-[#F5C542] text-[13.5px] py-1 transition-colors">
+              <span>Luxury Hospitality</span>
+            </a>
+            <a href="BEACH PROPERTIES.html"
+              class="mobile-nav-link flex items-center gap-2 text-white/80 hover:text-[#F5C542] text-[13.5px] py-1 transition-colors">
+              <span>Beach Properties</span>
+            </a>
+            <a href="SERVICED LIVING Hotel Apartments.html"
+              class="mobile-nav-link flex items-center gap-2 text-white/80 hover:text-[#F5C542] text-[13.5px] py-1 transition-colors">
+              <span>Serviced Living & Hotel Apartments</span>
+            </a>
+          </div>
+        </div>
+
         <a href="contact.html"
-          class="mobile-nav-link flex items-center gap-2.5 text-[#061838] font-semibold text-[15px] hover:text-[#D4A017] transition-colors tracking-wider">
-          <i data-lucide="phone-call" class="w-4 h-4 text-[#D4A017]"></i>
+          class="mobile-nav-link flex items-center text-white font-semibold text-[15px] hover:text-[#F5C542] transition-colors tracking-wider">
           <span>Contact</span>
         </a>
         <div class="pt-3 border-t border-white/10">
           <a href="contact.html"
-            class="mobile-nav-link flex items-center justify-center gap-2 w-full py-3.5 rounded-xl bg-gradient-to-r from-[#F5C542] to-[#D4A017] text-white font-bold text-[14px] tracking-wider shadow-md">
-            <i data-lucide="phone" class="w-3.5 h-3.5 fill-[#030d20]"></i>
+            class="mobile-nav-link flex items-center justify-center gap-2 w-full py-3.5 rounded-xl bg-gradient-to-r from-[#F5C542] to-[#D4A017] text-[#050810] font-bold text-[14px] tracking-wider shadow-md">
+            <i data-lucide="phone" class="w-4 h-4 fill-[#030d20]"></i>
             <span>Enquire Now</span>
           </a>
         </div>
       </div>
-    </div>
     </div>
   </nav>
 
   <!-- MAIN CONTENT -->
   <main class="pb-0 bg-white">
 
-    <!-- HERO SECTION -->
-    <section class="relative w-full min-h-[290px] xs:min-h-[330px] sm:min-h-[420px] lg:h-[600px] overflow-hidden bg-white flex items-center select-none">
-      <!-- Background Image (Right Side) -->
-      <img src="images/assets/hero.png" alt="About Mivan"
-        class="absolute inset-0 w-full h-full object-cover object-center lg:object-right brightness-[1.02]"
-        onerror="this.src='https://images.unsplash.com/photo-1542314831-c6a4d142104d?auto=format&fit=crop&q=80&w=1920'" />
+    <!-- ========================================================================= -->
+    <!-- 2. HERO — Compact, new background animation -->
+    <!-- ========================================================================= -->
+    <section id="hero" class="hero-navy relative w-full py-16 sm:py-20 lg:py-24">
 
-      <!-- Mobile Gradient (subtle fade from left so image shows clearly on right) -->
-      <div class="absolute inset-0 z-10 bg-gradient-to-r from-white/95 via-white/85 to-white/40 lg:hidden"></div>
+      <span class="hero-crosshair tl"></span>
+      <span class="hero-crosshair tr"></span>
+      <span class="hero-crosshair bl"></span>
+      <span class="hero-crosshair br"></span>
 
-      <!-- Desktop Curved Background & Gold Line -->
-      <svg class="hidden lg:block absolute top-0 left-0 h-full w-[65%] xl:w-[60%] z-10 text-white"
-        preserveAspectRatio="none" viewBox="0 0 100 100">
-        <!-- Solid white/blueish background -->
-        <path d="M0,0 L100,0 C100,40 70,60 70,100 L0,100 Z" fill="currentColor"></path>
-        <!-- Decorative Gold Line -->
-        <path d="M100,0 C100,40 70,60 70,100" fill="none" stroke="url(#gold-grad-about)" stroke-width="0.8"></path>
-        <defs>
-          <linearGradient id="gold-grad-about" x1="0%" y1="0%" x2="100%" y2="100%">
-            <stop offset="0%" stop-color="#FFF099" />
-            <stop offset="50%" stop-color="#F5C542" />
-            <stop offset="100%" stop-color="#D4A017" />
-          </linearGradient>
-        </defs>
-      </svg>
+      <div class="hero-vignette"></div>
 
-      <!-- Content Container -->
-      <div class="relative z-30 flex items-center w-full py-4 sm:py-8 lg:py-0">
-        <div class="max-w-[1400px] mx-auto px-6 sm:px-10 lg:px-12 w-full relative z-10 h-full">
-          <div class="w-full lg:w-[55%] flex flex-col items-start reveal-on-scroll">
-            <div class="flex items-center gap-2 sm:gap-4 mb-1.5 sm:mb-3">
-              <div class="w-5 sm:w-8 h-[2px] bg-[#D4A017]"></div>
-              <span class="text-[#D4A017] font-bold tracking-[0.2em] text-[10px] sm:text-[12px]">Our Story</span>
-            </div>
+      <!-- Animated grid overlay -->
+      <div class="hero-grid-overlay"></div>
 
-            <h1
-              class="font-cinzel text-[26px] sm:text-[48px] lg:text-[76px] font-bold leading-[1.05] mb-2 sm:mb-6 flex flex-wrap gap-x-2 sm:gap-x-4">
-              <span class="text-[#061838]">About</span>
-              <span class="text-[#D4A017]">Us</span>
-            </h1>
+      <!-- Dot texture -->
+      <div class="hero-dots"></div>
 
-            <div class="space-y-3 sm:space-y-4 text-slate-600 text-[11px] sm:text-[14px] md:text-[15px] leading-[1.6] sm:leading-[1.8] font-medium mb-3 sm:mb-8 max-w-[400px] xs:max-w-[440px] sm:max-w-lg">
-              <p>Mivan Real Estate is a trusted property agency in the Kingdom of Bahrain, providing comprehensive solutions for residential and commercial real estate. We specialize in buying, selling, leasing, property management, and investment consultancy.</p>
-              <p>Driven by transparency and expert market knowledge, our team is dedicated to delivering exceptional customer service. Whether you are searching for your dream home or a lucrative investment, we ensure every transaction is smooth, secure, and rewarding.</p>
-            </div>
-
-            <!-- Icon Features -->
-            <div
-              class="flex flex-wrap items-center gap-x-3 sm:gap-x-5 gap-y-2 sm:gap-y-4 text-[#061838] text-[9px] sm:text-[12px] md:text-[13px] font-bold">
-              <div class="flex items-center gap-1 sm:gap-2">
-                <div class="p-1 sm:p-1.5 bg-[#FFF9E6] rounded text-[#D4A017] shadow-sm border border-[#FFF099]"><i
-                    data-lucide="award" class="w-3 h-3 sm:w-4 sm:h-4"></i></div>
-                <span>Industry Leaders</span>
-              </div>
-              <div class="h-3.5 sm:h-5 w-[1px] bg-slate-300"></div>
-              <div class="flex items-center gap-1 sm:gap-2">
-                <div class="p-1 sm:p-1.5 bg-[#FFF9E6] rounded text-[#D4A017] shadow-sm border border-[#FFF099]"><i
-                    data-lucide="users" class="w-3 h-3 sm:w-4 sm:h-4"></i></div>
-                <span>Expert Team</span>
-              </div>
-              <div class="h-3.5 sm:h-5 w-[1px] bg-slate-300"></div>
-              <div class="flex items-center gap-1 sm:gap-2">
-                <div class="p-1 sm:p-1.5 bg-[#FFF9E6] rounded text-[#D4A017] shadow-sm border border-[#FFF099]"><i
-                    data-lucide="bar-chart-3" class="w-3 h-3 sm:w-4 sm:h-4"></i></div>
-                <span>Proven Results</span>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- ====================================================== -->
-    <!-- MISSION & VISION SECTION -->
-    <!-- ====================================================== -->
-    <section class="relative py-24 bg-[#FAF9F5] overflow-hidden">
-      <!-- Decorative background blobs -->
-      <div
-        class="absolute top-0 right-0 w-[500px] h-[500px] bg-[#F5C542]/10 rounded-full blur-[120px] pointer-events-none -translate-y-1/4 translate-x-1/4">
-      </div>
-      <div
-        class="absolute bottom-0 left-0 w-[400px] h-[400px] bg-[#061838]/5 rounded-full blur-[100px] pointer-events-none translate-y-1/4 -translate-x-1/4">
+      <!-- Floating particles -->
+      <div class="hero-particles" aria-hidden="true">
+        <span class="particle p1"></span>
+        <span class="particle p2"></span>
+        <span class="particle p3"></span>
+        <span class="particle p4"></span>
+        <span class="particle p5"></span>
+        <span class="particle p6"></span>
+        <span class="particle p7"></span>
+        <span class="particle p8"></span>
+        <span class="particle p9"></span>
+        <span class="particle p10"></span>
+        <span class="particle p11"></span>
+        <span class="particle p12"></span>
+        <span class="particle p13"></span>
       </div>
 
-      <div class="relative z-10 max-w-[1400px] mx-auto px-6 sm:px-10 lg:px-12 w-full">
+      <!-- ============================================================
+           HERO CONTENT — compact editorial
+           ============================================================ -->
+      <div class="hero-content max-w-[1400px] mx-auto px-4 sm:px-10 lg:px-12">
+        <div class="max-w-3xl mx-auto text-center">
 
-        <!-- Header -->
-        <div class="text-center mb-16 reveal-on-scroll">
-          <div class="flex items-center justify-center gap-4 mb-5">
-            <div class="w-14 h-[2px] bg-gradient-to-r from-transparent to-[#D4A017]"></div>
-            <span class="text-[#D4A017] font-bold tracking-[0.25em] text-[11px]">About Mivan</span>
-            <div class="w-14 h-[2px] bg-gradient-to-l from-transparent to-[#D4A017]"></div>
-          </div>
-          <h2 class="font-cinzel font-bold tracking-wide leading-[1.1] text-[28px] sm:text-[32px] lg:text-[36px] uppercase">
-            Building A Better <br /><span
-              class="bg-gradient-to-r from-[#D4A017] via-[#F5C542] to-[#D4A017] bg-clip-text text-transparent">Tomorrow
-              In Bahrain</span>
-          </h2>
-          <p class="text-slate-500 leading-relaxed mt-5 max-w-2xl mx-auto text-[13px] sm:text-[14px]">
-            Mivan Real Estate and Property Management is dedicated to delivering exceptional real estate solutions and
-            long-term value for our clients and communities in Bahrain.
+          <p class="hero-eyebrow text-[10px] sm:text-[11px] font-bold tracking-[0.25em] sm:tracking-[0.42em] text-[#D4A017] uppercase mb-2 sm:mb-4 font-inter">
+            About Mivan Real Estate
           </p>
-        </div>
 
-        <!-- Two-column layout -->
-        <div class="flex flex-col lg:flex-row gap-10 items-stretch">
+          <h1
+            class="hero-title text-[28px] xs:text-[34px] sm:text-[48px] lg:text-[60px] font-extrabold leading-[1.12] lg:leading-[1.08] tracking-tight text-white !font-inter"
+            style="font-family: 'Inter', sans-serif !important;">
+            About <span class="gold-accent">Us</span>
+          </h1>
 
-          <!-- Left: Image -->
-          <div class="w-full lg:w-[45%] reveal-scale">
-            <div
-              class="relative rounded-[2rem] overflow-hidden h-[420px] lg:h-full shadow-[0_20px_60px_rgba(6,24,56,0.12)]">
-              <div
-                class="absolute -inset-[2px] rounded-[2rem] bg-gradient-to-br from-[#D4A017]/40 via-[#F5C542]/20 to-transparent z-0">
-              </div>
-              <div class="absolute inset-0 rounded-[2rem] overflow-hidden z-10">
-                <img src="images/assets/Mivan Images/mission.png" class="absolute inset-0 w-full h-full object-cover"
-                  alt="Mission" loading="lazy" />
-                <img src="images/assets/Mivan Images/mission1.png"
-                  class="absolute inset-0 w-full h-full object-cover animate-crossfade" alt="Mission 2"
-                  loading="lazy" />
-                <div class="absolute inset-0 bg-gradient-to-t from-[#061838]/70 via-[#061838]/10 to-transparent"></div>
-                <div class="absolute bottom-6 left-6 right-6 z-20">
-                  <div
-                    class="bg-white/90 backdrop-blur-md border border-white/80 rounded-2xl px-5 py-4 flex items-center gap-4 shadow-lg">
-                    <div
-                      class="w-11 h-11 rounded-full bg-gradient-to-br from-[#FFF099] to-[#D4A017] flex items-center justify-center shrink-0 shadow-md">
-                      <i data-lucide="map-pin" class="w-5 h-5 text-[#061838]"></i>
-                    </div>
-                    <div>
-                      <h4 class="text-[#061838] font-bold text-[13px] tracking-wider leading-tight">Bahrain
-                      </h4>
-                      <p class="text-slate-500 text-[11px] font-medium">Premium Real Estate Solutions</p>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
+          <span class="hero-underline"></span>
 
-          <!-- Right: Cards -->
-          <div class="w-full lg:w-[55%] flex flex-col gap-6 reveal-on-scroll">
+          <p
+            class="hero-subtitle mt-4 sm:mt-6 text-white/70 text-[12.5px] sm:text-[14.5px] leading-[1.65] sm:leading-[1.8] font-light max-w-xl mx-auto px-2 sm:px-0">
+            A trusted real estate partner in the Kingdom of Bahrain — delivering comprehensive property solutions with
+            clarity, integrity, and local expertise.
+          </p>
 
-            <!-- Vision Card -->
-            <div
-              class="group relative bg-white border border-slate-100 rounded-2xl p-7 hover:shadow-[0_8px_30px_rgba(6,24,56,0.08)] hover:-translate-y-0.5 transition-all duration-500 overflow-hidden shadow-[0_4px_20px_rgba(0,0,0,0.04)]">
-              <div
-                class="absolute top-0 left-0 w-1.5 h-full bg-gradient-to-b from-[#FFF099] via-[#F5C542] to-[#D4A017] rounded-l-2xl">
-              </div>
-              <div class="flex items-start gap-5">
-                <div
-                  class="w-12 h-12 rounded-xl bg-gradient-to-br from-[#FFF099]/30 to-[#D4A017]/20 border border-[#D4A017]/30 flex items-center justify-center shrink-0 group-hover:scale-110 transition-transform duration-500">
-                  <i data-lucide="eye" class="w-5 h-5 text-[#D4A017]"></i>
-                </div>
-                <div class="flex-1">
-                  <div class="flex items-center justify-between mb-2">
-                    <h4 class="text-[#D4A017] font-bold text-[11px] tracking-[0.25em]">Our Vision</h4>
-                    <i data-lucide="arrow-right"
-                      class="w-4 h-4 text-slate-300 group-hover:text-[#D4A017] group-hover:translate-x-1 transition-all"></i>
-                  </div>
-                  <h3 class="font-bold mb-2 font-cinzel tracking-wide text-[15px]">A Trusted Real Estate
-                    Partner</h3>
-                  <p class="text-slate-500 leading-relaxed text-[13px] sm:text-[14px]">To become one of Bahrain's most trusted and
-                    respected real estate companies by delivering outstanding property solutions that create long-term
-                    value for our clients and communities.</p>
-                </div>
-              </div>
-            </div>
-
-            <!-- Mission Card -->
-            <div
-              class="group relative bg-white border border-slate-100 rounded-2xl p-7 hover:shadow-[0_8px_30px_rgba(6,24,56,0.08)] hover:-translate-y-0.5 transition-all duration-500 overflow-hidden shadow-[0_4px_20px_rgba(0,0,0,0.04)]">
-              <div
-                class="absolute top-0 left-0 w-1.5 h-full bg-gradient-to-b from-[#FFF099] via-[#F5C542] to-[#D4A017] rounded-l-2xl">
-              </div>
-              <div class="flex items-start gap-5">
-                <div
-                  class="w-12 h-12 rounded-xl bg-gradient-to-br from-[#FFF099]/30 to-[#D4A017]/20 border border-[#D4A017]/30 flex items-center justify-center shrink-0 group-hover:scale-110 transition-transform duration-500">
-                  <i data-lucide="target" class="w-5 h-5 text-[#D4A017]"></i>
-                </div>
-                <div class="flex-1">
-                  <div class="flex items-center justify-between mb-2">
-                    <h4 class="text-[#D4A017] font-bold text-[11px] tracking-[0.25em]">Our Mission</h4>
-                    <i data-lucide="arrow-right"
-                      class="w-4 h-4 text-slate-300 group-hover:text-[#D4A017] group-hover:translate-x-1 transition-all"></i>
-                  </div>
-                  <h3 class="font-bold mb-2 font-cinzel tracking-wide text-[15px]">Innovative. Reliable.
-                    Local.</h3>
-                  <p class="text-slate-500 leading-relaxed text-[13px] sm:text-[14px]">To provide reliable, transparent, and innovative
-                    real estate services that exceed customer expectations while maintaining the highest standards of
-                    professionalism and integrity.</p>
-                </div>
-              </div>
-            </div>
-
-            <!-- Core Values -->
-            <div class="bg-white border border-slate-100 rounded-2xl p-6 shadow-[0_4px_20px_rgba(0,0,0,0.04)]">
-              <div class="flex items-center gap-3 mb-5">
-                <div class="w-6 h-[2px] bg-[#D4A017]"></div>
-                <span class="text-[#D4A017] font-bold text-[10px] tracking-[0.25em]">Our Core Values</span>
-                <div class="flex-1 h-[1px] bg-slate-100"></div>
-              </div>
-              <div class="grid grid-cols-2 sm:grid-cols-5 gap-4">
-                <div class="flex flex-col items-center gap-2 text-center group cursor-default">
-                  <div
-                    class="w-11 h-11 rounded-full border border-slate-200 bg-slate-50 flex items-center justify-center group-hover:border-[#D4A017]/60 group-hover:bg-[#D4A017]/10 transition-all duration-300">
-                    <i data-lucide="shield-check" class="w-4 h-4 text-[#D4A017]"></i>
-                  </div>
-                  <div>
-                    <div class="text-[#061838] text-[11px] font-bold tracking-wider">Integrity</div>
-                    <div class="text-slate-400 text-[10px]">Honesty</div>
-                  </div>
-                </div>
-                <div class="flex flex-col items-center gap-2 text-center group cursor-default">
-                  <div
-                    class="w-11 h-11 rounded-full border border-slate-200 bg-slate-50 flex items-center justify-center group-hover:border-[#D4A017]/60 group-hover:bg-[#D4A017]/10 transition-all duration-300">
-                    <i data-lucide="star" class="w-4 h-4 text-[#D4A017]"></i>
-                  </div>
-                  <div>
-                    <div class="text-[#061838] text-[11px] font-bold tracking-wider">Excellence</div>
-                    <div class="text-slate-400 text-[10px]">Quality</div>
-                  </div>
-                </div>
-                <div class="flex flex-col items-center gap-2 text-center group cursor-default">
-                  <div
-                    class="w-11 h-11 rounded-full border border-slate-200 bg-slate-50 flex items-center justify-center group-hover:border-[#D4A017]/60 group-hover:bg-[#D4A017]/10 transition-all duration-300">
-                    <i data-lucide="users" class="w-4 h-4 text-[#D4A017]"></i>
-                  </div>
-                  <div>
-                    <div class="text-[#061838] text-[11px] font-bold tracking-wider">Commitment</div>
-                    <div class="text-slate-400 text-[10px]">Clients First</div>
-                  </div>
-                </div>
-                <div class="flex flex-col items-center gap-2 text-center group cursor-default">
-                  <div
-                    class="w-11 h-11 rounded-full border border-slate-200 bg-slate-50 flex items-center justify-center group-hover:border-[#D4A017]/60 group-hover:bg-[#D4A017]/10 transition-all duration-300">
-                    <i data-lucide="lightbulb" class="w-4 h-4 text-[#D4A017]"></i>
-                  </div>
-                  <div>
-                    <div class="text-[#061838] text-[11px] font-bold tracking-wider">Innovation</div>
-                    <div class="text-slate-400 text-[10px]">Modern</div>
-                  </div>
-                </div>
-                <div class="flex flex-col items-center gap-2 text-center group cursor-default">
-                  <div
-                    class="w-11 h-11 rounded-full border border-slate-200 bg-slate-50 flex items-center justify-center group-hover:border-[#D4A017]/60 group-hover:bg-[#D4A017]/10 transition-all duration-300">
-                    <i data-lucide="handshake" class="w-4 h-4 text-[#D4A017]"></i>
-                  </div>
-                  <div>
-                    <div class="text-[#061838] text-[11px] font-bold tracking-wider">Trust</div>
-                    <div class="text-slate-400 text-[10px]">Long-Term</div>
-                  </div>
-                </div>
-              </div>
-            </div>
-
-          </div>
         </div>
       </div>
     </section>
 
-    <!-- MIDDLE SECTION: WHY CHOOSE US -->
-    <section class="py-16 bg-white border-t border-slate-100">
-      <div class="max-w-[1400px] mx-auto px-6 sm:px-10 lg:px-12">
+    <!-- ========================================================================= -->
+    <!-- BUILDING A BETTER TOMORROW -->
+    <!-- ========================================================================= -->
+    <section class="relative py-14 sm:py-20 lg:py-28 bg-[#FAF9F5] overflow-hidden">
+      <div
+        class="hidden lg:block absolute top-0 bottom-0 left-[6%] w-px bg-gradient-to-b from-transparent via-[#D4A017]/20 to-transparent">
+      </div>
+      <div
+        class="hidden lg:block absolute top-0 bottom-0 right-[6%] w-px bg-gradient-to-b from-transparent via-[#D4A017]/20 to-transparent">
+      </div>
 
-        <!-- Section Header -->
-        <div class="flex flex-col items-center text-center mb-10 reveal-on-scroll">
-          <div class="flex items-center justify-center gap-4 mb-4">
-            <div class="w-10 h-[2px] bg-[#D4A017]"></div>
-            <span class="text-[#D4A017] font-bold tracking-[0.2em] text-[11px]">Why Choose Us</span>
-            <div class="w-10 h-[2px] bg-[#D4A017]"></div>
+      <div class="max-w-[1400px] mx-auto px-4 sm:px-10 lg:px-12 relative z-10 w-full overflow-hidden">
+
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-6 sm:gap-8 lg:gap-12 items-end mb-10 sm:mb-14 lg:mb-20">
+          <div class="lg:col-span-8 reveal-on-scroll">
+            <div class="flex items-center gap-3 sm:gap-4 mb-2.5 sm:mb-3">
+              <div class="w-8 sm:w-12 h-[2px] bg-[#D4A017]"></div>
+              <span class="text-[#D4A017] font-bold tracking-[0.2em] text-[11px] sm:text-[13px] font-inter uppercase">About Mivan</span>
+            </div>
+            <h2
+              class="font-bold leading-[1.1] tracking-wide mb-3 sm:mb-4 text-[24px] xs:text-[28px] sm:text-[34px] lg:text-[40px] uppercase font-inter text-[#061838] break-words">
+              Building A Better<br />
+              <span class="text-[#D4A017]">Tomorrow</span> In Bahrain
+            </h2>
           </div>
-          <h2 class="font-cinzel font-bold tracking-wide text-[28px] sm:text-[32px] lg:text-[36px] uppercase">
-            Why Choose Us
-          </h2>
+          <div class="lg:col-span-4 reveal-on-scroll delay-150">
+            <div class="relative pl-3.5 sm:pl-6 border-l-2 border-[#D4A017]">
+              <p class="text-slate-600 text-[13.5px] sm:text-[15px] leading-[1.7] sm:leading-[1.8]">
+                Mivan Real Estate and Property Management is dedicated to delivering exceptional real estate solutions
+                and long-term value for our clients and communities across the Kingdom of Bahrain.
+              </p>
+            </div>
+          </div>
         </div>
 
-        <!-- 8 Cards Grid -->
-        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 lg:gap-6">
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-6 sm:gap-8 lg:gap-10 items-stretch mb-12 sm:mb-16 lg:mb-20">
 
-          <!-- Card 1 -->
-          <div
-            class="bg-white rounded-2xl p-8 border border-slate-200 shadow-[0_8px_30px_rgba(0,0,0,0.04)] flex flex-col items-start reveal-on-scroll delay-100 hover:-translate-y-2 hover:shadow-[0_15px_40px_rgba(0,0,0,0.08)] hover:border-[#D4A017]/30 transition-all duration-300">
-            <div class="w-14 h-14 rounded-full bg-[#FFF9E6] flex items-center justify-center mb-6">
-              <i data-lucide="users" class="w-6 h-6 text-[#D4A017]"></i>
+          <div class="lg:col-span-5 reveal-left">
+            <div class="relative h-full min-h-[280px] xs:min-h-[340px] sm:min-h-[420px]">
+              <div
+                class="hidden sm:block absolute -top-4 -left-4 right-8 bottom-8 rounded-3xl border border-[#D4A017]/40 pointer-events-none">
+              </div>
+
+              <div class="relative rounded-2xl sm:rounded-3xl overflow-hidden shadow-[0_20px_50px_-20px_rgba(6,24,56,0.25)] h-full">
+                <img src="images/assets/Mivan Images/mission.png" alt="Mivan Bahrain"
+                  class="absolute inset-0 w-full h-full object-cover" loading="lazy" />
+                <img src="images/assets/Mivan Images/mission1.png" alt="Mivan Bahrain 2"
+                  class="absolute inset-0 w-full h-full object-cover animate-crossfade" loading="lazy" />
+                <div class="absolute inset-0 bg-gradient-to-t from-[#061838]/85 via-[#061838]/20 to-transparent"></div>
+
+                <div class="absolute bottom-0 left-0 right-0 p-5 sm:p-7">
+                  <div class="flex items-center gap-2.5 sm:gap-3 mb-1.5 sm:mb-2">
+                    <span class="w-5 sm:w-6 h-px bg-[#D4A017]"></span>
+                    <span class="text-[#F5C542] font-bold text-[9px] sm:text-[10px] tracking-[0.25em] sm:tracking-[0.28em] uppercase">Kingdom of
+                      Bahrain</span>
+                  </div>
+                  <p class="text-white font-semibold text-[14px] sm:text-[16px] leading-snug">
+                    Premium real estate, delivered with integrity.
+                  </p>
+                </div>
+              </div>
             </div>
-            <h3 class="font-cinzel font-bold tracking-wider leading-snug text-[15px]">
-              Professional<br>Team</h3>
           </div>
 
-          <!-- Card 2 -->
-          <div
-            class="bg-white rounded-2xl p-8 border border-slate-200 shadow-[0_8px_30px_rgba(0,0,0,0.04)] flex flex-col items-start reveal-on-scroll delay-200 hover:-translate-y-2 hover:shadow-[0_15px_40px_rgba(0,0,0,0.08)] hover:border-[#D4A017]/30 transition-all duration-300">
-            <div class="w-14 h-14 rounded-full bg-[#FFF9E6] flex items-center justify-center mb-6">
-              <i data-lucide="building-2" class="w-6 h-6 text-[#D4A017]"></i>
+          <div class="lg:col-span-7 flex flex-col justify-between gap-6 sm:gap-8 reveal-right">
+
+            <div class="flex-1 py-2 sm:py-3">
+              <div class="flex items-start gap-4 sm:gap-6">
+                <div class="hidden sm:flex shrink-0 flex-col items-center">
+                  <span class="num-display text-[48px] lg:text-[64px]">01</span>
+                  <span class="w-8 sm:w-10 h-px bg-[#D4A017] mt-2"></span>
+                </div>
+                <div class="flex-1">
+                  <div class="flex items-center justify-between mb-2.5 sm:mb-3">
+                    <span class="text-[#D4A017] font-bold text-[9.5px] sm:text-[10px] tracking-[0.25em] sm:tracking-[0.28em] uppercase">Our Vision</span>
+                    <div
+                      class="w-9 h-9 sm:w-10 sm:h-10 rounded-full bg-[#FFF9E6] border border-[#FFF099] flex items-center justify-center shrink-0">
+                      <i data-lucide="eye" class="w-4 h-4 text-[#D4A017]"></i>
+                    </div>
+                  </div>
+                  <h3 class="text-[#061838] font-bold text-[17px] sm:text-[20px] lg:text-[22px] font-inter leading-snug tracking-tight mb-2">
+                    A Trusted Real Estate Partner
+                  </h3>
+                  <p class="text-slate-500 text-[13px] sm:text-[14.5px] leading-[1.7]">
+                    To become one of Bahrain's most trusted and respected real estate companies by delivering
+                    outstanding property solutions that create long-term value for our clients and communities.
+                  </p>
+                </div>
+              </div>
             </div>
-            <h3 class="font-cinzel font-bold tracking-wider leading-snug text-[15px]">Wide<br>Portfolio</h3>
+
+            <div class="w-full h-px bg-[#D4A017]/20 sm:my-2"></div>
+
+            <div class="flex-1 py-2 sm:py-3">
+              <div class="flex items-start gap-4 sm:gap-6">
+                <div class="hidden sm:flex shrink-0 flex-col items-center">
+                  <span class="num-display text-[48px] lg:text-[64px]">02</span>
+                  <span class="w-8 sm:w-10 h-px bg-[#D4A017] mt-2"></span>
+                </div>
+                <div class="flex-1">
+                  <div class="flex items-center justify-between mb-2.5 sm:mb-3">
+                    <span class="text-[#D4A017] font-bold text-[9.5px] sm:text-[10px] tracking-[0.25em] sm:tracking-[0.28em] uppercase">Our Mission</span>
+                    <div
+                      class="w-9 h-9 sm:w-10 sm:h-10 rounded-full bg-[#FFF9E6] border border-[#FFF099] flex items-center justify-center shrink-0">
+                      <i data-lucide="target" class="w-4 h-4 text-[#D4A017]"></i>
+                    </div>
+                  </div>
+                  <h3 class="text-[#061838] font-bold text-[17px] sm:text-[20px] lg:text-[22px] font-inter leading-snug tracking-tight mb-2">
+                    Innovative. Reliable. Local.
+                  </h3>
+                  <p class="text-slate-500 text-[13px] sm:text-[14.5px] leading-[1.7]">
+                    To provide reliable, transparent, and innovative real estate services that exceed customer
+                    expectations while maintaining the highest standards of professionalism and integrity.
+                  </p>
+                </div>
+              </div>
+            </div>
+
+          </div>
+        </div>
+
+        <div class="reveal-on-scroll">
+          <div class="flex flex-col sm:flex-row sm:items-end justify-between gap-4 mb-8">
+            <div>
+              <div class="flex items-center gap-3 mb-2">
+                <div class="w-8 h-[2px] bg-[#D4A017]"></div>
+                <span class="text-[#D4A017] font-bold tracking-[0.2em] text-[11px] sm:text-[12px] font-inter uppercase">Our Core Values</span>
+              </div>
+              <h3 class="text-[#061838] font-bold text-[20px] sm:text-[24px] lg:text-[28px] font-inter tracking-tight leading-tight">
+                The principles behind every deal.
+              </h3>
+            </div>
+            <p class="text-slate-400 text-[13px] sm:text-[14px] max-w-sm sm:text-right">
+              Five values that shape how we treat every client, every property, every day.
+            </p>
           </div>
 
-          <!-- Card 3 -->
-          <div
-            class="bg-white rounded-2xl p-8 border border-slate-200 shadow-[0_8px_30px_rgba(0,0,0,0.04)] flex flex-col items-start reveal-on-scroll delay-300 hover:-translate-y-2 hover:shadow-[0_15px_40px_rgba(0,0,0,0.08)] hover:border-[#D4A017]/30 transition-all duration-300">
-            <div class="w-14 h-14 rounded-full bg-[#FFF9E6] flex items-center justify-center mb-6">
-              <i data-lucide="trending-up" class="w-6 h-6 text-[#D4A017]"></i>
+          <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-3 sm:gap-4">
+            <div class="val-tile">
+              <div
+                class="w-10 h-10 sm:w-11 sm:h-11 rounded-full bg-[#FFF9E6] border border-[#FFF099] flex items-center justify-center mx-auto mb-2.5 sm:mb-3">
+                <i data-lucide="shield-check" class="w-4 h-4 sm:w-5 sm:h-5 text-[#D4A017]"></i>
+              </div>
+              <p class="text-[#061838] font-bold text-[12.5px] sm:text-[13px] tracking-wide mb-0.5 sm:mb-1">Integrity</p>
+              <p class="text-slate-400 text-[10.5px] sm:text-[11px]">Honesty always</p>
             </div>
-            <h3 class="font-cinzel font-bold tracking-wider leading-snug text-[15px]">
-              Investment<br>Guidance</h3>
+
+            <div class="val-tile">
+              <div
+                class="w-10 h-10 sm:w-11 sm:h-11 rounded-full bg-[#FFF9E6] border border-[#FFF099] flex items-center justify-center mx-auto mb-2.5 sm:mb-3">
+                <i data-lucide="star" class="w-4 h-4 sm:w-5 sm:h-5 text-[#D4A017]"></i>
+              </div>
+              <p class="text-[#061838] font-bold text-[12.5px] sm:text-[13px] tracking-wide mb-0.5 sm:mb-1">Excellence</p>
+              <p class="text-slate-400 text-[10.5px] sm:text-[11px]">Quality first</p>
+            </div>
+
+            <div class="val-tile">
+              <div
+                class="w-10 h-10 sm:w-11 sm:h-11 rounded-full bg-[#FFF9E6] border border-[#FFF099] flex items-center justify-center mx-auto mb-2.5 sm:mb-3">
+                <i data-lucide="users" class="w-4 h-4 sm:w-5 sm:h-5 text-[#D4A017]"></i>
+              </div>
+              <p class="text-[#061838] font-bold text-[12.5px] sm:text-[13px] tracking-wide mb-0.5 sm:mb-1">Commitment</p>
+              <p class="text-slate-400 text-[10.5px] sm:text-[11px]">Clients first</p>
+            </div>
+
+            <div class="val-tile">
+              <div
+                class="w-10 h-10 sm:w-11 sm:h-11 rounded-full bg-[#FFF9E6] border border-[#FFF099] flex items-center justify-center mx-auto mb-2.5 sm:mb-3">
+                <i data-lucide="lightbulb" class="w-4 h-4 sm:w-5 sm:h-5 text-[#D4A017]"></i>
+              </div>
+              <p class="text-[#061838] font-bold text-[12.5px] sm:text-[13px] tracking-wide mb-0.5 sm:mb-1">Innovation</p>
+              <p class="text-slate-400 text-[10.5px] sm:text-[11px]">Modern approach</p>
+            </div>
+
+            <div class="val-tile col-span-2 sm:col-span-1">
+              <div
+                class="w-10 h-10 sm:w-11 sm:h-11 rounded-full bg-[#FFF9E6] border border-[#FFF099] flex items-center justify-center mx-auto mb-2.5 sm:mb-3">
+                <i data-lucide="handshake" class="w-4 h-4 sm:w-5 sm:h-5 text-[#D4A017]"></i>
+              </div>
+              <p class="text-[#061838] font-bold text-[12.5px] sm:text-[13px] tracking-wide mb-0.5 sm:mb-1">Trust</p>
+              <p class="text-slate-400 text-[10.5px] sm:text-[11px]">Long-term bonds</p>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ========================================================================= -->
+    <!-- WHY CHOOSE US -->
+    <!-- ========================================================================= -->
+    <section class="py-14 sm:py-20 lg:py-28 bg-white border-t border-slate-100 overflow-hidden">
+      <div class="max-w-[1400px] mx-auto px-4 sm:px-10 lg:px-12 w-full overflow-hidden">
+
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-6 sm:gap-8 lg:gap-12 items-end mb-10 sm:mb-14">
+          <div class="lg:col-span-7 reveal-on-scroll">
+            <div class="flex items-center gap-3 sm:gap-4 mb-2.5 sm:mb-3">
+              <div class="w-8 sm:w-12 h-[2px] bg-[#D4A017]"></div>
+              <span class="text-[#D4A017] font-bold tracking-[0.2em] text-[11px] sm:text-[13px] font-inter uppercase">Why Choose Us</span>
+            </div>
+            <h2
+              class="font-bold leading-[1.1] tracking-wide mb-3 sm:mb-4 text-[24px] xs:text-[28px] sm:text-[34px] lg:text-[40px] uppercase font-inter text-[#061838] break-words">
+              Reasons Clients<br />
+              <span class="text-[#D4A017]">Trust</span> Our Team
+            </h2>
+          </div>
+          <div class="lg:col-span-5 reveal-on-scroll delay-150">
+            <p class="text-slate-500 text-[13.5px] sm:text-[15px] leading-[1.7] sm:leading-[1.8] mb-3 sm:mb-4">
+              We earn client trust not through promises, but through consistent delivery, transparent communication, and
+              a genuine commitment to every deal — big or small.
+            </p>
+            <a href="contact.html"
+              class="inline-flex items-center gap-2 text-[#061838] font-bold text-[13px] hover:gap-3 transition-all group">
+              <span>Start a conversation</span>
+              <i data-lucide="arrow-right"
+                class="w-4 h-4 text-[#D4A017] group-hover:translate-x-1 transition-transform"></i>
+            </a>
+          </div>
+        </div>
+
+        <div class="stat-strip grid grid-cols-2 md:grid-cols-4 mb-10 sm:mb-14 reveal-on-scroll">
+          <div class="stat-cell">
+            <p class="text-[#061838] font-extrabold text-[28px] xs:text-[32px] sm:text-[38px] leading-none tracking-tight">10<span
+                class="text-[#D4A017]">+</span></p>
+            <p class="text-slate-400 text-[10.5px] xs:text-[11.5px] mt-2 tracking-[0.15em] uppercase font-semibold">Years in Bahrain</p>
+          </div>
+          <div class="stat-cell">
+            <p class="text-[#061838] font-extrabold text-[28px] xs:text-[32px] sm:text-[38px] leading-none tracking-tight">500<span
+                class="text-[#D4A017]">+</span></p>
+            <p class="text-slate-400 text-[10.5px] xs:text-[11.5px] mt-2 tracking-[0.15em] uppercase font-semibold">Happy Clients</p>
+          </div>
+          <div class="stat-cell">
+            <p class="text-[#061838] font-extrabold text-[28px] xs:text-[32px] sm:text-[38px] leading-none tracking-tight">150<span
+                class="text-[#D4A017]">+</span></p>
+            <p class="text-slate-400 text-[10.5px] xs:text-[11.5px] mt-2 tracking-[0.15em] uppercase font-semibold">Properties Listed</p>
+          </div>
+          <div class="stat-cell">
+            <p class="text-[#061838] font-extrabold text-[28px] xs:text-[32px] sm:text-[38px] leading-none tracking-tight">24<span
+                class="text-[#D4A017]">h</span></p>
+            <p class="text-slate-400 text-[10.5px] xs:text-[11.5px] mt-2 tracking-[0.15em] uppercase font-semibold">Response Promise</p>
+          </div>
+        </div>
+
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-5">
+
+          <div class="feature-card reveal-on-scroll delay-75">
+            <div class="feature-ico"><i data-lucide="users" class="w-5 h-5"></i></div>
+            <h3 class="text-[#061838] font-bold text-[15px] sm:text-[16px] font-inter tracking-tight mb-2">Professional Team</h3>
+            <p class="text-slate-500 text-[13px] leading-[1.7]">Licensed, bilingual advisors with deep Bahrain market
+              expertise, guiding you at every step.</p>
           </div>
 
-          <!-- Card 4 -->
-          <div
-            class="bg-white rounded-2xl p-8 border border-slate-200 shadow-[0_8px_30px_rgba(0,0,0,0.04)] flex flex-col items-start reveal-on-scroll delay-400 hover:-translate-y-2 hover:shadow-[0_15px_40px_rgba(0,0,0,0.08)] hover:border-[#D4A017]/30 transition-all duration-300">
-            <div class="w-14 h-14 rounded-full bg-[#FFF9E6] flex items-center justify-center mb-6">
-              <i data-lucide="file-text" class="w-6 h-6 text-[#D4A017]"></i>
-            </div>
-            <h3 class="font-cinzel font-bold tracking-wider leading-snug text-[15px]">Quick<br>Documentation</h3>
+          <div class="feature-card reveal-on-scroll delay-100">
+            <div class="feature-ico"><i data-lucide="building-2" class="w-5 h-5"></i></div>
+            <h3 class="text-[#061838] font-bold text-[15px] sm:text-[16px] font-inter tracking-tight mb-2">Wide Portfolio</h3>
+            <p class="text-slate-500 text-[13px] leading-[1.7]">From luxury villas to commercial towers — an extensive
+              catalogue across every Bahrain district.</p>
           </div>
 
-          <!-- Card 5 -->
-          <div
-            class="bg-white rounded-2xl p-8 border border-slate-200 shadow-[0_8px_30px_rgba(0,0,0,0.04)] flex flex-col items-start reveal-on-scroll delay-100 hover:-translate-y-2 hover:shadow-[0_15px_40px_rgba(0,0,0,0.08)] hover:border-[#D4A017]/30 transition-all duration-300">
-            <div class="w-14 h-14 rounded-full bg-[#FFF9E6] flex items-center justify-center mb-6">
-              <i data-lucide="shield-check" class="w-6 h-6 text-[#D4A017]"></i>
-            </div>
-            <h3 class="font-cinzel font-bold tracking-wider leading-snug text-[15px]">
-              Transparent<br>Practices</h3>
+          <div class="feature-card reveal-on-scroll delay-150">
+            <div class="feature-ico"><i data-lucide="trending-up" class="w-5 h-5"></i></div>
+            <h3 class="text-[#061838] font-bold text-[15px] sm:text-[16px] font-inter tracking-tight mb-2">Investment Guidance</h3>
+            <p class="text-slate-500 text-[13px] leading-[1.7]">Data-driven advice on yields, ROI, and market timing —
+              tailored to your financial goals.</p>
           </div>
 
-          <!-- Card 6 -->
-          <div
-            class="bg-white rounded-2xl p-8 border border-slate-200 shadow-[0_8px_30px_rgba(0,0,0,0.04)] flex flex-col items-start reveal-on-scroll delay-200 hover:-translate-y-2 hover:shadow-[0_15px_40px_rgba(0,0,0,0.08)] hover:border-[#D4A017]/30 transition-all duration-300">
-            <div class="w-14 h-14 rounded-full bg-[#FFF9E6] flex items-center justify-center mb-6">
-              <i data-lucide="headset" class="w-6 h-6 text-[#D4A017]"></i>
-            </div>
-            <h3 class="font-cinzel font-bold tracking-wider leading-snug text-[15px]">
-              Custom<br>Service</h3>
+          <div class="feature-card reveal-on-scroll delay-200">
+            <div class="feature-ico"><i data-lucide="file-text" class="w-5 h-5"></i></div>
+            <h3 class="text-[#061838] font-bold text-[15px] sm:text-[16px] font-inter tracking-tight mb-2">Quick Documentation</h3>
+            <p class="text-slate-500 text-[13px] leading-[1.7]">Streamlined paperwork with legal coordination — getting
+              the keys into your hands, faster.</p>
           </div>
 
-          <!-- Card 7 -->
-          <div
-            class="bg-white rounded-2xl p-8 border border-slate-200 shadow-[0_8px_30px_rgba(0,0,0,0.04)] flex flex-col items-start reveal-on-scroll delay-300 hover:-translate-y-2 hover:shadow-[0_15px_40px_rgba(0,0,0,0.08)] hover:border-[#D4A017]/30 transition-all duration-300">
-            <div class="w-14 h-14 rounded-full bg-[#FFF9E6] flex items-center justify-center mb-6">
-              <i data-lucide="globe" class="w-6 h-6 text-[#D4A017]"></i>
-            </div>
-            <h3 class="font-cinzel font-bold tracking-wider leading-snug text-[15px]">Market<br>Knowledge</h3>
+          <div class="feature-card reveal-on-scroll delay-250">
+            <div class="feature-ico"><i data-lucide="shield-check" class="w-5 h-5"></i></div>
+            <h3 class="text-[#061838] font-bold text-[15px] sm:text-[16px] font-inter tracking-tight mb-2">Transparent Practices</h3>
+            <p class="text-slate-500 text-[13px] leading-[1.7]">No hidden fees, no surprises. Every cost, term, and step
+              is explained upfront, in writing.</p>
           </div>
 
-          <!-- Card 8 -->
-          <div
-            class="bg-white rounded-2xl p-8 border border-slate-200 shadow-[0_8px_30px_rgba(0,0,0,0.04)] flex flex-col items-start reveal-on-scroll delay-400 hover:-translate-y-2 hover:shadow-[0_15px_40px_rgba(0,0,0,0.08)] hover:border-[#D4A017]/30 transition-all duration-300">
-            <div class="w-14 h-14 rounded-full bg-[#FFF9E6] flex items-center justify-center mb-6">
-              <i data-lucide="handshake" class="w-6 h-6 text-[#D4A017]"></i>
-            </div>
-            <h3 class="font-cinzel font-bold tracking-wider leading-snug text-[15px]">Long-Term<br>Relationships</h3>
+          <div class="feature-card reveal-on-scroll delay-300">
+            <div class="feature-ico"><i data-lucide="headset" class="w-5 h-5"></i></div>
+            <h3 class="text-[#061838] font-bold text-[15px] sm:text-[16px] font-inter tracking-tight mb-2">Custom Service</h3>
+            <p class="text-slate-500 text-[13px] leading-[1.7]">Bespoke solutions tailored to your unique goals — never
+              a one-size-fits-all approach.</p>
+          </div>
+
+          <div class="feature-card reveal-on-scroll delay-350">
+            <div class="feature-ico"><i data-lucide="globe" class="w-5 h-5"></i></div>
+            <h3 class="text-[#061838] font-bold text-[15px] sm:text-[16px] font-inter tracking-tight mb-2">Market Knowledge</h3>
+            <p class="text-slate-500 text-[13px] leading-[1.7]">Real-time insight into Bahrain's pricing trends,
+              regulations, and emerging neighbourhoods.</p>
+          </div>
+
+          <div class="feature-card reveal-on-scroll delay-400">
+            <div class="feature-ico"><i data-lucide="handshake" class="w-5 h-5"></i></div>
+            <h3 class="text-[#061838] font-bold text-[15px] sm:text-[16px] font-inter tracking-tight mb-2">Long-Term Relationships</h3>
+            <p class="text-slate-500 text-[13px] leading-[1.7]">Most of our business comes from referrals — because our
+              clients stay with us for years.</p>
           </div>
 
         </div>
+
+        <div class="mt-12 sm:mt-16 lg:mt-20 reveal-on-scroll">
+          <div
+            class="border border-[#eef2f7] rounded-2xl sm:rounded-3xl bg-[#FAF9F5] px-5 sm:px-10 py-6 sm:py-10 flex flex-col sm:flex-row items-center justify-between gap-5 sm:gap-6 text-center sm:text-left">
+            <div class="flex flex-col sm:flex-row items-center sm:items-start lg:items-center gap-4 sm:gap-5">
+              <div
+                class="w-12 h-12 sm:w-14 sm:h-14 rounded-2xl bg-gradient-to-br from-[#FFF099] via-[#F5C542] to-[#D4A017] flex items-center justify-center shrink-0 shadow-md">
+                <i data-lucide="message-circle" class="w-5 h-5 sm:w-6 sm:h-6 text-[#061838]"></i>
+              </div>
+              <div>
+                <h4 class="text-[#061838] font-bold text-[17px] sm:text-[20px] font-inter tracking-tight mb-1">Ready to
+                  experience the difference?</h4>
+                <p class="text-slate-500 text-[13px] sm:text-[13.5px]">Let's talk about your next move — no obligation, no pressure.
+                </p>
+              </div>
+            </div>
+            <a href="contact.html"
+              class="inline-flex items-center justify-center gap-2.5 px-6 py-3.5 rounded-full bg-[#061838] text-white font-bold text-[13px] tracking-wider hover:bg-[#D4A017] hover:text-[#061838] transition-all shadow-md whitespace-nowrap group w-full sm:w-auto shrink-0">
+              <span>Contact Us</span>
+              <i data-lucide="arrow-right"
+                class="w-4 h-4 text-[#F5C542] group-hover:text-[#061838] group-hover:translate-x-1 transition-all"></i>
+            </a>
+          </div>
+        </div>
+
       </div>
     </section>
   </main>
 
+  <!-- ========================================================================= -->
   <!-- FOOTER -->
-  <footer class="bg-[#061838] text-white pt-6 pb-4 px-6 sm:px-10 lg:px-12 border-t border-[#F5C542]/20">
+  <!-- ========================================================================= -->
+  <footer class="bg-[#061838] text-white pt-6 pb-4 px-4 sm:px-10 lg:px-12 border-t border-[#F5C542]/20">
     <div class="max-w-[1400px] w-full mx-auto">
 
-      <!-- Main 4-Column Grid -->
       <div class="grid grid-cols-2 lg:grid-cols-4 gap-x-4 sm:gap-x-8 gap-y-6 sm:gap-y-8 lg:gap-4 mb-6">
 
-        <!-- Column 1: Brand & Bio -->
         <div class="flex flex-col items-start">
           <div class="mb-2 sm:mb-3 w-[130px] xs:w-[150px] sm:w-[220px]">
-            <img src="images/assets/Mivan Logo-01.png" alt="Mivan Real Estate"
-              class="w-full h-auto object-contain" />
+            <img src="images/assets/Mivan Logo-01.png" alt="Mivan Real Estate" class="w-full h-auto object-contain" />
           </div>
           <p class="text-white/60 xs:text-[13px] leading-relaxed pr-1 sm:pr-4 text-[13px]">
             Premium real estate solutions for all your property needs in Bahrain. Professionalism, quality, and client
@@ -917,9 +1623,9 @@
           </p>
         </div>
 
-        <!-- Column 2: Explore -->
         <div class="flex flex-col items-start lg:pl-4">
-          <h2 class="text-xs sm:text-sm font-bold mb-1 sm:mb-1.5 text-white uppercase tracking-widest font-cinzel">Explore</h2>
+          <h2 class="text-xs sm:text-sm font-bold mb-1 sm:mb-1.5 text-white uppercase tracking-widest font-inter">
+            Explore</h2>
           <div class="w-6 sm:w-8 h-[2px] bg-[#D4A017] mb-2"></div>
           <ul class="flex flex-col gap-1.5 w-full">
             <li><a href="index.html"
@@ -928,27 +1634,36 @@
             <li><a href="#about"
                 class="text-white/60 text-[11.5px] xs:text-[12.5px] sm:text-[14px] hover:text-[#D4A017] hover:pl-2 transition-all duration-300 block font-medium">About
                 Us</a></li>
-            <li><a href="#commercial"
+            <li><a href="Commercial.html"
                 class="text-white/60 text-[11.5px] xs:text-[12.5px] sm:text-[14px] hover:text-[#D4A017] hover:pl-2 transition-all duration-300 block font-medium">Commercial</a>
             </li>
-            <li><a href="#properties"
+            <li><a href="Residential Real Estate.html"
                 class="text-white/60 text-[11.5px] xs:text-[12.5px] sm:text-[14px] hover:text-[#D4A017] hover:pl-2 transition-all duration-300 block font-medium">Residential</a>
             </li>
-            <li><a href="#offices"
-                class="text-white/60 text-[11.5px] xs:text-[12.5px] sm:text-[14px] hover:text-[#D4A017] hover:pl-2 transition-all duration-300 block font-medium">Offices</a>
+            <li><a href="WORKSPACES & RETAIL DESTINATIONS.html"
+                class="text-white/60 text-[11.5px] xs:text-[12.5px] sm:text-[14px] hover:text-[#D4A017] hover:pl-2 transition-all duration-300 block font-medium">Workspaces & Retail</a>
             </li>
-            <li><a href="#hospitality"
-                class="text-white/60 text-[11.5px] xs:text-[12.5px] sm:text-[14px] hover:text-[#D4A017] hover:pl-2 transition-all duration-300 block font-medium">Hospitality</a>
+            <li><a href="LUXURY HOSPITALITY PROPERTIES.html"
+                class="text-white/60 text-[11.5px] xs:text-[12.5px] sm:text-[14px] hover:text-[#D4A017] hover:pl-2 transition-all duration-300 block font-medium">Luxury Hospitality</a>
             </li>
-            <li><a href="#contact"
-                class="text-white/60 text-[11.5px] xs:text-[12.5px] sm:text-[14px] hover:text-[#D4A017] hover:pl-2 transition-all duration-300 block font-medium">Contact
-                Us</a></li>
+            <li><a href="BEACH PROPERTIES.html"
+                class="text-white/60 text-[11.5px] xs:text-[12.5px] sm:text-[14px] hover:text-[#D4A017] hover:pl-2 transition-all duration-300 block font-medium">Beach Properties</a>
+            </li>
+            <li><a href="SERVICED LIVING Hotel Apartments.html"
+                class="text-white/60 text-[11.5px] xs:text-[12.5px] sm:text-[14px] hover:text-[#D4A017] hover:pl-2 transition-all duration-300 block font-medium">Serviced Living & Hotel Apartments</a>
+            </li>
+            <li><a href="properties.html"
+                class="text-white/60 text-[11.5px] xs:text-[12.5px] sm:text-[14px] hover:text-[#D4A017] hover:pl-2 transition-all duration-300 block font-medium">Properties</a>
+            </li>
+            <li><a href="contact.html"
+                class="text-white/60 text-[11.5px] xs:text-[12.5px] sm:text-[14px] hover:text-[#D4A017] hover:pl-2 transition-all duration-300 block font-medium">Contact Us</a>
+            </li>
           </ul>
         </div>
 
-        <!-- Column 3: Services -->
         <div class="flex flex-col items-start">
-          <h2 class="text-xs sm:text-sm font-bold mb-1 sm:mb-1.5 text-white uppercase tracking-widest font-cinzel">Services</h2>
+          <h2 class="text-xs sm:text-sm font-bold mb-1 sm:mb-1.5 text-white uppercase tracking-widest font-inter">
+            Services</h2>
           <div class="w-6 sm:w-8 h-[2px] bg-[#D4A017] mb-2"></div>
           <ul class="flex flex-col gap-1.5 w-full">
             <li><a href="#properties"
@@ -972,9 +1687,9 @@
           </ul>
         </div>
 
-        <!-- Column 4: Contact Info -->
         <div class="flex flex-col items-start">
-          <h2 class="text-xs sm:text-sm font-bold mb-1 sm:mb-1.5 text-white uppercase tracking-widest font-cinzel">Contact Info</h2>
+          <h2 class="text-xs sm:text-sm font-bold mb-1 sm:mb-1.5 text-white uppercase tracking-widest font-inter">
+            Contact Info</h2>
           <div class="w-6 sm:w-8 h-[2px] bg-[#D4A017] mb-2"></div>
 
           <div class="flex flex-col gap-1.5 sm:gap-2 w-full text-[11px] xs:text-[13px] text-white/60">
@@ -984,17 +1699,14 @@
                 Flat 21, Building 19, Road 1802,<br /> Block 318, Alhoora, Manama, Bahrain
               </p>
             </div>
-
             <div class="flex items-center gap-1.5 sm:gap-3">
               <i data-lucide="phone" class="w-3.5 h-3.5 sm:w-4 sm:h-4 text-[#D4A017] shrink-0"></i>
               <a href="tel:+97377985252" class="hover:text-white transition-colors">+973 7798 5252</a>
             </div>
-
             <div class="flex items-center gap-1.5 sm:gap-3">
               <i data-lucide="phone" class="w-3.5 h-3.5 sm:w-4 sm:h-4 text-[#D4A017] shrink-0"></i>
               <a href="tel:+97333241314" class="hover:text-white transition-colors">+973 3324 1314</a>
             </div>
-
             <div class="flex items-center gap-1.5 sm:gap-3">
               <i data-lucide="file-text" class="w-3.5 h-3.5 sm:w-4 sm:h-4 text-[#D4A017] shrink-0"></i>
               <span>CR: 194355- 1</span>
@@ -1004,8 +1716,8 @@
 
       </div>
 
-      <!-- Bottom Bar: Copyright & Legal -->
-      <div class="pt-4 border-t border-white/10 flex flex-col md:flex-row justify-between items-center gap-3 sm:gap-4 text-center md:text-left">
+      <div
+        class="pt-4 border-t border-white/10 flex flex-col md:flex-row justify-between items-center gap-3 sm:gap-4 text-center md:text-left">
         <div class="text-slate-400 text-xs sm:text-sm">
           &copy; <span id="currentYear">2026</span> Mivan Real Estate. All rights reserved.
         </div>
@@ -1014,7 +1726,6 @@
           <a href="#about" class="hover:text-[#D4A017] transition-colors">Privacy Policy</a>
           <a href="#about" class="hover:text-[#D4A017] transition-colors">Terms of Service</a>
 
-          <!-- Social Icons -->
           <div class="flex items-center gap-4 pl-4 sm:pl-6 border-l border-white/20">
             <a href="#" aria-label="Facebook" class="hover:text-[#D4A017] transition-colors">
               <svg class="w-4 h-4 fill-current" viewBox="0 0 24 24">
@@ -1048,54 +1759,12 @@
   </footer>
 
   <script>
-    // Initialize Icons
     lucide.createIcons();
 
-    // â”€â”€ Enhanced Unified Scroll Transformation Engine â”€â”€
     (function initScrollTransformationSystem() {
       const transformSelector = '.reveal-on-scroll, .reveal-scale, .reveal-left, .reveal-right, .reveal-drop, .reveal-rotate, .reveal-skew, .reveal-zoom, .reveal-flip';
 
-      function applySmartTransformClasses() {
-        document.querySelectorAll('section').forEach(sec => {
-          // Section header/titles
-          const header = sec.querySelector('.flex.flex-col.md\\:flex-row, .max-w-2xl, h1, h2');
-          if (header && !header.className.match(/reveal-/)) {
-            header.classList.add('reveal-on-scroll');
-          }
-
-          // Grids with cards -> staggered 3D rotate or scale transformation
-          sec.querySelectorAll('.grid').forEach(grid => {
-            const cards = Array.from(grid.children);
-            cards.forEach((card, idx) => {
-              if (!card.className.match(/reveal-/)) {
-                card.classList.add(idx % 2 === 0 ? 'reveal-rotate' : 'reveal-scale');
-                const delayMs = Math.min((idx % 4 + 1) * 100, 500);
-                card.classList.add('delay-' + delayMs);
-              }
-            });
-          });
-
-          // Horizontal carousels / image sliders
-          sec.querySelectorAll('.snap-x.overflow-x-auto > *').forEach((item, idx) => {
-            if (!item.className.match(/reveal-/)) {
-              item.classList.add('reveal-scale');
-              const delayMs = Math.min((idx % 5 + 1) * 75, 400);
-              item.classList.add('delay-' + delayMs);
-            }
-          });
-
-          // General headings, paragraphs, and cards
-          sec.querySelectorAll('h2, h3, p, .bg-white, .rounded-3xl').forEach(el => {
-            if (!el.closest(transformSelector) && !el.className.match(/reveal-/)) {
-              el.classList.add('reveal-on-scroll');
-            }
-          });
-        });
-      }
-
       function setupObserver() {
-        applySmartTransformClasses();
-
         const observer = new IntersectionObserver((entries) => {
           entries.forEach(entry => {
             if (entry.isIntersecting) {
@@ -1103,10 +1772,7 @@
               observer.unobserve(entry.target);
             }
           });
-        }, {
-          threshold: 0.08,
-          rootMargin: '0px 0px -30px 0px'
-        });
+        }, { threshold: 0.08, rootMargin: '0px 0px -30px 0px' });
 
         document.querySelectorAll(transformSelector).forEach(el => {
           const rect = el.getBoundingClientRect();
@@ -1124,23 +1790,21 @@
         setupObserver();
       }
 
-      // Dynamic Navbar Transformation on Scroll
       const navbar = document.getElementById('navbar');
       if (navbar) {
         window.addEventListener('scroll', () => {
           if (window.scrollY > 30) {
-            navbar.classList.add('scrolled', 'shadow-md', 'bg-white/95', 'backdrop-blur-md');
+            navbar.classList.add('scrolled', 'shadow-md', 'bg-[#061838]/95', 'backdrop-blur-md');
           } else {
             navbar.classList.remove('scrolled', 'shadow-md');
             if (!navbar.classList.contains('menu-open')) {
-              navbar.classList.remove('bg-white/95', 'backdrop-blur-md');
+              navbar.classList.remove('bg-[#061838]/95', 'backdrop-blur-md');
             }
           }
         }, { passive: true });
       }
     })();
 
-    // Mobile Menu Toggle
     const mobileMenuBtn = document.getElementById('mobileMenuBtn');
     const mobileMenu = document.getElementById('mobileMenu');
     let isMenuOpen = false;
@@ -1157,6 +1821,26 @@
       }
       lucide.createIcons();
     });
+
+    // Mobile Properties Accordion Toggle
+    const mobilePropToggle = document.getElementById('mobilePropToggle');
+    const mobilePropSubmenu = document.getElementById('mobilePropSubmenu');
+    const mobilePropChevron = document.getElementById('mobilePropChevron');
+    if (mobilePropToggle && mobilePropSubmenu) {
+      mobilePropToggle.addEventListener('click', (e) => {
+        e.preventDefault();
+        e.stopPropagation();
+        const isHidden = mobilePropSubmenu.classList.contains('hidden');
+        if (isHidden) {
+          mobilePropSubmenu.classList.remove('hidden');
+          if (mobilePropChevron) mobilePropChevron.classList.add('rotate-180');
+        } else {
+          mobilePropSubmenu.classList.add('hidden');
+          if (mobilePropChevron) mobilePropChevron.classList.remove('rotate-180');
+        }
+        lucide.createIcons();
+      });
+    }
   </script>
 </body>
 
